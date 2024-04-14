@@ -16,7 +16,7 @@ public class Room {
     public String getName(){
         return this.name;
     }
-    
+
     public void addLivingRoom(){
         this.name = "Living Room";
     }
@@ -51,9 +51,14 @@ public class Room {
             return false;
         }
     }
+
     public void printCollection(Item i){
         Set<Item> getter = itemCollection.adjacentNodes(i);
         System.out.println(getter);
+    }
+
+    public String toString(){
+        return "Welcome! This is " + this.name + " .";
     }
 
     public static void main(String[] args) {

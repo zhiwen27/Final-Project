@@ -2,16 +2,19 @@ import java.util.Hashtable;
 import java.util.ArrayList;
 
 import com.google.common.graph.GraphBuilder;
-public class MainHouse{
-    private String name;
+public class MainHouse extends House{
     private ArrayList<Floor> structure;
     private int floor;
     private int activeFloor = 1;
 
     public MainHouse(){
-        this.name = "Main House";
+        super("Main House");
         this.floor = 4;
         this.structure = new ArrayList<>(this.floor);
+    }
+
+    public void addFloor(Floor f){
+        this.structure.add(f);
     }
 
     public Floor floorTour(int floorNum){
