@@ -14,35 +14,40 @@ public class Room {
         return this.name;
     }
 
-    public void addLivingRoom(){
+    public Room addLivingRoom(){
         this.name = "Living Room";
         Item gold1 = new Item("Gold 1", 100);
         // create some new items and add into the kitchen
         System.out.println(this);
+        return this;
     }
 
-    public void addKitchen(){
+    public Room addKitchen(){
         this.name = "Kitchen";
         
         Item candle = new Item("Candle", 5);
         // create some new items and add into the kitchen
         System.out.println(this);
+        return this;
     }
 
-    public void addBedroom(){
+    public Room addBedroom(){
         this.name = "Bedroom";
         // create some new items and add into the kitchen
         System.out.println(this);
+        return this;
     }
 
-    public void addBasement(){
+    public Room addBasement(){
         this.name = "Basement";
         // create some new items and add into the kitchen
         System.out.println(this);
+        return this;
     }
 
-    public void addAttic(){
+    public Room addAttic(){
         this.name = "Attic";
+        return this;
     }
 
     public void addItem(Item i){
@@ -67,6 +72,6 @@ public class Room {
 
     public static void main(String[] args) {
         Room newRoom = new Room();
-        newRoom.addKitchen();
+        newRoom = newRoom.addKitchen();
     }
 }
