@@ -3,22 +3,22 @@ import java.util.ArrayList;
 
 import com.google.common.graph.GraphBuilder;
 public class MainHouse extends House{
-    private ArrayList<Floor> structure;
+    private ArrayList<Floor> floors;
     private int floor;
     private int activeFloor = 1;
 
     public MainHouse(){
         super("Main House");
         this.floor = 4;
-        this.structure = new ArrayList<>(this.floor);
+        this.floors = new ArrayList<>(this.floor);
     }
 
     public void addFloor(Floor f){
-        this.structure.add(f);
+        this.floors.add(f);
     }
 
     public Floor floorTour(int floorNum){
-        return this.structure.get(floorNum);
+        return this.floors.get(floorNum);
     }
 
     public void goUpFloor(){

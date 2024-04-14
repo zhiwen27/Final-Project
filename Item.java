@@ -4,24 +4,22 @@ public class Item {
 
     private int value;
     private String name;
+    private boolean canTake;
 
     public Item(){
-        this("<Name Unknown>",0);
-    }
-
-    public Item(String name){
-        this();
-        this.name = name;
-    }
-
-    public Item(int value){
-        this();
-        this.value = value;
+        this("<Name Unknown>",0,false);
     }
 
     public Item(String name, int value){
+        this();
         this.name = name;
         this.value = value;
+    }
+
+    public Item(String name, int value, boolean canTake){
+        this.name = name;
+        this.value = value;
+        this.canTake = canTake;
     }
 
     public void setValue(int v){
@@ -38,6 +36,10 @@ public class Item {
 
     public String getName(){
         return this.name;
+    }
+
+    public boolean canTake(){
+        return this.canTake;
     }
 
     public String toString(){

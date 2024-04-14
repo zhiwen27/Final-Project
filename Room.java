@@ -1,16 +1,13 @@
-import java.util.Set;
-
-import javax.swing.text.html.HTMLDocument.Iterator;
+import java.util.ArrayList;
 
 import com.google.common.graph.*;
 public class Room {
     private String name;
-    MutableGraph<Item> itemCollection;
-    Item activeItem = null;
+    ArrayList<Item> itemCollection;
 
     public Room(){
         this.name = "";
-        this.itemCollection = GraphBuilder.undirected().build();
+        this.itemCollection = new ArrayList<>();
     }
 
     public String getName(){
@@ -19,56 +16,57 @@ public class Room {
 
     public void addLivingRoom(){
         this.name = "Living Room";
+        Item gold1 = new Item("Gold 1", 100);
+        // create some new items and add into the kitchen
+        System.out.println(this);
     }
 
     public void addKitchen(){
         this.name = "Kitchen";
+        
+        Item candle = new Item("Candle", 5);
+        // create some new items and add into the kitchen
+        System.out.println(this);
     }
 
     public void addBedroom(){
         this.name = "Bedroom";
+        // create some new items and add into the kitchen
+        System.out.println(this);
     }
 
     public void addBasement(){
         this.name = "Basement";
+        // create some new items and add into the kitchen
+        System.out.println(this);
     }
 
     public void addAttic(){
         this.name = "Attic";
     }
 
-    public void addEdge(Item item1, Item item2){
-        this.itemCollection.putEdge(item1, item2);
+    public void addItem(Item i){
+        this.itemCollection.add(i);
     }
 
-    public Boolean getAdjacentItem(Item start, Item end){
-        if (this.itemCollection.adjacentNodes(start).equals(end)){
-            this.activeItem = end;
-            return true;
-        }
-        else{
-            System.out.println("Sorry, you cannot get " + end.getName() + " .");
-            return false;
-        }
+    public void removeItem(Item i){
+        this.itemCollection.remove(i);
     }
 
-    public void printCollection(Item i){
-        Set<Item> getter = itemCollection.adjacentNodes(i);
-        System.out.println(getter);
+    public String printCollection(){
+        String s = "The " + this.name + " now has:\n";
+        for (Item i: this.itemCollection){
+            s += "**" + i.getName() + "**\n";
+        }
+        return s;
     }
 
     public String toString(){
-        return "Welcome! This is " + this.name + " .";
+        return "Welcome! This is " + this.name + ".\n" + this.printCollection();
     }
 
     public static void main(String[] args) {
         Room newRoom = new Room();
         newRoom.addKitchen();
-        Jewelry crystal = new Jewelry();
-        crystal.addCrystal();
-        Jewelry gold = new Jewelry();
-        gold.addGold();
-        newRoom.addEdge(crystal, gold);
-        newRoom.printCollection(gold);
     }
 }

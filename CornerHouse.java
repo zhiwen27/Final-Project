@@ -51,15 +51,14 @@ public class CornerHouse extends House{
         }
     }
 
-    public void play(CornerHouse newCornerHouse){
-        CornerHouse c = newCornerHouse;
-        c.createRandomNum();
+    public void play(){
+        this.createRandomNum();
         Scanner sc = new Scanner(System.in);
         boolean play = false;
-        while((c.checkChances()) && (!play)){
+        while((this.checkChances()) && (!play)){
             System.out.println("Please type in a guess between 1 and 100:");
             int guess = sc.nextInt();
-            play = c.checkAnswer(guess);
+            play = this.checkAnswer(guess);
         }
         if (!play){
             System.out.println("GAME OVER!");
