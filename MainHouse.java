@@ -9,12 +9,17 @@ public class MainHouse extends House{
 
     public MainHouse(){
         super("Main House");
-        this.floor = 4;
+        this.floor = 3;
         this.floors = new ArrayList<>(this.floor);
     }
 
-    public void addFloor(Floor f){
-        this.floors.add(f);
+    public void addFloor(){
+        Floor groundFloor = new Floor().addGoundFloor();
+        Floor firstFloor = new Floor().addFirstFloor();
+        Floor secondFloor = new Floor().addSecondFloor();
+        this.floors.add(groundFloor);
+        this.floors.add(firstFloor);
+        this.floors.add(secondFloor);
     }
 
     public Floor floorTour(int floorNum){
@@ -29,5 +34,11 @@ public class MainHouse extends House{
     public void goDownFloor(){
         this.activeFloor -= 1;
         floorTour(this.activeFloor);
+    }
+
+    public MainHouse addMainHouse(){
+        MainHouse mainHouse = new MainHouse();
+        mainHouse.addFloor();
+        return mainHouse;
     }
 }

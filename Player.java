@@ -16,13 +16,18 @@ public class Player {
     }
 
     public void grab(Item i){
-        if (this.inventory.containsKey(i)){
-            System.out.println("Congratulations! You have found another " + i.getName() + " !");
-            this.inventory.put(i, this.inventory.get(i) + 1);
+        if (i.canTake()){
+            if ((this.inventory.containsKey(i))){
+                System.out.println("Congratulations! You have found another " + i.getName() + " !");
+                this.inventory.put(i, this.inventory.get(i) + 1);
+            }
+            else{
+                System.out.println("Congratulations! You have discovered " + i.getName() + " !");
+                this.inventory.put(i, 1);
+            }
         }
         else{
-            System.out.println("Congratulations! You have discovered " + i.getName() + " !");
-            this.inventory.put(i, 1);
+            System.out.println("Sorry, " + i.getName() + " cannot be taken.");
         }
     }
 

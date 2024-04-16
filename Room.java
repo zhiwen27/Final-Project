@@ -7,7 +7,7 @@ public class Room {
 
     public Room(){
         this.name = "";
-        this.itemCollection = new ArrayList<>();
+        this.itemCollection = new ArrayList<Item>();
     }
 
     public String getName(){
@@ -16,7 +16,16 @@ public class Room {
 
     public Room addLivingRoom(){
         this.name = "Living Room";
-        Item gold1 = new Item("Gold 1", 100);
+        Item diamond = new Item("Diamond", 100);
+        Item chair = new Item("A Wooden Chair",false);
+        Item sofa = new Item("A White Fluffy Soft Sofa",false);
+        Item cushion1 = new Item("A Pink Lovely Cushion",5);
+        Item cushion2 = new Item("Jelly Rabbit",100);
+        this.itemCollection.add(diamond);
+        this.itemCollection.add(chair);
+        this.itemCollection.add(sofa);
+        this.itemCollection.add(cushion1);
+        this.itemCollection.add(cushion2);
         // create some new items and add into the kitchen
         System.out.println(this);
         return this;
@@ -24,8 +33,12 @@ public class Room {
 
     public Room addKitchen(){
         this.name = "Kitchen";
-        
+        Item table = new Item("A Big Long Table",false);
         Item candle = new Item("Candle", 5);
+        Item knife = new Item("Knife",5);
+        this.itemCollection.add(table);
+        this.itemCollection.add(candle);
+        this.itemCollection.add(knife);
         // create some new items and add into the kitchen
         System.out.println(this);
         return this;
@@ -70,8 +83,4 @@ public class Room {
         return "Welcome! This is " + this.name + ".\n" + this.printCollection();
     }
 
-    public static void main(String[] args) {
-        Room newRoom = new Room();
-        newRoom = newRoom.addKitchen();
-    }
 }

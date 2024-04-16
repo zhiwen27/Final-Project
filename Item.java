@@ -7,13 +7,19 @@ public class Item {
     private boolean canTake;
 
     public Item(){
-        this("<Name Unknown>",0,false);
+        this("<Name Unknown>",0,true);
     }
 
     public Item(String name, int value){
         this();
         this.name = name;
         this.value = value;
+    }
+
+    public Item(String name, boolean canTake){
+        this();
+        this.name = name;
+        this.canTake = canTake;
     }
 
     public Item(String name, int value, boolean canTake){

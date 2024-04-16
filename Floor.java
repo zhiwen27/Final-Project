@@ -9,8 +9,28 @@ public class Floor {
         this.room = GraphBuilder.undirected().build();
     }
 
-    public void addRoom(Room r1,Room r2){
-        room.putEdge(r1,r2);
+    public Floor addGoundFloor(){
+        Room basement = new Room().addBasement();
+        Floor goundFloor = new Floor();
+        goundFloor.room.addNode(basement);
+        return goundFloor;
+    }
+
+    public Floor addFirstFloor(){
+        Room livingRoom = new Room().addLivingRoom();
+        Room kitchen = new Room().addKitchen();
+        Room bedroom = new Room().addBedroom();
+        Floor firstFloor = new Floor();
+        firstFloor.room.putEdge(livingRoom, bedroom);
+        firstFloor.room.putEdge(livingRoom, kitchen);
+        return firstFloor;
+    }
+
+    public Floor addSecondFloor(){
+        Room Attic = new Room().addAttic();
+        Floor secondFloor = new Floor();
+        secondFloor.room.addNode(Attic);
+        return secondFloor;
     }
 
     public Boolean goToAdjacentRoom(Room start, Room end){
