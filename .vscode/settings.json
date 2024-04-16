@@ -1,6 +1,8 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/Users/jizw/Huawei/E/Smith/大一/大一下/CSC 120/Repository/Final-Project/**/*.jar"
+        "guava-31.1-jre.jar"
+    ],
+    "java.project.sourcePaths": [
+        "."
     ]
 }
