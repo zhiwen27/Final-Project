@@ -35,7 +35,5 @@ public class oldman {
             }        
     }
     public static void main(String[] args) {
-        oldman Hagrid = new oldman(100);
-        Hagrid.buy(new Item("Gold", 80384));
     }
 }
