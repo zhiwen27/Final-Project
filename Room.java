@@ -16,7 +16,6 @@ public class Room {
 
     public Room addLivingRoom(){
         this.name = "Living Room";
-<<<<<<< HEAD
         Item diamond = new Item("Diamond", 100);
         Item chair = new Item("A Wooden Chair",false);
         Item sofa = new Item("A White Fluffy Soft Sofa",false);
@@ -27,9 +26,6 @@ public class Room {
         this.itemCollection.add(sofa);
         this.itemCollection.add(cushion1);
         this.itemCollection.add(cushion2);
-=======
-        Item gold = new Item("Gold", 100);
->>>>>>> origin/main
         // create some new items and add into the kitchen
         System.out.println(this);
         return this;
