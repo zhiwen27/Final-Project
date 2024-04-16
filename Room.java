@@ -16,7 +16,7 @@ public class Room {
 
     public Room addLivingRoom(){
         this.name = "Living Room";
-        Item gold1 = new Item("Gold 1", 100);
+        Item gold = new Item("Gold", 100);
         // create some new items and add into the kitchen
         System.out.println(this);
         return this;

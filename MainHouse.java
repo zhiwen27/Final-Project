@@ -2,11 +2,11 @@ import java.util.Hashtable;
 import java.util.ArrayList;
 
 import com.google.common.graph.GraphBuilder;
+import com.google.common.graph.ImmutableGraph;
 public class MainHouse extends House{
     private ArrayList<Floor> floors;
     private int floor;
     private int activeFloor = 1;
-
     public MainHouse(){
         super("Main House");
         this.floor = 4;

@@ -1,5 +1,5 @@
 import java.util.Hashtable;
-
+import java.util.Scanner;
 public class Player {
     private String name;
     private int money;
@@ -36,6 +36,21 @@ public class Player {
             System.out.println("Sorry, you have not discovered " + i.getName() + " yet.");
         }
     }
+    public void sell(Item sold){
+        if (inventory.containsKey(sold)){
+            System.out.println("Are you going to sell this? how many of " + sold + " do you want to sell?");
+            Scanner scanner = new Scanner(System.in);
+            Integer Num = scanner.nextInt();
+            scanner.close();
+            if (Num <= inventory.get(sold)){
+                inventory.put(sold, inventory.get(sold)-Num);
+            }else{
+                throw new RuntimeException("What? you do not even have that many!");
+            }
+    }else{
+        throw new RuntimeException("You can not sell it before you have it.");
+    }
+
 
     // public void walk: walk through edges to visit different nodes
-}
+}}
