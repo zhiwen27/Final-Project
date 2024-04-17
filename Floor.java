@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
+import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 public class Floor {
@@ -42,5 +45,13 @@ public class Floor {
             System.out.println("Sorry, you cannot go to " + start.getName());
             return false;
         }
+    }
+
+    public String toString(){
+        String printer = "";
+        for (Room room: this.room.nodes()){
+            printer += room + "\n";
+        }
+        return printer;
     }
 }

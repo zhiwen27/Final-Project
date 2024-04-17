@@ -64,4 +64,8 @@ public class CornerHouse extends House{
             System.out.println("GAME OVER!");
         }
     }
+
+    public String toString(){
+        return "Welcome to " + this.name + "!\n";
+    }
 }

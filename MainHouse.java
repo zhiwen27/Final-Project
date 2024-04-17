@@ -22,8 +22,8 @@ public class MainHouse extends House{
         this.floors.add(secondFloor);
     }
 
-    public Floor floorTour(int floorNum){
-        return this.floors.get(floorNum);
+    public void floorTour(int floorNum){
+        System.out.println(this.floors.get(floorNum));
     }
 
     public void goUpFloor(){
@@ -40,5 +40,13 @@ public class MainHouse extends House{
         MainHouse mainHouse = new MainHouse();
         mainHouse.addFloor();
         return mainHouse;
+    }
+
+    public String toString(){
+        String printer = "Welcome to the Main House! \n";
+        for(Floor floor: this.floors){
+            printer += floor;
+        }
+        return printer;
     }
 }

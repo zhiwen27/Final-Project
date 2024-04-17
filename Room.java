@@ -27,7 +27,7 @@ public class Room {
         this.itemCollection.add(cushion1);
         this.itemCollection.add(cushion2);
         // create some new items and add into the kitchen
-        System.out.println(this);
+        //System.out.println(this);
         return this;
     }
 
@@ -40,21 +40,23 @@ public class Room {
         this.itemCollection.add(candle);
         this.itemCollection.add(knife);
         // create some new items and add into the kitchen
-        System.out.println(this);
+        //System.out.println(this);
         return this;
     }
 
     public Room addBedroom(){
         this.name = "Bedroom";
         // create some new items and add into the kitchen
-        System.out.println(this);
+        //System.out.println(this);
         return this;
     }
 
     public Room addBasement(){
         this.name = "Basement";
+        Item rope = new Item("Box", 0);
+        this.itemCollection.add(rope);
         // create some new items and add into the kitchen
-        System.out.println(this);
+        //System.out.println(this);
         return this;
     }
 

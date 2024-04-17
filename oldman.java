@@ -1,16 +1,16 @@
 import java.util.Scanner;
-public class oldman {
+public class Oldman {
     int money;
     String choice;
-    public oldman(Integer money){
+    public Oldman(Integer money){
         this.money = money;
         this.choice = choice;
     }  
 
-    public void choice(){
-        System.out.println("Hi, I am old man. \nYou don't have to know me. But tell me, which do you want? \nSeed on the left or the sword on the right?");
+    public boolean choice(){
+        System.out.println("Hi, I am old man. \nYou don't have to know me. But tell me, which do you want? \nSEED on the left or the SWORD on the right?");
         Scanner scanner = new Scanner(System.in);
-        choice = scanner.nextLine();
+        choice = scanner.nextLine().toLowerCase();
 
         while (!(choice.equalsIgnoreCase("seed") || choice.equalsIgnoreCase("sword"))) {
             System.out.println("Are you playing me as a fool, little pickle?\nI would give you another chance. MAKE YOUR DECISION");
@@ -18,8 +18,12 @@ public class oldman {
             choice = s.nextLine();
         }if (choice.equalsIgnoreCase("seed")) {
             System.out.println("Last person made the same decision.");
+            return true;
         }if (choice.equalsIgnoreCase("sword")) {
-            System.out.println("That is a quite brave decision.\nExplore your journey with this sword, young man.");}
+            System.out.println("That is a quite brave decision.\nExplore your journey with this sword, young man.");
+            return false;
+        }
+        return false;
         }
 
 
@@ -33,7 +37,5 @@ public class oldman {
             }}else{
                 System.out.println("I really, really, really like it. But I can't afford it.\nWait! I still have the keys! 4 keys for this! Is that a deal for you?");
             }        
-    }
-    public static void main(String[] args) {
     }
 }

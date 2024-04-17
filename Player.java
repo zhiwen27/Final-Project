@@ -4,6 +4,8 @@ public class Player {
     private String name;
     private int money;
     Hashtable<Item,Integer> inventory;
+    private Room activeRoom;
+    private House activeHouse;
 
     public Player(){
         this("<Name Unknown>");
@@ -49,13 +51,30 @@ public class Player {
             scanner.close();
             if (Num <= inventory.get(sold)){
                 inventory.put(sold, inventory.get(sold)-Num);
-            }else{
+            }
+            else{
                 throw new RuntimeException("What? you do not even have that many!");
             }
-    }else{
-        throw new RuntimeException("You can not sell it before you have it.");
+        }
+        else{
+            throw new RuntimeException("You can not sell it before you have it.");
+        }
     }
 
+    public void setRoom(Room r){
+        this.activeRoom = r;
+    }
 
-    // public void walk: walk through edges to visit different nodes
-}}
+    public Room getRoom(){
+        return this.activeRoom;
+    }
+
+    public void setHouse(House h){
+        this.activeHouse = h;
+    }
+
+    public House getHouse(){
+        return this.activeHouse;
+    }
+
+}
