@@ -11,7 +11,6 @@ public class Oldman {
         System.out.println("Hi, I am old man. \nYou don't have to know me. But tell me, which do you want? \nSEED on the left or the SWORD on the right?");
         Scanner scanner = new Scanner(System.in);
         choice = scanner.nextLine().toLowerCase();
-
         while (!(choice.equalsIgnoreCase("seed") || choice.equalsIgnoreCase("sword"))) {
             System.out.println("Are you playing me as a fool, little pickle?\nI would give you another chance. MAKE YOUR DECISION");
             Scanner s = new Scanner(System.in);

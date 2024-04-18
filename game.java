@@ -3,6 +3,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.sound.sampled.SourceDataLine;
+
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 
@@ -59,7 +61,12 @@ public class Game {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }
-            Oldman oldman = new Oldman(1000000000);
+                Oldman oldman = new Oldman(1000000000);
+                System.out.println("");
+            if (oldman.choice() == true) {
+                System.out.println("Okay, Lets plant an apple tree first!");
+            }
+
             if (oldman.choice() == false){
                 System.out.println("*****************************************************************");
                 Game newGame = new Game().createNewAdv();

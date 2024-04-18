@@ -6,7 +6,7 @@ public class Player {
     Hashtable<Item,Integer> inventory;
     private Room activeRoom;
     private House activeHouse;
-
+    Hashtable<String, Integer> farm;
     public Player(){
         this("<Name Unknown>");
     }
@@ -58,6 +58,14 @@ public class Player {
         }
         else{
             throw new RuntimeException("You can not sell it before you have it.");
+        }
+    }
+    public void plant(String type){
+        if (farm.containsKey(type)){
+            farm.put(type, farm.get(type) + 1);
+        }
+        else{
+            throw new RuntimeException("We haven't heard of "+type +" in this world.");
         }
     }
 
