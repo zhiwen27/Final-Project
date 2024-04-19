@@ -4,10 +4,12 @@ import com.google.common.graph.*;
 public class Room {
     private String name;
     ArrayList<Item> itemCollection;
+    String[] itemNames;
 
     public Room(){
         this.name = "";
         this.itemCollection = new ArrayList<Item>();
+        itemNames = new String[itemCollection.size()];
     }
 
     public String getName(){
@@ -46,6 +48,8 @@ public class Room {
 
     public Room addBedroom(){
         this.name = "Bedroom";
+        Item bed = new Item("A big comfortable bed",false);
+        this.itemCollection.add(bed);
         // create some new items and add into the kitchen
         //System.out.println(this);
         return this;
@@ -69,16 +73,41 @@ public class Room {
         this.itemCollection.add(i);
     }
 
-    public void removeItem(Item i){
-        this.itemCollection.remove(i);
+    public Item removeItem(String name){
+        Item item = new Item();
+        for(int i = 0; i < this.itemCollection.size(); i++){
+            if (this.itemCollection.get(i).getName().contains(name)){
+                this.itemCollection.remove(this.itemCollection.get(i));
+                item = this.itemCollection.get(i);
+            }
+        }
+        return item;
     }
 
     public String printCollection(){
         String s = "The " + this.name + " now has:\n";
+        int cnt = 0;
         for (Item i: this.itemCollection){
             s += "**" + i.getName() + "**\n";
+            this.itemNames[cnt] = i.getName();
+            cnt++;
         }
         return s;
+    }
+
+    public boolean checkItemInput(String userInput){
+        boolean containedRequiredWord = false;
+        for (int i = 0; i < this.itemNames.length; i++){
+            if (userInput.contains(this.itemNames[i])){
+                containedRequiredWord = true;
+            }
+        }
+        if (containedRequiredWord == true){
+            return containedRequiredWord;
+        }
+        else{
+            throw new RuntimeException("Please enter the required word.");
+        }
     }
 
     public String toString(){

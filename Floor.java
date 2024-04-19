@@ -6,52 +6,51 @@ import com.google.common.graph.Graph;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 public class Floor {
-    public MutableGraph<Room> room;
+    public ArrayList<Room> rooms;
     Room activeRoom = null;
     public Floor(){
-        this.room = GraphBuilder.undirected().build();
+        this.rooms = new ArrayList<>();
     }
 
     public Floor addGoundFloor(){
         Room basement = new Room().addBasement();
-        Floor goundFloor = new Floor();
-        goundFloor.room.addNode(basement);
-        return goundFloor;
+        this.activeRoom = basement;
+        this.rooms.add(basement);
+        return this;
     }
 
     public Floor addFirstFloor(){
         Room livingRoom = new Room().addLivingRoom();
         Room kitchen = new Room().addKitchen();
         Room bedroom = new Room().addBedroom();
-        Floor firstFloor = new Floor();
-        firstFloor.room.putEdge(livingRoom, bedroom);
-        firstFloor.room.putEdge(livingRoom, kitchen);
-        return firstFloor;
+        this.activeRoom = bedroom;
+        this.rooms.add(kitchen);
+        this.rooms.add(livingRoom);
+        this.rooms.add(bedroom);
+        return this;
     }
 
     public Floor addSecondFloor(){
-        Room Attic = new Room().addAttic();
-        Floor secondFloor = new Floor();
-        secondFloor.room.addNode(Attic);
-        return secondFloor;
-    }
-
-    public Boolean goToAdjacentRoom(Room start, Room end){
-        if (this.room.adjacentNodes(start).equals(end)){
-            this.activeRoom = end;
-            return true;
-        }
-        else{
-            System.out.println("Sorry, you cannot go to " + start.getName());
-            return false;
-        }
+        Room attic = new Room().addAttic();
+        this.activeRoom = attic;
+        this.rooms.add(attic);
+        return this;
     }
 
     public String toString(){
         String printer = "";
-        for (Room room: this.room.nodes()){
+        for (Room room: this.rooms){
             printer += room + "\n";
         }
         return printer;
+    }
+
+    public Room goToRoom(String name){
+        for (int i = 0; i < this.rooms.size(); i++){
+            if (this.rooms.get(i).getName().contains(name)){
+                this.activeRoom = this.rooms.get(i);
+            }
+        }
+        return this.activeRoom;
     }
 }

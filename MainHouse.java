@@ -28,11 +28,13 @@ public class MainHouse extends House{
 
     public void goUpFloor(){
         this.activeFloor += 1;
+        System.out.println("You're now at Floor " + this.activeFloor + ".");
         floorTour(this.activeFloor);
     }
 
     public void goDownFloor(){
         this.activeFloor -= 1;
+        System.out.println("You're now at Floor " + this.activeFloor + ".");
         floorTour(this.activeFloor);
     }
 
@@ -42,8 +44,12 @@ public class MainHouse extends House{
         return mainHouse;
     }
 
+    public Floor goToFloor(int floorNum){
+        return this.floors.get(floorNum);
+    }
+
     public String toString(){
-        String printer = "Welcome to the Main House! \n";
+        String printer = "Welcome to the Main House! \nYou're now at Floor 1.";
         for(Floor floor: this.floors){
             printer += floor;
         }

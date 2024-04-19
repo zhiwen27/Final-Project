@@ -3,8 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.sound.sampled.SourceDataLine;
-
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 
@@ -40,6 +38,10 @@ public class Game {
         return this;
     }
 
+    public House mapTour(int houseNum){
+        return this.mapAdv.get(houseNum);
+    }
+
     public static void main(String[] args) {
         System.out.println("Hi! Welcome to THE NEW WORLD! \n Do you want to start the game? \n (*Please type YES or No)");
         Scanner sc = new Scanner(System.in);
@@ -48,7 +50,7 @@ public class Game {
             System.out.println("Great! Please create your account: \n (*Please only type the name you want)");
             userInput = sc.nextLine();
             Player newPlayer = new Player(userInput);
-            System.out.println("Account created! \n*****************************************************************");
+            System.out.println("Account created! \nHi, " + userInput + "!\n*****************************************************************");
             try {
                 File newFile = new File("Start.txt");
                 Scanner fileReader = new Scanner(newFile);
@@ -61,17 +63,19 @@ public class Game {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }
-                Oldman oldman = new Oldman(1000000000);
-                System.out.println("");
-            if (oldman.choice() == true) {
-                System.out.println("Okay, Lets plant an apple tree first!");
-            }
-
+            Oldman oldman = new Oldman(1000000000);
             if (oldman.choice() == false){
                 System.out.println("*****************************************************************");
                 Game newGame = new Game().createNewAdv();
-                newPlayer.setHouse(newGame.mapAdv.get(0));
-                System.out.println(newGame.mapAdv.get(0));
+                newPlayer.setHouse(newGame.mapTour(0));
+                System.out.println("You're now in the Bedroom.");
+                newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
+                System.out.println(newPlayer.getRoom());
+                System.out.println("Feel free to explore!");
+                boolean toPlay = true;
+                while(toPlay){
+
+                }
             }
         }
         else{
