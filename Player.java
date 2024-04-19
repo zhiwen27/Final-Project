@@ -6,11 +6,11 @@ public class Player {
     Hashtable<Item,Integer> inventory;
     private Room activeRoom;
     private House activeHouse;
-    Hashtable<String, Integer> farm;
+    Hashtable<Tree, Integer> farm;
     public Player(){
         this("<Name Unknown>");
     }
-
+    
     public Player(String name){
         this.money = 0;
         this.name = name;
@@ -60,13 +60,16 @@ public class Player {
             throw new RuntimeException("You can not sell it before you have it.");
         }
     }
-    public void plant(String type){
-        if (farm.containsKey(type)){
-            farm.put(type, farm.get(type) + 1);
+    public void plant(Tree tree){
+        if (farm.containsKey(tree)){
+            farm.put(tree, farm.get(tree) + 1);
         }
         else{
-            throw new RuntimeException("We haven't heard of "+type +" in this world.");
+            throw new RuntimeException("We haven't heard of "+tree +" in this world.");
         }
+    }
+    public void recieve(Tree tree){
+        inventory.put(tree, 1);
     }
 
     public void setRoom(Room r){

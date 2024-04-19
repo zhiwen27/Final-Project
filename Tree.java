@@ -1,4 +1,4 @@
-public class Tree {
+public class Tree extends Item{
     String type;
     boolean live;
     Integer fruit = 5;
@@ -26,10 +26,11 @@ public class Tree {
             return true;
         }
         else{
-            System.out.println("emmmmmmm, It is not the time for harvest. Water it again.");
+            System.out.println("emmmmmmm, It is not the time for harvest. Try water it again.");
             return false;
         }
     }
-public static void main(String[] args) {
-
-}}
+    public String options(){
+        return "Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!";
+    }
+    }

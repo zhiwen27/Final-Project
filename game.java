@@ -41,6 +41,10 @@ public class Game {
     public House mapTour(int houseNum){
         return this.mapAdv.get(houseNum);
     }
+    static Tree appletree = new Tree("apple", true, 5);
+    static Tree peartree = new Tree("pear", true, 5);
+    static Tree grapetree = new Tree("grape", true, 5);
+    static Tree bananatree = new Tree("banana", true, 5);
 
     public static void main(String[] args) {
         System.out.println("Hi! Welcome to THE NEW WORLD! \n Do you want to start the game? \n (*Please type YES or No)");
@@ -73,6 +77,19 @@ public class Game {
                 System.out.println(newPlayer.getRoom());
                 System.out.println("Feel free to explore!");
                 boolean toPlay = true;
+            if (oldman.choice() == true ){
+                newPlayer.inventory.put(peartree, 1);
+                System.out.println("An apple tree has been added your inventory, try to plant it!\n type in 'options' for more informaiton");
+                Scanner choice = new Scanner (System.in);
+                choice.close();
+                String c = choice. nextLine();
+                if (c.equals("options")){
+                    peartree.options();
+                }
+                if (c.equals("plant")){
+                    newPlayer.plant(peertree);
+                }
+            }
                 while(toPlay){
 
                 }
