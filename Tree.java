@@ -6,7 +6,6 @@ public class Tree extends Item{
         this.type = type;
         this.live = live;
         this.fruit = fruit;
-        System.out.println("you have planted a " + type + " tree");
     }
     public void water(){
         System.out.println("GROWING.........");

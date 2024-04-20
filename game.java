@@ -37,15 +37,15 @@ public class Game {
         this.mapAdv.add(northWest);
         return this;
     }
-
-    public House mapTour(int houseNum){
-        return this.mapAdv.get(houseNum);
-    }
     static Tree appletree = new Tree("apple", true, 5);
     static Tree peartree = new Tree("pear", true, 5);
     static Tree grapetree = new Tree("grape", true, 5);
     static Tree bananatree = new Tree("banana", true, 5);
 
+
+    public House mapTour(int houseNum){
+        return this.mapAdv.get(houseNum);
+    }
     public static void main(String[] args) {
         System.out.println("Hi! Welcome to THE NEW WORLD! \n Do you want to start the game? \n (*Please type YES or No)");
         Scanner sc = new Scanner(System.in);
@@ -68,6 +68,7 @@ public class Game {
                 e.printStackTrace();
             }
             Oldman oldman = new Oldman(1000000000);
+            oldman.choice();
             if (oldman.choice() == false){
                 System.out.println("*****************************************************************");
                 Game newGame = new Game().createNewAdv();
@@ -84,10 +85,10 @@ public class Game {
                 choice.close();
                 String c = choice. nextLine();
                 if (c.equals("options")){
-                    peartree.options();
+                   peartree .options();
                 }
                 if (c.equals("plant")){
-                    newPlayer.plant(peertree);
+                    newPlayer.plant(peartree);
                 }
             }
                 while(toPlay){
