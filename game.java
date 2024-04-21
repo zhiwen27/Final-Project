@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.Hashtable;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 
@@ -40,7 +40,6 @@ public class Game {
     static Tree appletree = new Tree("apple", true, 5);
     static Tree peartree = new Tree("pear", true, 5);
     static Tree grapetree = new Tree("grape", true, 5);
-    static Tree bananatree = new Tree("banana", true, 5);
 
 
     public House mapTour(int houseNum){
@@ -68,8 +67,8 @@ public class Game {
                 e.printStackTrace();
             }
             Oldman oldman = new Oldman(1000000000);
-            oldman.choice();
-            if (oldman.choice() == false){
+            boolean choice = oldman.choice();
+            if (!choice){
                 System.out.println("*****************************************************************");
                 Game newGame = new Game().createNewAdv();
                 newPlayer.setHouse(newGame.mapTour(0));
@@ -77,29 +76,42 @@ public class Game {
                 newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
                 System.out.println(newPlayer.getRoom());
                 System.out.println("Feel free to explore!");
-                boolean toPlay = true;
-            if (oldman.choice() == true ){
-                newPlayer.inventory.put(peartree, 1);
-                System.out.println("An apple tree has been added your inventory, try to plant it!\n type in 'options' for more informaiton");
-                Scanner choice = new Scanner (System.in);
-                choice.close();
-                String c = choice. nextLine();
-                if (c.equals("options")){
-                   peartree .options();
-                }
-                if (c.equals("plant")){
-                    newPlayer.plant(peartree);
-                }
-            }
-                while(toPlay){
+                boolean toPlay = true;}
 
+            if (choice ){
+                newPlayer.recieve(appletree);
+                System.out.println("An apple tree has been added your inventory, try to plant it! ");
+                Scanner c = new Scanner (System.in);
+                String h = c.nextLine();
+                while (!h.equals("plant")){
+                    System.out.print("Enter again \nTry 'plant'\n");
+                    Scanner o = new Scanner(System.in);
+                    h = o.nextLine();}
+                newPlayer.plant(appletree);
+                System.out.println("Now you have planted a tree! try to water it!");
+                appletree.options();
+                Scanner n = new Scanner(System.in);
+                String p = n.nextLine();
+                if (p.equals("water")){
+                    System.out.println("which kind of tree do you want to water?");
+                    Scanner a = new Scanner(System.in);
+                    String t = a.nextLine();
+                    if (newPlayer.f.contains(t)){
+                        switch (t) {
+                            case "apple":
+                                appletree.water();
+                            case "pear":
+                                peartree.water();
+                        }
+                    }
                 }
-            }
-        }
+                    
+                }
+
+                
         else{
             System.out.println("Alright! You can come back any time you want!");
         }
 
         sc.close();
-    }
-}
+    }}}

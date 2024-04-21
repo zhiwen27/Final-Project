@@ -29,7 +29,7 @@ public class Tree extends Item{
             return false;
         }
     }
-    public String options(){
-        return "Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!";
+    public void options(){
+         System.out.println("Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!");
     }
     }
