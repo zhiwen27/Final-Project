@@ -95,7 +95,8 @@ public class Game {
                     newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
                     System.out.println(newPlayer.getRoom());
                     System.out.println("Feel free to explore!");
-                    oldman.guideRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom,newPlayer);
+                    oldman.guideRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom, newPlayer);
+                    oldman.guideFloor(((MainHouse)newGame.mapTour(0)).goToFloor(1),newPlayer);
                 }
                 else if (modeChoice == true){
                     newPlayer.inventory.put(peartree, 1);
@@ -108,7 +109,6 @@ public class Game {
                     if (c.equals("plant")){
                         newPlayer.plant(peartree);
                     }
-                    choice.close();
                 }
             }catch(Exception e){
                 System.out.println(e.getMessage());

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class MainHouse extends House{
     private ArrayList<Floor> floors;
     private int floor;
-    private int activeFloor = 1;
+    int activeFloor;
 
     /**
      * Constructor for MainHouse: set name to be "Main House" with 3 floors
@@ -67,6 +67,7 @@ public class MainHouse extends House{
      */
     public MainHouse addMainHouse(){
         MainHouse mainHouse = new MainHouse();
+        mainHouse.activeFloor = 2;
         mainHouse.addFloor();
         return mainHouse;
     }

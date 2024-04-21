@@ -63,12 +63,13 @@ public class Floor {
      * @param name the room you want to go to
      * @return the target room
      */
-    public Room goToRoom(String name){
-        for (int i = 0; i < this.rooms.size(); i++){
+    public Room goToRoom(Floor f,String name){
+        Room room = new Room();
+        for (int i = 0; i < f.rooms.size(); i++){
             if (this.rooms.get(i).getName().contains(name)){
-                this.activeRoom = this.rooms.get(i);
+                room = f.rooms.get(i);
             }
         }
-        return this.activeRoom;
+        return room;
     }
 }

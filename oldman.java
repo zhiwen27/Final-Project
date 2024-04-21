@@ -17,16 +17,13 @@ public class Oldman {
         choice = scanner.nextLine().toLowerCase();
         if (choice.equalsIgnoreCase("seed")) {
             System.out.println("Last person made the same decision.");
-            scanner.close();
             return true;
         }
         else if (choice.equalsIgnoreCase("sword")){
             System.out.println("That is a quite brave decision.\nExplore your journey with this sword, young man.");
-            scanner.close();
             return false;
         }
         else{
-            scanner.close();
             throw new RuntimeException("Please enter the required word.");
         }
     }
@@ -79,7 +76,6 @@ public class Oldman {
                 Item i = new Item();
                 i = r.removeItem(userInput);
                 player.grab(i);
-                scanner.close();
             } catch(RuntimeException e){
                 System.out.println(e.getMessage());
             }
@@ -90,13 +86,13 @@ public class Oldman {
      * Guide through certain floor
      * @param f the floor
      */
-    public void guideFloor(Floor f){
-        System.out.println("Please tell me which room you want to explore next.");
+    public void guideFloor(Floor f, Player newPlayer){
+        System.out.println(f);
+        System.out.println("Please type in the name of the room you want to explore next!");
         Scanner scanner = new Scanner(System.in);
         String userInput;
         userInput = scanner.nextLine().toLowerCase();
-        f.goToRoom(userInput);
-        scanner.close();
+        this.guideRoom(f.goToRoom(f,userInput), newPlayer);
     }
 
     /**
@@ -109,11 +105,9 @@ public class Oldman {
         String userInput;
         userInput = scanner.nextLine().toLowerCase();
         if (this.checkInput(userInput, "up")){
-            scanner.close();
             mainHouse.goUpFloor();
         }
         else if (this.checkInput(userInput, "down")){
-            scanner.close();
             mainHouse.goDownFloor();
         }
     }
