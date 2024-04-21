@@ -89,10 +89,12 @@ public class Room {
 
     public Item removeItem(String name){
         Item item = new Item();
-        for(int i = 0; i < this.itemCollection.size(); i++){
-            if (this.itemCollection.get(i).getName().contains(name)){
-                this.itemCollection.remove(this.itemCollection.get(i));
-                item = this.itemCollection.get(i);
+        for(int i = 0; i < this.moveableItemCollection.size(); i++){
+            if (this.moveableItemCollection.get(i).getName().contains(name)){
+                item.setName(this.moveableItemCollection.get(i).getName());
+                item.setValue(this.moveableItemCollection.get(i).getValue());
+                item.setCanTake(this.moveableItemCollection.get(i).canTake());
+                this.moveableItemCollection.remove(this.moveableItemCollection.get(i));
             }
         }
         return item;
@@ -147,7 +149,9 @@ public class Room {
     public static void main(String[] args) {
         Room room = new Room();
         room.addBedroom();
-        System.out.println(room.checkItemInput("Key"));;
+        Item i = new Item();
+        i.setCanTake(room.removeItem("A big comfortable bed").canTake());;
+        System.out.println(i.canTake());
     }
 
 }

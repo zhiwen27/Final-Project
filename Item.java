@@ -48,6 +48,10 @@ public class Item {
         return this.canTake;
     }
 
+    public void setCanTake(boolean canTake){
+        this.canTake = canTake;
+    }
+
     public String toString(){
         return "Great discovery! " + this.name + " is worth " + this.value + "!";
     }

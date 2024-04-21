@@ -53,11 +53,16 @@ public class Oldman {
         String userInput;
         while(!r.moveableItemCollection.isEmpty()){
             System.out.println("\n Discover those really valueable things! \n(*Please type in the name of the item.)");
-            userInput = scanner.nextLine().toLowerCase();
+            userInput = scanner.nextLine();
             try{
                 r.checkItemInput(userInput);
-                r.removeItem(userInput);
-                player.grab(r.removeItem(userInput));
+                Item i = new Item();
+                i = r.removeItem(userInput);
+                try{
+                    player.grab(i);
+                } catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
             } catch(RuntimeException e){
                 System.out.println(e.getMessage());
             }

@@ -20,11 +20,11 @@ public class Player {
     public void grab(Item i){
         if (i.canTake()){
             if ((this.inventory.containsKey(i))){
-                System.out.println("Congratulations! You have found another " + i.getName() + " !");
+                System.out.println("Congratulations! You have found another " + i.getName() + "!");
                 this.inventory.put(i, this.inventory.get(i) + 1);
             }
             else{
-                System.out.println("Congratulations! You have discovered " + i.getName() + " !");
+                System.out.println("Congratulations! You have discovered " + i.getName() + "!");
                 this.inventory.put(i, 1);
             }
         }
@@ -33,16 +33,6 @@ public class Player {
         }
     }
 
-    // might not be useful
-    public void drop(Item i){
-        if (this.inventory.containsKey(i)){
-            this.inventory.remove(i);
-            System.out.println("Alright, you've successfully dropped " + i.getName() + " !");
-        }
-        else{
-            System.out.println("Sorry, you have not discovered " + i.getName() + " yet.");
-        }
-    }
     public void sell(Item sold){
         if (inventory.containsKey(sold)){
             System.out.println("Are you going to sell this? how many of " + sold + " do you want to sell?");
