@@ -2,6 +2,7 @@ import java.util.ArrayList;
 public class Floor {
     public ArrayList<Room> rooms;
     Room activeRoom = null;
+    String[] roomNames;
 
     /**
      * Constructor for Floor
@@ -71,5 +72,40 @@ public class Floor {
             }
         }
         return room;
+    }
+
+    public boolean floorOver(){
+        int cnt = 0;
+        for (Room r: this.rooms){
+            if (r.moveableItemCollection.isEmpty()){
+                cnt++;
+            }
+        }
+        boolean floorOver = false;
+        if (cnt == this.rooms.size()){
+            floorOver = true;
+        }
+        return floorOver;
+    }
+
+    public boolean checkRoomInput(String userInput){
+        this.roomNames = new String[this.rooms.size()];
+        int cnt = 0;
+        for (Room r: this.rooms){
+            this.roomNames[cnt] = r.getName();
+            cnt++;
+        }
+        boolean containedRequiredWord = false;
+        for (int i = 0; i < this.roomNames.length; i++){
+            if (userInput.contains(this.roomNames[i])){
+                containedRequiredWord = true;
+            }
+        }
+        if (containedRequiredWord == true){
+            return containedRequiredWord;
+        }
+        else{
+            throw new RuntimeException("Please enter the required word.");
+        }
     }
 }

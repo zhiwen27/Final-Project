@@ -1,4 +1,6 @@
 import java.util.Scanner;
+
+import javax.management.RuntimeErrorException;
 public class Oldman {
     int money;
 
@@ -63,6 +65,7 @@ public class Oldman {
      */
     public void guideRoom(Room r, Player player){
         System.out.println("You can take anything that you can take from this room.");
+        System.out.println(r.printCollection());
         Scanner scanner = new Scanner(System.in);
         String userInput;
         if(r.moveableItemCollection.isEmpty()){
@@ -87,12 +90,16 @@ public class Oldman {
      * @param f the floor
      */
     public void guideFloor(Floor f, Player newPlayer){
-        System.out.println(f);
         System.out.println("Please type in the name of the room you want to explore next!");
         Scanner scanner = new Scanner(System.in);
         String userInput;
-        userInput = scanner.nextLine().toLowerCase();
-        this.guideRoom(f.goToRoom(f,userInput), newPlayer);
+        userInput = scanner.nextLine();
+        if (f.checkRoomInput(userInput)){
+            this.guideRoom(f.goToRoom(f,userInput), newPlayer);
+        }
+        else{
+            throw new RuntimeException("Please enter the required word.");
+        }
     }
 
     /**

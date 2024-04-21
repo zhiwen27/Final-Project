@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class MainHouse extends House{
     private ArrayList<Floor> floors;
     private int floor;
-    int activeFloor;
+    int activeFloor = 1;
 
     /**
      * Constructor for MainHouse: set name to be "Main House" with 3 floors
@@ -48,7 +48,7 @@ public class MainHouse extends House{
      */
     public void goUpFloor(){
         this.activeFloor += 1;
-        System.out.println("You're now at Floor " + this.activeFloor + ".");
+        System.out.println("You're now at Floor " + (this.activeFloor + 1) + ".");
         floorTour(this.activeFloor);
     }
 
@@ -57,7 +57,7 @@ public class MainHouse extends House{
      */
     public void goDownFloor(){
         this.activeFloor -= 1;
-        System.out.println("You're now at Floor " + this.activeFloor + ".");
+        System.out.println("You're now at Floor " + (this.activeFloor + 1) + ".");
         floorTour(this.activeFloor);
     }
 
@@ -67,7 +67,6 @@ public class MainHouse extends House{
      */
     public MainHouse addMainHouse(){
         MainHouse mainHouse = new MainHouse();
-        mainHouse.activeFloor = 2;
         mainHouse.addFloor();
         return mainHouse;
     }
@@ -76,7 +75,7 @@ public class MainHouse extends House{
      * Printing for floor
      */
     public String toString(){
-        String printer = "Welcome to the Main House! \nYou're now at Floor 1.";
+        String printer = "Welcome to the Main House! \nYou're now at Floor 2.";
         for(Floor floor: this.floors){
             printer += floor;
         }

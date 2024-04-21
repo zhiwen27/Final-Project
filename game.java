@@ -95,7 +95,21 @@ public class Game {
                     System.out.println(newPlayer.getRoom());
                     System.out.println("Feel free to explore!");
                     oldman.guideRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom, newPlayer);
-                    oldman.guideFloor(((MainHouse)newGame.mapTour(0)).goToFloor(1),newPlayer);
+                    boolean floorOver = false;
+                    while(!floorOver){
+                        oldman.guideFloor(((MainHouse)newGame.mapTour(0)).goToFloor(1),newPlayer);
+                        floorOver = ((MainHouse)newGame.mapTour(0)).goToFloor(1).floorOver();
+                    }
+                    System.out.println("Do you want to see want you have discovered so far?\n(*Please type in YES or NO)");
+                    userInput = sc.nextLine().toLowerCase();
+                    if (oldman.checkInput(userInput,"yes")){
+                        System.out.println(newPlayer.inventory);
+                    }
+                    else{
+                        System.out.println("Alright, save it for the next time!");;
+                    }
+                    System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!");
+                    oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)));
                 }
                 else if (modeChoice == true){
                     newPlayer.inventory.put(peartree, 1);
