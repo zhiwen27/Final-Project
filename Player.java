@@ -1,16 +1,14 @@
 import java.util.Hashtable;
 import java.util.Scanner;
+import java.util.ArrayList;
 public class Player {
     private String name;
     private int money;
     Hashtable<Item,Integer> inventory;
     private Room activeRoom;
     private House activeHouse;
-    Hashtable<Tree, Integer> farm;
-
-    /**
-     * Default Constructor
-     */
+    public Hashtable<Tree, Integer> farm;
+    public ArrayList<String> f;
     public Player(){
         this("<Name Unknown>");
     }
@@ -23,12 +21,10 @@ public class Player {
         this.money = 0;
         this.name = name;
         this.inventory = new Hashtable<>();
+        this.f = new ArrayList<String>();
+        this.farm = new Hashtable<Tree,Integer>();
     }
-
-    /**
-     * Grab certain item
-     * @param i the item you want to grab
-     */
+    
     public void grab(Item i){
         if (i.canTake()){
             if ((this.inventory.containsKey(i))){
@@ -74,6 +70,7 @@ public class Player {
 
     public void recieve(Tree tree){
         inventory.put(tree, 1);
+        f.add(tree.type);
     }
 
     /**
