@@ -57,8 +57,8 @@ public class Oldman {
             try{
                 r.checkItemInput(userInput);
                 Item i = new Item();
-                i = r.removeItem(userInput);
                 try{
+                    i = r.removeItem(userInput);
                     player.grab(i);
                 } catch(Exception e){
                     System.out.println(e.getMessage());
