@@ -11,17 +11,18 @@ public class Oldman {
         Scanner scanner = new Scanner(System.in);
         String choice;
         choice = scanner.nextLine().toLowerCase();
-        while(this.checkInput(choice, "seed") || (this.checkInput(choice, "sword"))){
-            if (choice.equalsIgnoreCase("seed")) {
-                System.out.println("Last person made the same decision.");
-                return true;
-            }else if (choice.equalsIgnoreCase("sword")){
-                System.out.println("That is a quite brave decision.\nExplore your journey with this sword, young man.");
-                return false;
-            }
+        if (choice.equalsIgnoreCase("seed")) {
+            System.out.println("Last person made the same decision.");
+            return true;
         }
-        throw new RuntimeException("Please enter the required word.");
+        else if (choice.equalsIgnoreCase("sword")){
+            System.out.println("That is a quite brave decision.\nExplore your journey with this sword, young man.");
+            return false;
         }
+        else{
+            throw new RuntimeException("Please enter the required word.");
+        }
+    }
 
 
     public void buy(Item item){

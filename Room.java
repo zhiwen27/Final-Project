@@ -9,7 +9,6 @@ public class Room {
     public Room(){
         this.name = "";
         this.itemCollection = new ArrayList<Item>();
-        itemNames = new String[itemCollection.size()];
     }
 
     public String getName(){
@@ -86,6 +85,7 @@ public class Room {
 
     public String printCollection(){
         String s = "The " + this.name + " now has:\n";
+        this.itemNames = new String[this.itemCollection.size()];
         int cnt = 0;
         for (Item i: this.itemCollection){
             s += "**" + i.getName() + "**\n";
@@ -112,6 +112,12 @@ public class Room {
 
     public String toString(){
         return "Welcome! This is " + this.name + ".\n" + this.printCollection();
+    }
+
+    public static void main(String[] args) {
+        Room room = new Room();
+        room.addBedroom();
+        System.out.println(room.printCollection());
     }
 
 }
