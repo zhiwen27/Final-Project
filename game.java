@@ -61,7 +61,7 @@ public class Game {
                     String data = fileReader.nextLine();
                     System.out.println(data);
                 }
-                fileReader.close();
+                fileReader.close(); 
             } catch (FileNotFoundException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
@@ -94,7 +94,7 @@ public class Game {
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }
-        }
+        
             boolean choice = oldman.choice();
             if (!choice){
                 System.out.println("*****************************************************************");
@@ -130,7 +130,7 @@ public class Game {
                                 appletree.water();
                             case "pear":
                                 peartree.water();
-                        }
+                        }}
                     }
                 }
                     
@@ -141,4 +141,4 @@ public class Game {
             System.out.println("Alright! You can come back any time you want!");
         }
         sc.close();
-    }}}
+    }}
