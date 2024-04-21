@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-
-import com.google.common.graph.*;
 public class Room {
     private String name;
     ArrayList<Item> itemCollection;

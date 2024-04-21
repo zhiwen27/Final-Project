@@ -6,6 +6,10 @@ public class Oldman {
         this.money = money;
     }  
 
+    /**
+     * Choose the Mode you want to explore: SEED for farming mode and return true; SWORD for adventure mode and return false
+     * @return the Mode (indicate by the boolean) chosen
+     */
     public boolean choice(){
         System.out.println("Hi, I am old man. \nYou don't have to know me. But tell me, which one do you want? \nSEED on the left or the SWORD on the right?");
         Scanner scanner = new Scanner(System.in);
@@ -13,17 +17,19 @@ public class Oldman {
         choice = scanner.nextLine().toLowerCase();
         if (choice.equalsIgnoreCase("seed")) {
             System.out.println("Last person made the same decision.");
+            scanner.close();
             return true;
         }
         else if (choice.equalsIgnoreCase("sword")){
             System.out.println("That is a quite brave decision.\nExplore your journey with this sword, young man.");
+            scanner.close();
             return false;
         }
         else{
+            scanner.close();
             throw new RuntimeException("Please enter the required word.");
         }
     }
-
 
     public void buy(Item item){
         money -= item.getValue();
@@ -37,6 +43,12 @@ public class Oldman {
             }        
     }
 
+    /**
+     * Checking if the user input matches the required word
+     * @param userInput user input
+     * @param requiredWord required word
+     * @return if the user input matches the required word
+     */
     public boolean checkInput(String userInput, String requiredWord){
         if (userInput.contains(requiredWord)){
             return true;
@@ -47,10 +59,18 @@ public class Oldman {
         }
     }
 
+    /**
+     * Guide the player through certain room; must get all the can taken item in the room to leave; cannot go back
+     * @param r the room
+     * @param player the player
+     */
     public void guideRoom(Room r, Player player){
         System.out.println("You can take anything that you can take from this room.");
         Scanner scanner = new Scanner(System.in);
         String userInput;
+        if(r.moveableItemCollection.isEmpty()){
+            System.out.println("There's nothing left over in this room!\nTry to explore another room!");
+        }
         while(!r.moveableItemCollection.isEmpty()){
             System.out.println("\n Discover those really valueable things! \n(*Please type in the name of the item.)");
             userInput = scanner.nextLine();
@@ -59,32 +79,41 @@ public class Oldman {
                 Item i = new Item();
                 i = r.removeItem(userInput);
                 player.grab(i);
+                scanner.close();
             } catch(RuntimeException e){
                 System.out.println(e.getMessage());
             }
         }
-        if(r.moveableItemCollection.isEmpty()){
-            System.out.println("Try to explore another room!");
-        }
     }
 
+    /**
+     * Guide through certain floor
+     * @param f the floor
+     */
     public void guideFloor(Floor f){
         System.out.println("Please tell me which room you want to explore next.");
         Scanner scanner = new Scanner(System.in);
         String userInput;
         userInput = scanner.nextLine().toLowerCase();
         f.goToRoom(userInput);
+        scanner.close();
     }
 
+    /**
+     * Guide through Main House
+     * @param mainHouse Main House
+     */
     public void guideMainHouse(MainHouse mainHouse){
         System.out.println("You can go up and down the rooms to explore the Main House. (*You can only go to adjacent floors. Please type in GO UP or GO DOWN.)");
         Scanner scanner = new Scanner(System.in);
         String userInput;
         userInput = scanner.nextLine().toLowerCase();
         if (this.checkInput(userInput, "up")){
+            scanner.close();
             mainHouse.goUpFloor();
         }
         else if (this.checkInput(userInput, "down")){
+            scanner.close();
             mainHouse.goDownFloor();
         }
     }

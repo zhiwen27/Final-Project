@@ -10,11 +10,18 @@ public class Game {
 
     ArrayList<House> mapAdv;
     MutableGraph<Tree> mapFarm;
+
+    /**
+     * Constructor for Game
+     */
     public Game(){
         this.mapAdv = new ArrayList<>();
         this.mapFarm = GraphBuilder.undirected().build();
     }
 
+    /**
+     * Printing of the map of the Adventure Mode
+     */
     public String toString(){
         String s = "";
         for(House house: this.mapAdv){
@@ -23,6 +30,10 @@ public class Game {
         return s;
     }
 
+    /**
+     * Create the map of the Adventure Mode
+     * @return the map
+     */
     public Game createNewAdv(){
         MainHouse mainHouse = new MainHouse();
         mainHouse.addFloor();
@@ -37,15 +48,21 @@ public class Game {
         this.mapAdv.add(northWest);
         return this;
     }
+
     static Tree appletree = new Tree("apple", true, 5);
     static Tree peartree = new Tree("pear", true, 5);
     static Tree grapetree = new Tree("grape", true, 5);
     static Tree bananatree = new Tree("banana", true, 5);
 
-
+    /**
+     * Go to the certain house on the map
+     * @param houseNum the index of the house (default)
+     * @return the house
+     */
     public House mapTour(int houseNum){
         return this.mapAdv.get(houseNum);
     }
+
     public static void main(String[] args) {
         System.out.println("Hi! Welcome to THE NEW WORLD! \n Do you want to start the game? \n (*Please type YES or No)");
         Scanner sc = new Scanner(System.in);
@@ -91,6 +108,7 @@ public class Game {
                     if (c.equals("plant")){
                         newPlayer.plant(peartree);
                     }
+                    choice.close();
                 }
             }catch(Exception e){
                 System.out.println(e.getMessage());
