@@ -11,17 +11,18 @@ public class Oldman {
         Scanner scanner = new Scanner(System.in);
         String choice;
         choice = scanner.nextLine().toLowerCase();
-        while(this.checkInput(choice, "seed") || (this.checkInput(choice, "sword"))){
-            if (choice.equalsIgnoreCase("seed")) {
-                System.out.println("Last person made the same decision.");
-                return true;
-            }else if (choice.equalsIgnoreCase("sword")){
-                System.out.println("That is a quite brave decision.\nExplore your journey with this sword, young man.");
-                return false;
-            }
+        if (choice.equalsIgnoreCase("seed")) {
+            System.out.println("Last person made the same decision.");
+            return true;
         }
-        throw new RuntimeException("Please enter the required word.");
+        else if (choice.equalsIgnoreCase("sword")){
+            System.out.println("That is a quite brave decision.\nExplore your journey with this sword, young man.");
+            return false;
         }
+        else{
+            throw new RuntimeException("Please enter the required word.");
+        }
+    }
 
 
     public void buy(Item item){
@@ -46,34 +47,36 @@ public class Oldman {
         }
     }
 
-    public Room guideRoom(Room r, Player player){
+    public void guideRoom(Room r, Player player){
         System.out.println("You can take anything that you can take from this room.");
         Scanner scanner = new Scanner(System.in);
         String userInput;
-        userInput = scanner.nextLine().toLowerCase();
-        while(!r.itemCollection.isEmpty()){
+        while(!r.moveableItemCollection.isEmpty()){
             System.out.println("\n Discover those really valueable things! \n(*Please type in the name of the item.)");
+            userInput = scanner.nextLine();
             try{
                 r.checkItemInput(userInput);
-                r.removeItem(userInput);
-                player.grab(r.removeItem(userInput));
+                Item i = new Item();
+                i = r.removeItem(userInput);
+                player.grab(i);
             } catch(RuntimeException e){
                 System.out.println(e.getMessage());
             }
         }
-        return r;
+        if(r.moveableItemCollection.isEmpty()){
+            System.out.println("Try to explore another room!");
+        }
     }
 
-    public Floor guideFloor(Floor f){
+    public void guideFloor(Floor f){
         System.out.println("Please tell me which room you want to explore next.");
         Scanner scanner = new Scanner(System.in);
         String userInput;
         userInput = scanner.nextLine().toLowerCase();
         f.goToRoom(userInput);
-        return f;
     }
 
-    public MainHouse guideMainHouse(MainHouse mainHouse){
+    public void guideMainHouse(MainHouse mainHouse){
         System.out.println("You can go up and down the rooms to explore the Main House. (*You can only go to adjacent floors. Please type in GO UP or GO DOWN.)");
         Scanner scanner = new Scanner(System.in);
         String userInput;
@@ -84,6 +87,5 @@ public class Oldman {
         else if (this.checkInput(userInput, "down")){
             mainHouse.goDownFloor();
         }
-        return mainHouse;
     }
 }

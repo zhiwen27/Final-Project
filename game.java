@@ -67,6 +67,34 @@ public class Game {
                 e.printStackTrace();
             }
             Oldman oldman = new Oldman(1000000000);
+            try{
+                boolean modeChoice = oldman.choice();
+                if (modeChoice == false){
+                    System.out.println("*****************************************************************");
+                    Game newGame = new Game().createNewAdv();
+                    newPlayer.setHouse(newGame.mapTour(0));
+                    System.out.println("You're now in the Bedroom.");
+                    newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
+                    System.out.println(newPlayer.getRoom());
+                    System.out.println("Feel free to explore!");
+                    oldman.guideRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom,newPlayer);
+                }
+                else if (modeChoice == true){
+                    newPlayer.inventory.put(peartree, 1);
+                    System.out.println("An apple tree has been added your inventory, try to plant it!\n(*Type in 'options' for more informaiton.)");
+                    Scanner choice = new Scanner (System.in);
+                    String c = choice. nextLine();
+                    if (c.equals("options")){
+                        peartree .options();
+                    }
+                    if (c.equals("plant")){
+                        newPlayer.plant(peartree);
+                    }
+                }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
             boolean choice = oldman.choice();
             if (!choice){
                 System.out.println("*****************************************************************");
@@ -112,6 +140,5 @@ public class Game {
         else{
             System.out.println("Alright! You can come back any time you want!");
         }
-
         sc.close();
     }}}
