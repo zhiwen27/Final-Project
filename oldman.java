@@ -13,7 +13,7 @@ public class Oldman {
      * @return the Mode (indicate by the boolean) chosen
      */
     public boolean choice(){
-        System.out.println("Hi, I am old man. \nYou don't have to know me. But tell me, which one do you want? \nSEED on the left or the SWORD on the right?");
+        System.out.println("Hi, I am old man. \nYou don't have to know me. But tell me, which one do you want? \nSEED on the left or the SWORD on the right? (*Please type in the correct word.)");
         Scanner scanner = new Scanner(System.in);
         String choice;
         choice = scanner.nextLine().toLowerCase();
@@ -90,7 +90,7 @@ public class Oldman {
      * @param f the floor
      */
     public void guideFloor(Floor f, Player newPlayer){
-        System.out.println("Please type in the name of the room you want to explore next!");
+        System.out.println("Please type in the name of the room you want to explore next!\n(*Please type in the correct word.)");
         Scanner scanner = new Scanner(System.in);
         String userInput;
         userInput = scanner.nextLine();
@@ -106,16 +106,38 @@ public class Oldman {
      * Guide through Main House
      * @param mainHouse Main House
      */
-    public void guideMainHouse(MainHouse mainHouse){
+    public void guideMainHouse(MainHouse mainHouse, Player newPlayer){
+        System.out.println(mainHouse);
         System.out.println("You can go up and down the rooms to explore the Main House. (*You can only go to adjacent floors. Please type in GO UP or GO DOWN.)");
         Scanner scanner = new Scanner(System.in);
         String userInput;
         userInput = scanner.nextLine().toLowerCase();
         if (this.checkInput(userInput, "up")){
             mainHouse.goUpFloor();
+            this.guideFloor(mainHouse.goToFloor(mainHouse.activeFloor), newPlayer);
+            System.out.println("You've now explored all the rooms on the third floor!\nTry explore other floors you haven't been to!\n");
+            System.out.println(mainHouse);
+            System.out.println("Type in the floor number you want to go to.\n(*Please only type in a number.)");
+            int floorNum;
+            floorNum = scanner.nextInt();
+            mainHouse.activeFloor = floorNum;
+            System.out.println(mainHouse.goToFloor(floorNum));
+            this.guideFloor(mainHouse.goToFloor(floorNum), newPlayer);
+            System.out.println("You've now explored the entire Main House!");
+            // check inventory and start new story
         }
         else if (this.checkInput(userInput, "down")){
             mainHouse.goDownFloor();
+            this.guideFloor(mainHouse.goToFloor(mainHouse.activeFloor), newPlayer);
+            System.out.println("You've now explored all the rooms on the first floor!\nTry explore other floors you haven't been to!\n");
+            System.out.println(mainHouse);
+            System.out.println("Type in the floor number you want to go to.\n(*Please only type in a number.)");
+            int floorNum;
+            floorNum = scanner.nextInt();
+            mainHouse.activeFloor = floorNum;
+            System.out.println(mainHouse.goToFloor(floorNum));
+            this.guideFloor(mainHouse.goToFloor(floorNum), newPlayer);
+            System.out.println("You've now explored the entire Main House!");
         }
     }
 }

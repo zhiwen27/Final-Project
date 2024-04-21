@@ -12,10 +12,10 @@ public class Floor {
     }
 
     /**
-     * Create the ground floor: basement
-     * @return the ground floor
+     * Create the first floor: basement
+     * @return the first floor
      */
-    public Floor addGoundFloor(){
+    public Floor addFirstFloor(){
         Room basement = new Room().addBasement();
         this.activeRoom = basement;
         this.rooms.add(basement);
@@ -23,10 +23,10 @@ public class Floor {
     }
 
     /**
-     * Create the first floor: kitchen, living room, bedroom
-     * @return the first floor
+     * Create the second floor: kitchen, living room, bedroom
+     * @return the second floor
      */
-    public Floor addFirstFloor(){
+    public Floor addSecondFloor(){
         Room livingRoom = new Room().addLivingRoom();
         Room kitchen = new Room().addKitchen();
         Room bedroom = new Room().addBedroom();
@@ -38,10 +38,10 @@ public class Floor {
     }
 
     /**
-     * Create the second floor: attic
-     * @return the second floor
+     * Create the third floor: attic
+     * @return the third floor
      */
-    public Floor addSecondFloor(){
+    public Floor addThirdFloor(){
         Room attic = new Room().addAttic();
         this.activeRoom = attic;
         this.rooms.add(attic);
@@ -54,7 +54,7 @@ public class Floor {
     public String toString(){
         String printer = "";
         for (Room room: this.rooms){
-            printer += room + "\n";
+            printer += room.getName() + "\n";
         }
         return printer;
     }
@@ -74,6 +74,10 @@ public class Floor {
         return room;
     }
 
+    /**
+     * Check if all the rooms on one floor have been discovered
+     * @return if all the rooms on one floor have been discovered
+     */
     public boolean floorOver(){
         int cnt = 0;
         for (Room r: this.rooms){
@@ -88,6 +92,11 @@ public class Floor {
         return floorOver;
     }
 
+    /**
+     * Check if the player enter the correct name of the room
+     * @param userInput user input
+     * @return if the user input contains the correct name
+     */
     public boolean checkRoomInput(String userInput){
         this.roomNames = new String[this.rooms.size()];
         int cnt = 0;

@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Floor",
+            "request": "launch",
+            "mainClass": "Floor",
+            "projectName": "Final-Project_55d4c67c"
+        },
+        {
+            "type": "java",
+            "name": "MainHouse",
+            "request": "launch",
+            "mainClass": "MainHouse",
+            "projectName": "Final-Project_55d4c67c"
+        },
+        {
+            "type": "java",
             "name": "Room",
             "request": "launch",
             "mainClass": "Room",

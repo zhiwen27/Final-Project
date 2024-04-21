@@ -18,9 +18,9 @@ public class MainHouse extends House{
      * Add all the floors into Main House
      */
     public void addFloor(){
-        Floor groundFloor = new Floor().addGoundFloor();
-        Floor firstFloor = new Floor().addFirstFloor();
-        Floor secondFloor = new Floor().addSecondFloor();
+        Floor groundFloor = new Floor().addFirstFloor();
+        Floor firstFloor = new Floor().addSecondFloor();
+        Floor secondFloor = new Floor().addThirdFloor();
         this.floors.add(groundFloor);
         this.floors.add(firstFloor);
         this.floors.add(secondFloor);
@@ -72,12 +72,17 @@ public class MainHouse extends House{
     }
 
     /**
-     * Printing for floor
+     * Printing for floors
      */
     public String toString(){
-        String printer = "Welcome to the Main House! \nYou're now at Floor 2.";
-        for(Floor floor: this.floors){
+        String printer = "NOTE: You're now on Floor " + (this.activeFloor + 1) + ".\n";
+        printer += "The Main House has 3 floors:\n\n";
+        int cnt = 1;
+        for (Floor floor: this.floors){
+            printer += "Floor " + cnt + ":\n";
             printer += floor;
+            printer += "\n";
+            cnt++;
         }
         return printer;
     }

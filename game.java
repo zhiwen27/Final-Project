@@ -70,7 +70,7 @@ public class Game {
             System.out.println("Great! Please create your account: \n (*Please only type the name you want)");
             userInput = sc.nextLine();
             Player newPlayer = new Player(userInput);
-            System.out.println("Account created! \nHi, " + userInput + "!\n*****************************************************************");
+            System.out.println("Account created! \nHi, " + userInput + "!\n\n*****************************************************************");
             try {
                 File newFile = new File("Start.txt");
                 Scanner fileReader = new Scanner(newFile);
@@ -78,6 +78,7 @@ public class Game {
                     String data = fileReader.nextLine();
                     System.out.println(data);
                 }
+                System.out.println("\n");
                 fileReader.close(); 
             } catch (FileNotFoundException e) {
                 System.out.println("An error occurred.");
@@ -86,15 +87,17 @@ public class Game {
             Oldman oldman = new Oldman(1000000000);
             try{
                 boolean modeChoice = oldman.choice();
+                System.out.println("\n");
                 if (modeChoice == false){
                     System.out.println("*****************************************************************");
                     Game newGame = new Game().createNewAdv();
                     newPlayer.setHouse(newGame.mapTour(0));
                     System.out.println("You're now in the Bedroom.");
                     newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
-                    System.out.println(newPlayer.getRoom());
                     System.out.println("Feel free to explore!");
                     oldman.guideRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom, newPlayer);
+                    System.out.println("Now you have a feeling of what to do!\n\nHere are the list of rooms on the floor:");
+                    System.out.println(((MainHouse)newGame.mapTour(0)).goToFloor(1));
                     boolean floorOver = false;
                     while(!floorOver){
                         oldman.guideFloor(((MainHouse)newGame.mapTour(0)).goToFloor(1),newPlayer);
@@ -102,14 +105,14 @@ public class Game {
                     }
                     System.out.println("Do you want to see want you have discovered so far?\n(*Please type in YES or NO)");
                     userInput = sc.nextLine().toLowerCase();
-                    if (oldman.checkInput(userInput,"yes")){
+                    if (userInput.contains("yes")){
                         System.out.println(newPlayer.inventory);
                     }
-                    else{
-                        System.out.println("Alright, save it for the next time!");;
+                    else if (userInput.contains("no")){
+                        System.out.println("Alright, save it for the next time!\n");
                     }
-                    System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!");
-                    oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)));
+                    System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");
+                    oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
                 }
                 else if (modeChoice == true){
                     newPlayer.inventory.put(peartree, 1);
