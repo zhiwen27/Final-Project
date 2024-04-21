@@ -57,15 +57,14 @@ public class Oldman {
             try{
                 r.checkItemInput(userInput);
                 Item i = new Item();
-                try{
-                    i = r.removeItem(userInput);
-                    player.grab(i);
-                } catch(Exception e){
-                    System.out.println(e.getMessage());
-                }
+                i = r.removeItem(userInput);
+                player.grab(i);
             } catch(RuntimeException e){
                 System.out.println(e.getMessage());
             }
+        }
+        if(r.moveableItemCollection.isEmpty()){
+            System.out.println("Try to explore another room!");
         }
     }
 

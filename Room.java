@@ -95,7 +95,7 @@ public class Room {
                 this.itemCollection.remove(this.itemCollection.get(i));
                 this.moveableItemCollection.remove(item);
             }
-            else if (this.itemCollection.get(i).canTake() == false){
+            else if (this.itemCollection.get(i).getName().contains(name) && (this.itemCollection.get(i).canTake() == false)){
                 throw new RuntimeException("Sorry, " + this.itemCollection.get(i).getName() + " cannot be taken.");
             }
         }
