@@ -13,6 +13,10 @@ public class Player {
         this("<Name Unknown>");
     }
     
+    /**
+     * Full constructor of Player
+     * @param name the name of the player
+     */
     public Player(String name){
         this.money = 0;
         this.name = name;
@@ -54,6 +58,7 @@ public class Player {
             throw new RuntimeException("You can not sell it before you have it.");
         }
     }
+
     public void plant(Tree tree){
         if (farm.containsKey(tree)){
             farm.put(tree, farm.get(tree) + 1);
@@ -62,11 +67,16 @@ public class Player {
             throw new RuntimeException("We haven't heard of "+tree +" in this world.");
         }
     }
+
     public void recieve(Tree tree){
         inventory.put(tree, 1);
         f.add(tree.type);
     }
 
+    /**
+     * If all the keys are taken, then the player wins the game
+     * @return if the player wins
+     */
     public boolean winGame(){
         if (this.inventory.get("Key") == 7){
             return true;
@@ -74,18 +84,34 @@ public class Player {
         return false;
     }
     
+    /**
+     * Setter for current room
+     * @param r the room the player is currently in
+     */
     public void setRoom(Room r){
         this.activeRoom = r;
     }
 
+    /**
+     * Getter for current room
+     * @return the room the player is currently in
+     */
     public Room getRoom(){
         return this.activeRoom;
     }
 
+    /**
+     * Setter for current house
+     * @param h the house the player is currently in
+     */
     public void setHouse(House h){
         this.activeHouse = h;
     }
 
+    /**
+     * Getter for current house
+     * @return the house the player is currently in
+     */
     public House getHouse(){
         return this.activeHouse;
     }
