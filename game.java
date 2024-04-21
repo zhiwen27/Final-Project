@@ -109,54 +109,13 @@ public class Game {
                         newPlayer.plant(peartree);
                     }
                 }
-            }catch(Exception e){
+            } catch(Exception e){
                 System.out.println(e.getMessage());
             }
-        
-            boolean choice = oldman.choice();
-            if (!choice){
-                System.out.println("*****************************************************************");
-                Game newGame = new Game().createNewAdv();
-                newPlayer.setHouse(newGame.mapTour(0));
-                System.out.println("You're now in the Bedroom.");
-                newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
-                System.out.println(newPlayer.getRoom());
-                System.out.println("Feel free to explore!");
-                boolean toPlay = true;}
-
-            if (choice ){
-                newPlayer.recieve(appletree);
-                System.out.println("An apple tree has been added your inventory, try to plant it! ");
-                Scanner c = new Scanner (System.in);
-                String h = c.nextLine();
-                while (!h.equals("plant")){
-                    System.out.print("Enter again \nTry 'plant'\n");
-                    Scanner o = new Scanner(System.in);
-                    h = o.nextLine();}
-                newPlayer.plant(appletree);
-                System.out.println("Now you have planted a tree! try to water it!");
-                appletree.options();
-                Scanner n = new Scanner(System.in);
-                String p = n.nextLine();
-                if (p.equals("water")){
-                    System.out.println("which kind of tree do you want to water?");
-                    Scanner a = new Scanner(System.in);
-                    String t = a.nextLine();
-                    if (newPlayer.f.contains(t)){
-                        switch (t) {
-                            case "apple":
-                                appletree.water();
-                            case "pear":
-                                peartree.water();
-                        }}
-                    }
-                }
-                    
-                }
-
-                
+            sc.close();
+        }
         else{
             System.out.println("Alright! You can come back any time you want!");
         }
-        sc.close();
-    }}
+    }
+}
