@@ -4,11 +4,13 @@ import com.google.common.graph.*;
 public class Room {
     private String name;
     ArrayList<Item> itemCollection;
+    ArrayList<Item> moveableItemCollection;
     String[] itemNames;
 
     public Room(){
         this.name = "";
         this.itemCollection = new ArrayList<Item>();
+        this.moveableItemCollection = new ArrayList<Item>();
     }
 
     public String getName(){
@@ -22,11 +24,14 @@ public class Room {
         Item sofa = new Item("A White Fluffy Soft Sofa",false);
         Item cushion1 = new Item("A Pink Lovely Cushion",5);
         Item cushion2 = new Item("Jelly Rabbit",100);
+        Item key = new Item("Key",500);
         this.itemCollection.add(diamond);
         this.itemCollection.add(chair);
         this.itemCollection.add(sofa);
         this.itemCollection.add(cushion1);
         this.itemCollection.add(cushion2);
+        this.itemCollection.add(key);
+        this.addMoveableItem();
         // create some new items and add into the kitchen
         //System.out.println(this);
         return this;
@@ -40,6 +45,7 @@ public class Room {
         this.itemCollection.add(table);
         this.itemCollection.add(candle);
         this.itemCollection.add(knife);
+        this.addMoveableItem();
         // create some new items and add into the kitchen
         //System.out.println(this);
         return this;
@@ -48,7 +54,10 @@ public class Room {
     public Room addBedroom(){
         this.name = "Bedroom";
         Item bed = new Item("A big comfortable bed",false);
+        Item key = new Item("Key",500);
         this.itemCollection.add(bed);
+        this.itemCollection.add(key);
+        this.addMoveableItem();
         // create some new items and add into the kitchen
         //System.out.println(this);
         return this;
@@ -57,7 +66,10 @@ public class Room {
     public Room addBasement(){
         this.name = "Basement";
         Item rope = new Item("Box", 0);
+        Item key = new Item("Key",500);
         this.itemCollection.add(rope);
+        this.itemCollection.add(key);
+        this.addMoveableItem();
         // create some new items and add into the kitchen
         //System.out.println(this);
         return this;
@@ -65,6 +77,9 @@ public class Room {
 
     public Room addAttic(){
         this.name = "Attic";
+        Item key = new Item("Key",500);
+        this.itemCollection.add(key);
+        this.addMoveableItem();
         return this;
     }
 
@@ -95,7 +110,22 @@ public class Room {
         return s;
     }
 
+    public ArrayList<Item> addMoveableItem(){
+        for (Item i: this.itemCollection){
+            if (i.canTake() == true){
+                this.moveableItemCollection.add(i);
+            }
+        }
+        return this.moveableItemCollection;
+    }
+
     public boolean checkItemInput(String userInput){
+        this.itemNames = new String[this.itemCollection.size()];
+        int cnt = 0;
+        for (Item i: this.itemCollection){
+            this.itemNames[cnt] = i.getName();
+            cnt++;
+        }
         boolean containedRequiredWord = false;
         for (int i = 0; i < this.itemNames.length; i++){
             if (userInput.contains(this.itemNames[i])){
@@ -117,7 +147,7 @@ public class Room {
     public static void main(String[] args) {
         Room room = new Room();
         room.addBedroom();
-        System.out.println(room.printCollection());
+        System.out.println(room.checkItemInput("Key"));;
     }
 
 }

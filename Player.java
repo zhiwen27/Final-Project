@@ -72,6 +72,13 @@ public class Player {
         inventory.put(tree, 1);
     }
 
+    public boolean winGame(){
+        if (this.inventory.get("Key") == 7){
+            return true;
+        }
+        return false;
+    }
+    
     public void setRoom(Room r){
         this.activeRoom = r;
     }
