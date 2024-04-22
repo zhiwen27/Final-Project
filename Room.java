@@ -63,9 +63,9 @@ public class Room {
 
     public Room addBasement(){
         this.name = "Basement";
-        Item rope = new Item("Box", 0);
+        Item box = new Item("Box", 0);
         Item key = new Item("Key",500);
-        this.itemCollection.add(rope);
+        this.itemCollection.add(box);
         this.itemCollection.add(key);
         this.addMoveableItem();
         // create some new items and add into the kitchen
@@ -102,12 +102,8 @@ public class Room {
 
     public String printCollection(){
         String s = "The " + this.name + " now has:\n";
-        this.itemNames = new String[this.itemCollection.size()];
-        int cnt = 0;
         for (Item i: this.itemCollection){
             s += "**" + i.getName() + "**\n";
-            this.itemNames[cnt] = i.getName();
-            cnt++;
         }
         return s;
     }

@@ -1,4 +1,6 @@
 import java.util.Scanner;
+
+import javax.management.RuntimeErrorException;
 public class Oldman {
     int money;
 
@@ -11,22 +13,19 @@ public class Oldman {
      * @return the Mode (indicate by the boolean) chosen
      */
     public boolean choice(){
-        System.out.println("Hi, I am old man. \nYou don't have to know me. But tell me, which one do you want? \nSEED on the left or the SWORD on the right?");
+        System.out.println("Hi, I am old man. \nYou don't have to know me. But tell me, which one do you want? \nSEED on the left or the SWORD on the right? (*Please type in the correct word.)");
         Scanner scanner = new Scanner(System.in);
         String choice;
         choice = scanner.nextLine().toLowerCase();
         if (choice.equalsIgnoreCase("seed")) {
             System.out.println("Last person made the same decision.");
-            scanner.close();
             return true;
         }
         else if (choice.equalsIgnoreCase("sword")){
             System.out.println("That is a quite brave decision.\nExplore your journey with this sword, young man.");
-            scanner.close();
             return false;
         }
         else{
-            scanner.close();
             throw new RuntimeException("Please enter the required word.");
         }
     }
@@ -68,6 +67,7 @@ public class Oldman {
      */
     public void guideRoom(Room r, Player player){
         System.out.println("You can take anything that you can take from this room.");
+        System.out.println(r.printCollection());
         Scanner scanner = new Scanner(System.in);
         String userInput;
         if(r.moveableItemCollection.isEmpty()){
@@ -81,7 +81,6 @@ public class Oldman {
                 Item i = new Item();
                 i = r.removeItem(userInput);
                 player.grab(i);
-                scanner.close();
             } catch(RuntimeException e){
                 System.out.println(e.getMessage());
             }
@@ -92,31 +91,55 @@ public class Oldman {
      * Guide through certain floor
      * @param f the floor
      */
-    public void guideFloor(Floor f){
-        System.out.println("Please tell me which room you want to explore next.");
+    public void guideFloor(Floor f, Player newPlayer){
+        System.out.println("Please type in the name of the room you want to explore next!\n(*Please type in the correct word.)");
         Scanner scanner = new Scanner(System.in);
         String userInput;
-        userInput = scanner.nextLine().toLowerCase();
-        f.goToRoom(userInput);
-        scanner.close();
+        userInput = scanner.nextLine();
+        if (f.checkRoomInput(userInput)){
+            this.guideRoom(f.goToRoom(f,userInput), newPlayer);
+        }
+        else{
+            throw new RuntimeException("Please enter the required word.");
+        }
     }
 
     /**
      * Guide through Main House
      * @param mainHouse Main House
      */
-    public void guideMainHouse(MainHouse mainHouse){
+    public void guideMainHouse(MainHouse mainHouse, Player newPlayer){
+        System.out.println(mainHouse);
         System.out.println("You can go up and down the rooms to explore the Main House. (*You can only go to adjacent floors. Please type in GO UP or GO DOWN.)");
         Scanner scanner = new Scanner(System.in);
         String userInput;
         userInput = scanner.nextLine().toLowerCase();
         if (this.checkInput(userInput, "up")){
-            scanner.close();
             mainHouse.goUpFloor();
+            this.guideFloor(mainHouse.goToFloor(mainHouse.activeFloor), newPlayer);
+            System.out.println("You've now explored all the rooms on the third floor!\nTry explore other floors you haven't been to!\n");
+            System.out.println(mainHouse);
+            System.out.println("Type in the floor number you want to go to.\n(*Please only type in a number.)");
+            int floorNum;
+            floorNum = scanner.nextInt();
+            mainHouse.activeFloor = floorNum;
+            System.out.println(mainHouse.goToFloor(floorNum));
+            this.guideFloor(mainHouse.goToFloor(floorNum), newPlayer);
+            System.out.println("You've now explored the entire Main House!");
+            // check inventory and start new story
         }
         else if (this.checkInput(userInput, "down")){
-            scanner.close();
             mainHouse.goDownFloor();
+            this.guideFloor(mainHouse.goToFloor(mainHouse.activeFloor), newPlayer);
+            System.out.println("You've now explored all the rooms on the first floor!\nTry explore other floors you haven't been to!\n");
+            System.out.println(mainHouse);
+            System.out.println("Type in the floor number you want to go to.\n(*Please only type in a number.)");
+            int floorNum;
+            floorNum = scanner.nextInt();
+            mainHouse.activeFloor = floorNum;
+            System.out.println(mainHouse.goToFloor(floorNum));
+            this.guideFloor(mainHouse.goToFloor(floorNum), newPlayer);
+            System.out.println("You've now explored the entire Main House!");
         }
     }
 }

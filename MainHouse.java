@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class MainHouse extends House{
     private ArrayList<Floor> floors;
     private int floor;
-    private int activeFloor = 1;
+    int activeFloor = 1;
 
     /**
      * Constructor for MainHouse: set name to be "Main House" with 3 floors
@@ -18,9 +18,9 @@ public class MainHouse extends House{
      * Add all the floors into Main House
      */
     public void addFloor(){
-        Floor groundFloor = new Floor().addGoundFloor();
-        Floor firstFloor = new Floor().addFirstFloor();
-        Floor secondFloor = new Floor().addSecondFloor();
+        Floor groundFloor = new Floor().addFirstFloor();
+        Floor firstFloor = new Floor().addSecondFloor();
+        Floor secondFloor = new Floor().addThirdFloor();
         this.floors.add(groundFloor);
         this.floors.add(firstFloor);
         this.floors.add(secondFloor);
@@ -48,7 +48,7 @@ public class MainHouse extends House{
      */
     public void goUpFloor(){
         this.activeFloor += 1;
-        System.out.println("You're now at Floor " + this.activeFloor + ".");
+        System.out.println("You're now at Floor " + (this.activeFloor + 1) + ".");
         floorTour(this.activeFloor);
     }
 
@@ -57,7 +57,7 @@ public class MainHouse extends House{
      */
     public void goDownFloor(){
         this.activeFloor -= 1;
-        System.out.println("You're now at Floor " + this.activeFloor + ".");
+        System.out.println("You're now at Floor " + (this.activeFloor + 1) + ".");
         floorTour(this.activeFloor);
     }
 
@@ -72,12 +72,17 @@ public class MainHouse extends House{
     }
 
     /**
-     * Printing for floor
+     * Printing for floors
      */
     public String toString(){
-        String printer = "Welcome to the Main House! \nYou're now at Floor 1.";
-        for(Floor floor: this.floors){
+        String printer = "NOTE: You're now on Floor " + (this.activeFloor + 1) + ".\n";
+        printer += "The Main House has 3 floors:\n\n";
+        int cnt = 1;
+        for (Floor floor: this.floors){
+            printer += "Floor " + cnt + ":\n";
             printer += floor;
+            printer += "\n";
+            cnt++;
         }
         return printer;
     }
