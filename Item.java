@@ -1,7 +1,7 @@
 public class Item {
 
     private int value;
-    private String name;
+    public String name;
     private boolean canTake;
 
     /**

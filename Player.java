@@ -7,8 +7,7 @@ public class Player {
     Hashtable<Item,Integer> inventory;
     private Room activeRoom;
     private House activeHouse;
-    public Hashtable<Tree, Integer> farm;
-    public ArrayList<String> f;
+    public ArrayList<Tree> farm = new ArrayList<Tree>();
     public Player(){
         this("<Name Unknown>");
     }
@@ -21,8 +20,7 @@ public class Player {
         this.money = 0;
         this.name = name;
         this.inventory = new Hashtable<>();
-        this.f = new ArrayList<String>();
-        this.farm = new Hashtable<Tree,Integer>();
+        this.farm = new ArrayList<Tree>();
     }
     
     public void grab(Item i){
@@ -60,8 +58,8 @@ public class Player {
     }
 
     public void plant(Tree tree){
-        if (farm.containsKey(tree)){
-            farm.put(tree, farm.get(tree) + 1);
+        if (farm.contains(tree)){
+            tree.Num += 1;
         }
         else{
             throw new RuntimeException("We haven't heard of "+tree +" in this world.");
@@ -69,8 +67,7 @@ public class Player {
     }
 
     public void recieve(Tree tree){
-        inventory.put(tree, 1);
-        f.add(tree.type);
+        farm.add(tree);
     }
 
     /**

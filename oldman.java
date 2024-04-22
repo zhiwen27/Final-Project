@@ -30,7 +30,9 @@ public class Oldman {
             throw new RuntimeException("Please enter the required word.");
         }
     }
-
+    /**buy items from the player
+     * @param item item that the old man bus from the player
+     */
     public void buy(Item item){
         money -= item.getValue();
         if (money > 0){
