@@ -109,7 +109,7 @@ public class Game {
                     System.out.println("Do you want to see want you have discovered so far?\n(*Please type in YES or NO)");
                     userInput = sc.nextLine().toLowerCase();
                     if (userInput.contains("yes")){
-                       System.out.println(newPlayer.inventory);
+                       newPlayer.printInventory;
                     }
                     else if (userInput.contains("no")){
                         System.out.println("Alright, save it for the next time!\n");
@@ -123,93 +123,8 @@ public class Game {
                     System.out.println("An apple tree has been added your inventory, try to plant it!\n(*Type in 'options' for more informaiton.)");
                     Scanner choice = new Scanner (System.in);
                     String c = choice. nextLine();
-
-                    if (c.equals("options")){
-                        appletree .options();
-                        System.out.print("You can use 'plant'command to plant the tree. Try it!");
-                        Scanner p = new Scanner(System.in);
-                        String o = p.nextLine();
-                        if (o.equals("plant")){
-                            newPlayer.plant(appletree);
-                        }
-                    }
-                    if (c.equals("plant")){
-                        newPlayer.plant(appletree);}
-
-                    if (c.equals("water")){
-                        Scanner a = new Scanner(System.in);
-                        System.out.println("Please enter the tree you want to water:");
-                        String r = a.nextLine();
-                        for (Tree tree:newPlayer.farm){
-                            if (tree.name.equals(a)){
-                                tree.water();
-                            }else{
-                                System.out.println("Can you plant that first?");
-                            }}}
-                    if (c.equals("harvest")){
-                        appletree.harvest();}
-                    System.out.println("OK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you.\n you have received 50 dollars. You can use your money to buy other trees from the old man.\n you can also sell your fruit to him. ");
-                    oldman.money -= 50;
-                    while (oldman.money > 0){
-                        Scanner Move = new Scanner(System.in);
-                        String move = Move.nextLine();
-                        System.out.println("which move do you want to do next? \n Enter 'options' for more information");
-                        if (move.equals("options")){
-                            System.out.println("Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!");
-                        }
-                        if (move.equals("plant")){
-                            System.out.println("Which tree do you want to plant?\n Now you have " + newPlayer.farm + "in your farm");
-                            Scanner tree = new Scanner(System.in);
-                            String foliage = tree.nextLine();
-                            for (Tree i: newPlayer.farm){
-                                if (i.name.equals(foliage)){
-                                    newPlayer.plant(i);
-                                }else{
-                                    System.out.print("You do not have that tree. You can get different kinds of plants from the old man.");
-                                }}}
-                        if (move.equals("water")){
-                            Scanner a = new Scanner(System.in);
-                            System.out.println("Please enter the tree you want to water:");
-                            String r = a.nextLine();
-                            for (Tree tree:newPlayer.farm){
-                                if (tree.fruit.name.equals(r)){
-                                    tree.water();
-                                }else{
-                                    System.out.println("Can you plant that first?");
-                                }}}
-                        if (move.equals("harvest")){
-                            System.out.println("which tree do you want to harvest?");
-                            Scanner tree = new Scanner(System.in);
-                            String foliage = tree.nextLine();
-                            for (Tree leaf:newPlayer.farm){
-                                if (leaf.name.equals(foliage)){
-                                    Boolean b = leaf.harvest();
-                                    if (b){
-                                        Integer a = leaf.number_of_fruit;
-                                        Integer d = leaf.number_of_trees;
-                                        Integer e = a * d;
-                                        Integer f = newPlayer.inventory.get(leaf);
-                                        newPlayer.inventory.put(leaf.fruit, f + e);
-                                    }
-                                }else{
-                                    System.out.println("Can you plant that first?");
-                                }}}
-                        if (move.equals("sell")){
-                            Scanner thing = new Scanner(System.in);
-                            String item = thing.nextLine();
-                            for (Item sold:newPlayer.inventory){
-                                if (sold.name.equals(item)){
-                                    newPlayer.sell(sold);
-                                }
-                            }
-                        }
-                        }
-
-
-                        
-                    }
-
-                }catch(Exception e){
+                }
+            } catch(Exception e){
                 System.out.println(e.getMessage());
             }
             sc.close();

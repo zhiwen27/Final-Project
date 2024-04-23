@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Player",
+            "request": "launch",
+            "mainClass": "Player",
+            "projectName": "Final-Project_55d4c67c"
+        },
+        {
+            "type": "java",
             "name": "Floor",
             "request": "launch",
             "mainClass": "Floor",
