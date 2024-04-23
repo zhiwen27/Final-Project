@@ -20,7 +20,7 @@ public class CornerHouse extends House{
      */
     public int randomNum(){
         Random random = new Random();
-        int randomNum = random.nextInt(100);
+        int randomNum = random.nextInt(1,101);
         return randomNum;
     }
 
