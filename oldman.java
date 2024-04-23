@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class Oldman {
     int money;
@@ -11,16 +13,16 @@ public class Oldman {
      * @return the Mode (indicate by the boolean) chosen
      */
     public boolean choice(){
-        System.out.println("Old man:Hi, I am old man. \nYou don't have to know me. But tell me, which one do you want? \nSEED on the left or the SWORD on the right? (*Please type in the correct word.)\nSorry, please enter 'sword', seed is not completed yet.clear");
+        System.out.println("Old man: Hi, I am old man. \nYou don't have to know me. But tell me, which one do you want? \nSEED on the left or the SWORD on the right? (*Please type in the correct word.)");
         Scanner scanner = new Scanner(System.in);
         String choice;
         choice = scanner.nextLine().toLowerCase();
         if (choice.equalsIgnoreCase("seed")) {
-            System.out.println("Old man:Last person made the same decision.");
+            System.out.println("Old man: Last person made the same decision.");
             return true;
         }
         else if (choice.equalsIgnoreCase("sword")){
-            System.out.println("Old man:That is a quite brave decision.\nExplore your journey with this sword, young man.");
+            System.out.println("Old man: That is a quite brave decision.\nExplore your journey with this sword, young man.");
             return false;
         }
         else{
@@ -34,11 +36,11 @@ public class Oldman {
         money -= item.getValue();
         if (money > 0){
             if (item.getValue() >= 100){
-                System.out.println("Old man:Wow, that would be quite expansive. \nCould it be ... whatever. ");
+                System.out.println("Old man: Wow, that would be quite expansive. \nCould it be ... whatever. ");
             } else{
                 System.out.println("Old man: " + item.getValue() + "dollars ! That is the highest price I can offer.");
             }}else{
-                System.out.println("Old man:I really, really, really like it. But I can't afford it.\nWait! I still have the keys! 4 keys for this! Is that a deal for you?");
+                System.out.println("Old man: I really, really, really like it. But I can't afford it.\nWait! I still have the keys! 4 keys for this! Is that a deal for you?");
             }        
     }
 
@@ -138,6 +140,33 @@ public class Oldman {
             System.out.println(mainHouse.goToFloor(floorNum));
             this.guideFloor(mainHouse.goToFloor(floorNum), newPlayer);
             System.out.println("You've now explored the entire Main House!");
+        }
+    }
+
+    public void guideCornerHouse(Game g, Player p){
+        try {
+            File newFile = new File("Transition.txt");
+            Scanner fileReader = new Scanner(newFile);
+            while (fileReader.hasNextLine()) {
+                String data = fileReader.nextLine();
+                System.out.println(data);
+            }
+            System.out.println("\n");
+            fileReader.close(); 
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        System.out.println("Old man: Hello my friend, long time no see!\nI'm glad you take the courage and try to explore the other places. There're three other Corner Houses:\nAlpha\nBeta\nGamma\nChoose one you want to go!");
+        Scanner scanner = new Scanner(System.in);
+        String userInput;
+        userInput = scanner.nextLine();
+        int cnt = 0;
+        while(cnt < 3){
+            CornerHouse newCornerHouse = new CornerHouse(userInput);
+            newCornerHouse.play(p);
+            System.out.println("Great! Now try to explore another Corner House!");
+            cnt++;
         }
     }
 }

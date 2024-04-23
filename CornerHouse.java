@@ -74,9 +74,10 @@ public class CornerHouse extends House{
     /**
      * Function to get one round of play for the CornerHosue
      */
-    public void play(){
+    public Player play(Player p){
         this.createRandomNum();
         Scanner sc = new Scanner(System.in);
+        Item key = new Item("Key",500);
         boolean play = false;
         while((this.checkChances()) && (!play)){
             System.out.println("Please type in a guess between 1 and 100:");
@@ -85,8 +86,14 @@ public class CornerHouse extends House{
         }
         if (!play){
             System.out.println("GAME OVER!");
+            p.setToPlay(false);
+        }
+        else{
+            System.out.println("Congratulations! You have discovered another key!");
+            p.grab(key);
         }
         sc.close();
+        return p;
     }
 
     /**

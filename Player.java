@@ -9,6 +9,7 @@ public class Player {
     private Room activeRoom;
     private House activeHouse;
     public ArrayList<Tree> farm = new ArrayList<Tree>();
+    private boolean toPlay;
     public Player(){
         this("<Name Unknown>");
     }
@@ -22,6 +23,7 @@ public class Player {
         this.name = name;
         this.inventory = new Hashtable<>();
         this.farm = new ArrayList<Tree>();
+        this.toPlay = true;
     }
     
     public void grab(Item i){
@@ -77,7 +79,7 @@ public class Player {
      * @return if the player wins
      */
     public boolean winGame(){
-        if (this.inventory.get("Key") == 7){
+        if (this.inventory.get("Key") == 6){
             return true;
         }
         return false;
@@ -123,5 +125,13 @@ public class Player {
         while(keys.hasMoreElements()){
           System.out.println(keys.nextElement());
         }
+    }
+
+    public boolean toPlay(){
+        return this.toPlay;
+    }
+
+    public void setToPlay(boolean toPlay){
+        this.toPlay = toPlay;
     }
 }

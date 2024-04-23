@@ -41,15 +41,7 @@ public class Game {
     public Game createNewAdv(){
         MainHouse mainHouse = new MainHouse();
         mainHouse.addFloor();
-        CornerHouse northWest = new CornerHouse("NorthWest House");
-        CornerHouse northEast = new CornerHouse("NorthEast House");
-        CornerHouse southWest = new CornerHouse("SouthWest House");
-        CornerHouse southEast = new CornerHouse("SouthEast House");
         this.mapAdv.add(mainHouse);
-        this.mapAdv.add(southEast);
-        this.mapAdv.add(southWest);
-        this.mapAdv.add(northEast);
-        this.mapAdv.add(northWest);
         return this;
     }
 
@@ -73,152 +65,161 @@ public class Game {
             System.out.println("Great! Please create your account: \n (*Please only type the name you want)");
             userInput = sc.nextLine();
             Player newPlayer = new Player(userInput);
-            System.out.println("Account created! \nHi, " + userInput + "!\n\n*****************************************************************");
-            try {
-                File newFile = new File("Start.txt");
-                Scanner fileReader = new Scanner(newFile);
-                while (fileReader.hasNextLine()) {
-                    String data = fileReader.nextLine();
-                    System.out.println(data);
+            while(newPlayer.toPlay()){
+                System.out.println("Account created! \nHi, " + userInput + "!\n\n*****************************************************************");
+                try {
+                    File newFile = new File("Start.txt");
+                    Scanner fileReader = new Scanner(newFile);
+                    while (fileReader.hasNextLine()) {
+                        String data = fileReader.nextLine();
+                        System.out.println(data);
+                    }
+                    System.out.println("\n");
+                    fileReader.close(); 
+                } catch (FileNotFoundException e) {
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
                 }
-                System.out.println("\n");
-                fileReader.close(); 
-            } catch (FileNotFoundException e) {
-                System.out.println("An error occurred.");
-                e.printStackTrace();
-            }
-            Oldman oldman = new Oldman(200);
-            try{
-                boolean modeChoice = oldman.choice();
-                System.out.println("\n");
-                if (modeChoice == false){
-                    System.out.println("*****************************************************************");
-                    Game newGame = new Game().createNewAdv();
-                    newPlayer.setHouse(newGame.mapTour(0));
-                    System.out.println("You're now in the Bedroom.");
-                    newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
-                    System.out.println("Feel free to explore!");
-                    oldman.guideRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom, newPlayer);
-                    System.out.println("Now you have a feeling of what to do!\n\nHere are the list of rooms on the floor:");
-                    System.out.println(((MainHouse)newGame.mapTour(0)).goToFloor(1));
-                    boolean floorOver = false;
-                    while(!floorOver){
-                        oldman.guideFloor(((MainHouse)newGame.mapTour(0)).goToFloor(1),newPlayer);
-                        floorOver = ((MainHouse)newGame.mapTour(0)).goToFloor(1).floorOver();
+                Oldman oldman = new Oldman(200);
+                try{
+                    boolean modeChoice = oldman.choice();
+                    System.out.println("\n");
+                    if (modeChoice == false){
+                        System.out.println("*****************************************************************");
+                        Game newGame = new Game().createNewAdv();
+                        newPlayer.setHouse(newGame.mapTour(0));
+                        System.out.println("You're now in the Bedroom.");
+                        newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
+                        System.out.println("Feel free to explore!");
+                        oldman.guideRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom, newPlayer);
+                        System.out.println("Now you have a feeling of what to do!\n\nHere are the list of rooms on the floor:");
+                        System.out.println(((MainHouse)newGame.mapTour(0)).goToFloor(1));
+                        boolean floorOver = false;
+                        while(!floorOver){
+                            oldman.guideFloor(((MainHouse)newGame.mapTour(0)).goToFloor(1),newPlayer);
+                            floorOver = ((MainHouse)newGame.mapTour(0)).goToFloor(1).floorOver();
+                        }
+                        System.out.println("Do you want to see want you have discovered so far?\n(*Please type in YES or NO)");
+                        userInput = sc.nextLine().toLowerCase();
+                        if (userInput.contains("yes")){
+                           newPlayer.printInventory();
+                        }
+                        else if (userInput.contains("no")){
+                            System.out.println("Alright, save it for the next time!\n");
+                        }
+                        System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");
+                        oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
                     }
-                    System.out.println("Do you want to see want you have discovered so far?\n(*Please type in YES or NO)");
-                    userInput = sc.nextLine().toLowerCase();
-                    if (userInput.contains("yes")){
-                        System.out.println("1");
-                    }
-                    else if (userInput.contains("no")){
-                        System.out.println("Alright, save it for the next time!\n");
-                    }
-                    System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");
-                    oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
-                }
-                else if (modeChoice == true){
-                    newPlayer.farm.add(appletree);
-                    appletree.number_of_trees += 1;
-                    System.out.println("An apple tree has been added your inventory, try to plant it!\n(*Type in 'options' for more informaiton.)");
-                    Scanner choice = new Scanner (System.in);
-                    String c = choice. nextLine();
-
-                    if (c.equals("options")){
-                        appletree .options();
-                        System.out.print("You can use 'plant'command to plant the tree. Try it!");
-                        Scanner p = new Scanner(System.in);
-                        String o = p.nextLine();
-                        if (o.equals("plant")){
+                    else if (modeChoice == true){
+                        newPlayer.farm.add(appletree);
+                        appletree.number_of_trees += 1;
+                        System.out.println("An apple tree has been added your inventory, try to plant it!\n(*Type in 'options' for more informaiton.)");
+                        Scanner choice = new Scanner (System.in);
+                        String c = choice. nextLine();
+                        if (c.equals("options")){
+                            appletree .options();
+                            System.out.print("You can use 'plant'command to plant the tree. Try it!");
+                            Scanner p = new Scanner(System.in);
+                            String o = p.nextLine();
+                            if (o.equals("plant")){
+                                newPlayer.plant(appletree);
+                            }
+                        }
+                        if (c.equals("plant")){
                             newPlayer.plant(appletree);
                         }
-                    }
-                    if (c.equals("plant")){
-                        newPlayer.plant(appletree);}
-
-                    if (c.equals("water")){
-                        Scanner a = new Scanner(System.in);
-                        System.out.println("Please enter the tree you want to water:");
-                        String r = a.nextLine();
-                        for (Tree tree:newPlayer.farm){
-                            if (tree.name.equals(a)){
-                                tree.water();
-                            }else{
-                                System.out.println("Can you plant that first?");
-                            }}}
-                    if (c.equals("harvest")){
-                        appletree.harvest();}
-                    System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you.\nYou have received 50 dollars. MONEY WILL MAKE YOUR WAY OUT.\nYou can also sell your fruit to him. ");
-                    oldman.money -= 50;
-                    while (oldman.money > 0){
-                        Scanner Move = new Scanner(System.in);
-                        String move = Move.nextLine();
-                        System.out.println("which move do you want to do next? \n Enter 'options' for more information");
-                        if (move.equals("options")){
-                            System.out.println("Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!");
-                        }
-                        if (move.equals("plant")){
-                            System.out.println("What kind of tree do you want to plant?");
-                            Scanner tree = new Scanner(System.in);
-                            String foliage = tree.nextLine();
-                            for (Tree i: newPlayer.farm){
-                                if (i.name.equals(foliage)){
-                                    newPlayer.plant(i);
-                                }else{
-                                    System.out.print("You do not have that tree. You can get different kinds of plants from the old man.");
-                                }}}
-                        if (move.equals("water")){
+                        if (c.equals("water")){
                             Scanner a = new Scanner(System.in);
                             System.out.println("Please enter the tree you want to water:");
                             String r = a.nextLine();
                             for (Tree tree:newPlayer.farm){
-                                if (tree.fruit.name.equals(r)){
+                                if (tree.name.equals(a)){
                                     tree.water();
-                                }else{
+                                }
+                                else{
                                     System.out.println("Can you plant that first?");
-                                }}}
-                        if (move.equals("harvest")){
-                            System.out.println("which tree do you want to harvest?");
-                            Scanner tree = new Scanner(System.in);
-                            String foliage = tree.nextLine();
-                            for (Tree leaf:newPlayer.farm){
-                                if (leaf.name.equals(foliage)){
-                                    Boolean b = leaf.harvest();
-                                    if (b){
-                                        Integer a = leaf.number_of_fruit;
-                                        Integer d = leaf.number_of_trees;
-                                        Integer e = a * d;
-                                        Integer f = newPlayer.inventory.get(leaf);
-                                        newPlayer.inventory.put(leaf.fruit, f + e);
-                                    }
-                                }else{
-                                    
-                                    System.out.println("Can you plant that first?");
-                                }}}
-                        if (move.equals("sell")){
-                            Scanner thing = new Scanner(System.in);
-                            String item = thing.nextLine();
-                            for (Item sold:newPlayer.inventory.keySet()){
-                                if (sold.name.equals(item)){
-                                    Integer a = newPlayer.sell(sold);
-                                    oldman.money -= a;
-                                    System.out.println("Old man: I still have " + oldman.money + " dollars left. I am still rich");
                                 }
                             }
                         }
-                        if (oldman.money == 120 ){
-                            System.out.println("Old man:Actually, youngster, compared to apple, I prefer pears.");
-                            newPlayer.farm.add(peartree);
-                            peartree.number_of_trees = 0;
+                        if (c.equals("harvest")){
+                            appletree.harvest();
                         }
-                        }
-
-
-                        
+                        System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you.\nYou have received 50 dollars. MONEY WILL MAKE YOUR WAY OUT.\nYou can also sell your fruit to him. ");
+                        oldman.money -= 50;
+                        while (oldman.money > 0){
+                            Scanner Move = new Scanner(System.in);
+                            String move = Move.nextLine();
+                            System.out.println("which move do you want to do next? \n Enter 'options' for more information");
+                            if (move.equals("options")){
+                                System.out.println("Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!");
+                            }
+                            if (move.equals("plant")){
+                                System.out.println("What kind of tree do you want to plant?");
+                                Scanner tree = new Scanner(System.in);
+                                String foliage = tree.nextLine();
+                                for (Tree i: newPlayer.farm){
+                                    if (i.name.equals(foliage)){
+                                        newPlayer.plant(i);
+                                    }
+                                    else{
+                                        System.out.print("You do not have that tree. You can get different kinds of plants from the old man.");
+                                    }
+                                }
+                            }
+                            if (move.equals("water")){
+                                Scanner a = new Scanner(System.in);
+                                System.out.println("Please enter the tree you want to water:");
+                                String r = a.nextLine();
+                                for (Tree tree:newPlayer.farm){
+                                    if (tree.fruit.name.equals(r)){
+                                        tree.water();
+                                    }
+                                    else{
+                                        System.out.println("Can you plant that first?");
+                                    }
+                                }
+                            }
+                            if (move.equals("harvest")){
+                                System.out.println("which tree do you want to harvest?");
+                                Scanner tree = new Scanner(System.in);
+                                String foliage = tree.nextLine();
+                                for (Tree leaf:newPlayer.farm){
+                                    if (leaf.name.equals(foliage)){
+                                        Boolean b = leaf.harvest();
+                                        if (b){
+                                            Integer a = leaf.number_of_fruit;
+                                            Integer d = leaf.number_of_trees;
+                                            Integer e = a * d;
+                                            Integer f = newPlayer.inventory.get(leaf);
+                                            newPlayer.inventory.put(leaf.fruit, f + e);
+                                        }
+                                    }
+                                    else{                  
+                                        System.out.println("Can you plant that first?");
+                                    }
+                                }
+                            }
+                            if (move.equals("sell")){
+                                Scanner thing = new Scanner(System.in);
+                                String item = thing.nextLine();
+                                for (Item sold:newPlayer.inventory.keySet()){
+                                    if (sold.name.equals(item)){
+                                        Integer a = newPlayer.sell(sold);
+                                        oldman.money -= a;
+                                        System.out.println("Old man: I still have " + oldman.money + " dollars left. I am still rich");
+                                    }
+                                }
+                            }
+                            if (oldman.money == 120 ){
+                                System.out.println("Old man: Actually, youngster, compared to apple, I prefer pears.");
+                                newPlayer.farm.add(peartree);
+                                peartree.number_of_trees = 0;
+                            }    
+                        } 
                     }
-
-                }catch(Exception e){
-                System.out.println(e.getMessage());
+                } catch(Exception e){
+                    System.out.println(e.getMessage());
+                }
             }
             sc.close();
         }
