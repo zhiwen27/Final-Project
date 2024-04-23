@@ -1,6 +1,7 @@
 import java.util.Hashtable;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Enumeration;
 public class Player {
     private String name;
     private int money;
@@ -114,5 +115,13 @@ public class Player {
         return this.activeHouse;
     }
 
-    // print inventory
+    /**
+     * Print out the inventory
+     */
+    public void printInventory(){
+        Enumeration<Item> keys = this.inventory.keys();
+        while(keys.hasMoreElements()){
+          System.out.println(keys.nextElement());
+        }
+    }
 }
