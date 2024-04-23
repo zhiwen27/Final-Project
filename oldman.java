@@ -1,6 +1,4 @@
 import java.util.Scanner;
-
-import javax.management.RuntimeErrorException;
 public class Oldman {
     int money;
 

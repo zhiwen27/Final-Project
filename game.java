@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Hashtable;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 
@@ -160,4 +159,5 @@ public class Game {
         else{
             System.out.println("Alright! You can come back any time you want!");
         }
-}}
+    }
+}
