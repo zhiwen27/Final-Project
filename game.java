@@ -192,6 +192,7 @@ public class Game {
                                         newPlayer.inventory.put(leaf.fruit, f + e);
                                     }
                                 }else{
+                                    
                                     System.out.println("Can you plant that first?");
                                 }}}
                         if (move.equals("sell")){
