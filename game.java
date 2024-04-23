@@ -59,13 +59,14 @@ public class Game {
 
     public static void main(String[] args) {
         System.out.println("Hi! Welcome to THE NEW WORLD! \n Do you want to start the game? \n (*Please type YES or No)");
-        Scanner sc = new Scanner(System.in);
-        String userInput = sc.nextLine().toUpperCase();
-        if (userInput.contains("YES")){
-            System.out.println("Great! Please create your account: \n (*Please only type the name you want)");
-            userInput = sc.nextLine();
-            Player newPlayer = new Player(userInput);
-            while(newPlayer.toPlay()){
+        boolean startGame = true;
+        while(startGame){
+            Scanner sc = new Scanner(System.in);
+            String userInput = sc.nextLine().toUpperCase();
+            if (userInput.contains("YES")){
+                System.out.println("Great! Please create your account: \n (*Please only type the name you want)");
+                userInput = sc.nextLine();
+                Player newPlayer = new Player(userInput);
                 System.out.println("Account created! \nHi, " + userInput + "!\n\n*****************************************************************");
                 try {
                     File newFile = new File("Start.txt");
@@ -87,7 +88,7 @@ public class Game {
                     if (modeChoice == false){
                         System.out.println("*****************************************************************");
                         Game newGame = new Game().createNewAdv();
-                        newPlayer.setHouse(newGame.mapTour(0));
+                        /*newPlayer.setHouse(newGame.mapTour(0));
                         System.out.println("You're now in the Bedroom.");
                         newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
                         System.out.println("Feel free to explore!");
@@ -100,15 +101,27 @@ public class Game {
                             floorOver = ((MainHouse)newGame.mapTour(0)).goToFloor(1).floorOver();
                         }
                         System.out.println("Do you want to see want you have discovered so far?\n(*Please type in YES or NO)");
-                        userInput = sc.nextLine().toLowerCase();
-                        if (userInput.contains("yes")){
+                        userInput = sc.nextLine().toUpperCase();
+                        if (userInput.contains("YES")){
                            newPlayer.printInventory();
                         }
-                        else if (userInput.contains("no")){
+                        else if (userInput.contains("NO")){
                             System.out.println("Alright, save it for the next time!\n");
                         }
                         System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");
-                        oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
+                        oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);*/
+                        if (oldman.guideCornerHouse(newGame,newPlayer)){
+                            System.out.println("CONGRATULATIONS! YOU WIN!");
+                            startGame = false;
+                        }
+                        else{
+                            System.out.println("\nDear, " + newPlayer.getName() + "do you want to play another round?(*Please type in YES or NO)");
+                            sc.nextLine();
+                            userInput = sc.nextLine().toUpperCase();
+                            if (userInput.contains("NO")){
+                                startGame = false;
+                            }
+                        }
                     }
                     else if (modeChoice == true){
                         newPlayer.farm.add(appletree);
@@ -219,12 +232,13 @@ public class Game {
                     }
                 } catch(Exception e){
                     System.out.println(e.getMessage());
-                }
+                }        
+                sc.close();
             }
-            sc.close();
-        }
-        else{
-            System.out.println("Alright! You can come back any time you want!");
+            else{
+                System.out.println("Alright! You can come back any time you want!");
+                startGame = false;
+            }
         }
     }
 }

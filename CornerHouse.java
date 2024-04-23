@@ -13,16 +13,7 @@ public class CornerHouse extends House{
         super();
         this.chances = 7;
     }
-
-    /**
-     * Name the CornerHouse
-     * @param n the name
-     */
-    public CornerHouse(String n){
-        super(n);
-        this.chances = 7;
-    }
-
+    
     /**
      * Create a random number each time
      * @return the random number
@@ -56,7 +47,7 @@ public class CornerHouse extends House{
     public boolean checkAnswer(int i){
         this.chances -= 1;
         if (i == this.randomNum){
-            System.out.println( "Right Guess!");
+            System.out.println( "Right Guess!\n");
             return true;
         }
         else{
@@ -89,7 +80,6 @@ public class CornerHouse extends House{
             p.setToPlay(false);
         }
         else{
-            System.out.println("Congratulations! You have discovered another key!");
             p.grab(key);
         }
         sc.close();

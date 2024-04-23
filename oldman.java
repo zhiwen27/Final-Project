@@ -123,8 +123,8 @@ public class Oldman {
             int floorNum;
             floorNum = scanner.nextInt();
             mainHouse.activeFloor = floorNum;
-            System.out.println(mainHouse.goToFloor(floorNum));
-            this.guideFloor(mainHouse.goToFloor(floorNum), newPlayer);
+            System.out.println(mainHouse.goToFloor(floorNum - 1));
+            this.guideFloor(mainHouse.goToFloor(floorNum - 1), newPlayer);
             System.out.println("You've now explored the entire Main House!");
             // check inventory and start new story
         }
@@ -137,13 +137,20 @@ public class Oldman {
             int floorNum;
             floorNum = scanner.nextInt();
             mainHouse.activeFloor = floorNum;
-            System.out.println(mainHouse.goToFloor(floorNum));
-            this.guideFloor(mainHouse.goToFloor(floorNum), newPlayer);
-            System.out.println("You've now explored the entire Main House!");
+            System.out.println(mainHouse.goToFloor(floorNum - 1));
+            this.guideFloor(mainHouse.goToFloor(floorNum - 1), newPlayer);
+            System.out.println();
+            System.out.println("You've now explored the entire Main House!\n");
         }
     }
 
-    public void guideCornerHouse(Game g, Player p){
+    /**
+     * Guide through the Corner Houses
+     * @param g the game where Corner Houses are added
+     * @param p the player
+     */
+    public boolean guideCornerHouse(Game g, Player p){
+        boolean continueGame = true;
         try {
             File newFile = new File("Transition.txt");
             Scanner fileReader = new Scanner(newFile);
@@ -157,16 +164,15 @@ public class Oldman {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-        System.out.println("Old man: Hello my friend, long time no see!\nI'm glad you take the courage and try to explore the other places. There're three other Corner Houses:\nAlpha\nBeta\nGamma\nChoose one you want to go!");
-        Scanner scanner = new Scanner(System.in);
-        String userInput;
-        userInput = scanner.nextLine();
-        int cnt = 0;
-        while(cnt < 3){
-            CornerHouse newCornerHouse = new CornerHouse(userInput);
-            newCornerHouse.play(p);
-            System.out.println("Great! Now try to explore another Corner House!");
-            cnt++;
+        CornerHouse newCornerHouse = new CornerHouse();
+        System.out.println("Welcome to the Corner House!");
+        newCornerHouse.play(p);
+        if (p.toPlay()){
+            return continueGame;
+        }
+        else{
+            continueGame = false;
+            return continueGame;
         }
     }
 }
