@@ -1,6 +1,6 @@
 public class Item {
 
-    private int value;
+    public int value;
     public String name;
     private boolean canTake;
 

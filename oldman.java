@@ -13,7 +13,7 @@ public class Oldman {
      * @return the Mode (indicate by the boolean) chosen
      */
     public boolean choice(){
-        System.out.println("Hi, I am old man. \nYou don't have to know me. But tell me, which one do you want? \nSEED on the left or the SWORD on the right? (*Please type in the correct word.)");
+        System.out.println("Hi, I am old man. \nYou don't have to know me. But tell me, which one do you want? \nSEED on the left or the SWORD on the right? (*Please type in the correct word.)\nSorry, please enter 'sword', seed is not completed yet.clear");
         Scanner scanner = new Scanner(System.in);
         String choice;
         choice = scanner.nextLine().toLowerCase();

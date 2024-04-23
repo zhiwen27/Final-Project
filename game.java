@@ -53,8 +53,8 @@ public class Game {
         return this;
     }
 
-    static Tree appletree = new Tree(apple, true, 5,0);
-    static Tree peartree = new Tree (pear, true,5,0);
+    static Tree appletree = new Tree(apple, true, 5, 0, "apple tree", 5);
+    static Tree peartree = new Tree (pear, true,5,0, "pear tree", 10);
 
     /**
      * Go to the certain house on the map
@@ -109,7 +109,7 @@ public class Game {
                     System.out.println("Do you want to see want you have discovered so far?\n(*Please type in YES or NO)");
                     userInput = sc.nextLine().toLowerCase();
                     if (userInput.contains("yes")){
-                        System.out.println(newPlayer.inventory);
+                       System.out.println(newPlayer.inventory);
                     }
                     else if (userInput.contains("no")){
                         System.out.println("Alright, save it for the next time!\n");
@@ -118,15 +118,38 @@ public class Game {
                     oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
                 }
                 else if (modeChoice == true){
-                    newPlayer.recieve(appletree);
+                    newPlayer.farm.add(appletree);
+                    appletree.Num += 1;
                     System.out.println("An apple tree has been added your inventory, try to plant it!\n(*Type in 'options' for more informaiton.)");
                     Scanner choice = new Scanner (System.in);
                     String c = choice. nextLine();
                     if (c.equals("options")){
-                        peartree .options();
+                        appletree .options();
+                        System.out.print("You can use 'plant'command to plant the tree. Try it!");
+                        Scanner p = new Scanner(System.in);
+                        String o = p.nextLine();
+                        if (o.equals("plant")){
+                            newPlayer.plant(appletree);
+                        }
                     }
                     if (c.equals("plant")){
-                        newPlayer.plant(peartree);
+                        newPlayer.plant(appletree);}
+
+                    if (c.equals("water")){
+                        Scanner a = new Scanner(System.in);
+                        System.out.println("Please enter the tree you want to water:");
+                        String r = a.nextLine();
+                        for (Tree tree:newPlayer.farm){
+                            if (tree.fruit.name.equals(a)){
+                                tree.water();
+                            }else{
+                                System.out.println("Can you plant that first?");
+                            }
+                    if (c.equals("harvest")){
+                        appletree.harvest();
+                    }
+                        }
+
                     }
                 }
             } catch(Exception e){
@@ -137,5 +160,4 @@ public class Game {
         else{
             System.out.println("Alright! You can come back any time you want!");
         }
-    }
-}
+}}

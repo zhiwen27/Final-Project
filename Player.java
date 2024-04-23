@@ -58,17 +58,14 @@ public class Player {
     }
 
     public void plant(Tree tree){
-        if (farm.contains(tree)){
-            tree.Num += 1;
-        }
-        else{
-            throw new RuntimeException("We haven't heard of "+tree +" in this world.");
-        }
-    }
+        if (!farm.contains(tree)){
+            System.out.println("Emmmm we haven't heard of that before, may be you want to try it another time");
+        }else{
+            System.out.println("You have had a " + tree + "!");
 
-    public void recieve(Tree tree){
-        farm.add(tree);
-    }
+        }
+}
+
 
     /**
      * If all the keys are taken, then the player wins the game

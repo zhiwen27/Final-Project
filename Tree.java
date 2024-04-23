@@ -1,9 +1,11 @@
+import java.util.Scanner;
 public class Tree extends Item{
     Item fruit;
     boolean live;
     Integer num = 5;
-    Integer Num;
-    public Tree(Item fruit,boolean live,Integer num, Integer Num){
+    Integer Num = 0;
+    public Tree(Item fruit,boolean live,Integer num, Integer Num, String name, Integer value){
+        super(name, value);
         this.fruit = fruit;
         this.live = live;
         this.fruit = fruit;
@@ -33,6 +35,14 @@ public class Tree extends Item{
         }
         else{
             System.out.println("emmmmmmm, It is not the time for harvest. Try water it again.");
+            Scanner r = new Scanner(System.in);
+            String i = r.nextLine();
+            if (i.equals("water")){
+                this.water();
+            }else{
+                this.sick();
+                System.out.println("now you have to water it.");
+            }
             return false;
         }
     }
