@@ -47,6 +47,7 @@ public class Player {
             scanner.close();
             if (Num <= inventory.get(sold)){
                 inventory.put(sold, inventory.get(sold)-Num);
+                
             }
             else{
                 throw new RuntimeException("What? you do not even have that many!");
@@ -62,7 +63,8 @@ public class Player {
             System.out.println("Emmmm we haven't heard of that before, may be you want to try it another time");
         }else{
             System.out.println("You have had a " + tree + "!");
-
+            tree.number_of_trees += 1;
+            this.inventory.put(tree.fruit,0);
         }
 }
 
