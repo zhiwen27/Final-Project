@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
-import.java.util.Hashtable;
+import java.util.Hashtable;
 
 public class Game {
 
