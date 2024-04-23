@@ -39,7 +39,7 @@ public class Player {
         }
     }
 
-    public void sell(Item sold){
+    public Integer sell(Item sold){
         if (inventory.containsKey(sold)){
             System.out.println("Are you going to sell this? how many of " + sold + " do you want to sell?");
             Scanner scanner = new Scanner(System.in);
@@ -47,14 +47,16 @@ public class Player {
             scanner.close();
             if (Num <= inventory.get(sold)){
                 inventory.put(sold, inventory.get(sold)-Num);
-                
+                return Num * sold.value;
             }
             else{
-                throw new RuntimeException("What? you do not even have that many!");
+                System.out.println("What? you do not even have that many!");
+                return 0;
             }
         }
         else{
-            throw new RuntimeException("You can not sell it before you have it.");
+            System.out.println("You can not sell it before you have it.");
+            return 0;
         }
     }
 

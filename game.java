@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
-import.java.util.Hashtable;
+import java.util.Hashtable;
 
 public class Game {
 
@@ -148,7 +148,7 @@ public class Game {
                             }}}
                     if (c.equals("harvest")){
                         appletree.harvest();}
-                    System.out.println("OK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you.\n you have received 50 dollars. You can use your money to buy other trees from the old man.\n you can also sell your fruit to him. ");
+                    System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you.\nYou have received 50 dollars. MONEY WILL MAKE YOUR WAY OUT.\nYou can also sell your fruit to him. ");
                     oldman.money -= 50;
                     while (oldman.money > 0){
                         Scanner Move = new Scanner(System.in);
@@ -158,7 +158,7 @@ public class Game {
                             System.out.println("Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!");
                         }
                         if (move.equals("plant")){
-                            System.out.println("Which tree do you want to plant?\n Now you have " + newPlayer.farm + "in your farm");
+                            System.out.println("What kind of tree do you want to plant?");
                             Scanner tree = new Scanner(System.in);
                             String foliage = tree.nextLine();
                             for (Tree i: newPlayer.farm){
@@ -197,11 +197,18 @@ public class Game {
                         if (move.equals("sell")){
                             Scanner thing = new Scanner(System.in);
                             String item = thing.nextLine();
-                            for (Item sold:newPlayer.inventory){
+                            for (Item sold:newPlayer.inventory.keySet()){
                                 if (sold.name.equals(item)){
-                                    newPlayer.sell(sold);
+                                    Integer a = newPlayer.sell(sold);
+                                    oldman.money -= a;
+                                    System.out.println("Old man: I still have " + oldman.money + " dollars left. I am still rich");
                                 }
                             }
+                        }
+                        if (oldman.money == 120 ){
+                            System.out.println("Old man:Actually, youngster, compared to apple, I prefer pears.");
+                            newPlayer.farm.add(peartree);
+                            peartree.number_of_trees = 0;
                         }
                         }
 
