@@ -109,7 +109,7 @@ public class Game {
                     System.out.println("Do you want to see want you have discovered so far?\n(*Please type in YES or NO)");
                     userInput = sc.nextLine().toLowerCase();
                     if (userInput.contains("yes")){
-                       newPlayer.printInventory;
+                        System.out.println("1");
                     }
                     else if (userInput.contains("no")){
                         System.out.println("Alright, save it for the next time!\n");
@@ -123,7 +123,6 @@ public class Game {
                     System.out.println("An apple tree has been added your inventory, try to plant it!\n(*Type in 'options' for more informaiton.)");
                     Scanner choice = new Scanner (System.in);
                     String c = choice. nextLine();
-<<<<<<< HEAD
 
                     if (c.equals("options")){
                         appletree .options();
@@ -219,10 +218,6 @@ public class Game {
                     }
 
                 }catch(Exception e){
-=======
-                }
-            } catch(Exception e){
->>>>>>> 9b09ddbaefebaf90db48f32d24da3f856d14e5fa
                 System.out.println(e.getMessage());
             }
             sc.close();
