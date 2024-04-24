@@ -149,8 +149,8 @@ public class Oldman {
      * @param g the game where Corner Houses are added
      * @param p the player
      */
-    public boolean guideCornerHouse(Game g, Player p){
-        boolean continueGame = true;
+    public void guideCornerHouse(Game g, Player p){
+        //boolean continueGame = true;
         try {
             File newFile = new File("Transition.txt");
             Scanner fileReader = new Scanner(newFile);
@@ -167,11 +167,11 @@ public class Oldman {
         CornerHouse newCornerHouse = new CornerHouse();
         System.out.println("Welcome to the Corner House!");
         newCornerHouse.play(p);
-        if (p.toPlay()){
+        /*if (p.toPlay()){
             continueGame = false;
             return continueGame;
         }
-        /*else{
+        else{
             System.out.println("\nDear " + p.getName() + ", do you want to play another round?\n(*Please type in YES or NO)");
             Scanner scanner = new Scanner(System.in);
             String userInput;
@@ -183,6 +183,5 @@ public class Oldman {
                 continueGame = true;
             }
         }*/
-        return continueGame;
     }
 }
