@@ -308,6 +308,6 @@ public class Game {
         
         else{
             System.out.println("Alright! You can come back any time you want!");
-            //startGame = false;
+            //startGame = false
         }
     }}
