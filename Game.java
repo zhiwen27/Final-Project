@@ -57,13 +57,8 @@ public class Game {
         return this.mapAdv.get(houseNum);
     }
 
-    public void playAdv(){
-        
-    }
-
     public static void main(String[] args) {
         System.out.println("Hi! Welcome to THE NEW WORLD! \n Do you want to start the game? \n (*Please type YES or No)");
-        //boolean startGame = true;
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine().toUpperCase();
         if (userInput.contains("YES")){
@@ -127,11 +122,6 @@ public class Game {
                         System.out.println("An error occurred.");
                         e.printStackTrace();
                     }
-                    //startGame = false;
-                    /*else{
-                        System.out.println("Do you want to start again?");
-                        //startGame = true;
-                    }*/
                 }
                 else if (modeChoice == true){
                     newPlayer.farm.add(appletree);
