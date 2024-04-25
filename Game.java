@@ -57,13 +57,8 @@ public class Game {
         return this.mapAdv.get(houseNum);
     }
 
-    public void playAdv(){
-        
-    }
-
     public static void main(String[] args) {
         System.out.println("Hi! Welcome to THE NEW WORLD! \n Do you want to start the game? \n (*Please type YES or No)");
-        //boolean startGame = true;
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine().toUpperCase();
         if (userInput.contains("YES")){
@@ -91,7 +86,7 @@ public class Game {
                 if (modeChoice == false){
                     System.out.println("*****************************************************************");
                     Game newGame = new Game().createNewAdv();
-                    newPlayer.setHouse(newGame.mapTour(0));
+                    /*newPlayer.setHouse(newGame.mapTour(0));
                     System.out.println("You're now in the Bedroom.");
                     newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
                     System.out.println("Feel free to explore!");
@@ -112,7 +107,7 @@ public class Game {
                         System.out.println("Alright, save it for the next time!\n");
                     }
                     System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");
-                    oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
+                    oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);*/
                     oldman.guideCornerHouse(newGame,newPlayer);
                     try {
                         File newFile = new File("End.txt");
@@ -127,11 +122,6 @@ public class Game {
                         System.out.println("An error occurred.");
                         e.printStackTrace();
                     }
-                    //startGame = false;
-                    /*else{
-                        System.out.println("Do you want to start again?");
-                        //startGame = true;
-                    }*/
                 }
                 else if (modeChoice == true){
                     newPlayer.farm.add(appletree);
@@ -312,4 +302,5 @@ public class Game {
             System.out.println("Alright! You can come back any time you want!");
             //startGame = false
         }
-    }}
+    }
+}

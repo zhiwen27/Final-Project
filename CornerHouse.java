@@ -82,7 +82,6 @@ public class CornerHouse extends House{
         else{
             p.grab(key);
         }
-        sc.close();
         return p;
     }
 

@@ -165,23 +165,10 @@ public class Oldman {
             e.printStackTrace();
         }
         CornerHouse newCornerHouse = new CornerHouse();
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Corner House!");
         newCornerHouse.play(p);
-        /*if (p.toPlay()){
-            continueGame = false;
-            return continueGame;
-        }
-        else{
-            System.out.println("\nDear " + p.getName() + ", do you want to play another round?\n(*Please type in YES or NO)");
-            Scanner scanner = new Scanner(System.in);
-            String userInput;
-            userInput = scanner.nextLine().toUpperCase();
-            if (this.checkInput(userInput, "NO")){
-                continueGame = false;
-            }
-            else if (this.checkInput(userInput, "YES")){
-                continueGame = true;
-            }
-        }*/
+        String userInput;
+        userInput = scanner.nextLine();
     }
 }
