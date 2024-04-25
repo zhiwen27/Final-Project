@@ -71,18 +71,6 @@ public class Player {
             tree.number_of_trees += 1;
             this.inventory.put(tree.fruit,0);
         }
-}
-
-
-    /**
-     * If all the keys are taken, then the player wins the game
-     * @return if the player wins
-     */
-    public boolean winGame(){
-        if (this.inventory.get("Key") == 6){
-            return true;
-        }
-        return false;
     }
     
     /**
@@ -118,12 +106,21 @@ public class Player {
     }
 
     /**
+     * Getter for name
+     * @return name of the player
+     */
+    public String getName(){
+        return this.name;
+    }
+
+    /**
      * Print out the inventory
      */
     public void printInventory(){
         Enumeration<Item> keys = this.inventory.keys();
         while(keys.hasMoreElements()){
           System.out.println(keys.nextElement());
+          System.out.println();
         }
     }
 
