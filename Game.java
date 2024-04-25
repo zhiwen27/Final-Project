@@ -169,8 +169,9 @@ public class Game {
                     }
                     System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you.\nYou have received 50 dollars. MONEY WILL MAKE YOUR WAY OUT.\nYou can also sell your fruit to him. ");
                     oldman.money -= 50;
+                    Scanner Move = new Scanner(System.in);
                     while (oldman.money > 0){
-                        Scanner Move = new Scanner(System.in);
+                        
                         String move = Move.nextLine();
                         System.out.println("which move do you want to do next? \n Enter 'options' for more information");
                         if (move.equals("options")){
@@ -227,10 +228,11 @@ public class Game {
                         while (oldman.money > 0){
                             Scanner Mov = new Scanner(System.in);
                             String mov = Mov.nextLine();
-                            if (mov.equalsIgnoreCase("options")){
+                            switch(mov){
+                            case "options":{
                                 System.out.println("Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!");
                             }
-                            if (mov.equals("plant")){
+                            case "plant":{
                                 System.out.println("What kind of tree do you want to plant?");
                                 Scanner tree = new Scanner(System.in);
                                 String foliage = tree.nextLine();
@@ -243,7 +245,7 @@ public class Game {
                                     }
                                 }
                             }
-                            if (mov.equalsIgnoreCase("water")){
+                            case "water":{
                                 Scanner a = new Scanner(System.in);
                                 System.out.println("Please enter the tree you want to water:");
                                 String r = a.nextLine();
@@ -256,7 +258,7 @@ public class Game {
                                     }
                                 }
                             }
-                            if (mov.equalsIgnoreCase("harvest")){
+                            case "harvest":{
                                 System.out.println("which tree do you want to harvest?");
                                 Scanner tree = new Scanner(System.in);
                                 String foliage = tree.nextLine();
@@ -277,7 +279,7 @@ public class Game {
                                     }
                                 }
                             }
-                            if (mov.equalsIgnoreCase("sell")){
+                            case "sell":{
                                 System.out.println("What do you want to sell?");
                                 Scanner thing = new Scanner(System.in);
                                 String item = thing.nextLine();
@@ -289,10 +291,10 @@ public class Game {
                                     }
                                 }
                             }
-                            else{
+                            defalut:{
                                 System.out.println("I can't hear you, could you say that again?");
                             }
-                            }
+                            }}
                             if (oldman.money == 120 ){
                                 System.out.println("Old man: Actually, youngster, compared to apple, I prefer pears.");
                                 newPlayer.farm.add(peartree);
