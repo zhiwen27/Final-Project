@@ -165,7 +165,10 @@ public class Oldman {
             e.printStackTrace();
         }
         CornerHouse newCornerHouse = new CornerHouse();
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Corner House!");
         newCornerHouse.play(p);
+        String userInput;
+        userInput = scanner.nextLine();
     }
 }
