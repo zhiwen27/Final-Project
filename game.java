@@ -57,6 +57,10 @@ public class Game {
         return this.mapAdv.get(houseNum);
     }
 
+    public void playAdv(){
+        
+    }
+
     public static void main(String[] args) {
         System.out.println("Hi! Welcome to THE NEW WORLD! \n Do you want to start the game? \n (*Please type YES or No)");
         //boolean startGame = true;

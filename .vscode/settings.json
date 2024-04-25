@@ -1,6 +1,7 @@
 {
     "java.project.referencedLibraries": [
-        "guava-31.1-jre.jar"
+        "guava-31.1-jre.jar",
+        "test-lib/**/*.jar"
     ],
     "java.project.sourcePaths": [
         "."
