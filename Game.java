@@ -10,6 +10,12 @@ public class Game {
     ArrayList<House> mapAdv;
     MutableGraph<Tree> mapFarm;
 
+    static Item apple = new Item("apple",5,true);
+    static Item pear = new Item("pear", 10, true);
+    static Item dimond = new Item ("dimond", 100, true);
+    static Tree appletree = new Tree(apple, true, 5, 0, "apple tree", 5);
+    static Tree peartree = new Tree (pear, true,5,0, "pear tree", 10);
+
     /**
      * Constructor for Game
      */
@@ -28,10 +34,6 @@ public class Game {
         }
         return s;
     }
-    static Item apple = new Item("apple",5,true);
-    static Item pear = new Item("pear", 10, true);
-    static Item dimond = new Item ("dimond", 100, true);
-
 
     /**
      * Create the map of the Adventure Mode
@@ -43,9 +45,6 @@ public class Game {
         this.mapAdv.add(mainHouse);
         return this;
     }
-
-    static Tree appletree = new Tree(apple, true, 5, 0, "apple tree", 5);
-    static Tree peartree = new Tree (pear, true,5,0, "pear tree", 10);
 
     /**
      * Go to the certain house on the map
@@ -165,7 +164,6 @@ public class Game {
                         oldman.money -= 50;
                         Scanner Move = new Scanner(System.in);
                         while (oldman.money > 0){
-                            
                             String move = Move.nextLine();
                             System.out.println("which move do you want to do next? \n Enter 'options' for more information");
                             if (move.equals("options")){
