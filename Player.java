@@ -117,6 +117,7 @@ public class Player {
      * Print out the inventory
      */
     public void printInventory(){
+        System.out.println("You have now discovered:\n");
         Enumeration<Item> keys = this.inventory.keys();
         while(keys.hasMoreElements()){
           System.out.println(keys.nextElement());

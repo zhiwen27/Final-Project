@@ -75,14 +75,19 @@ public class Oldman {
         }
         while(!r.moveableItemCollection.isEmpty()){
             System.out.println("\n Discover those really valueable things! \n(*Please type in the name of the item.)");
-            userInput = scanner.nextLine();
-            try{
-                r.checkItemInput(userInput);
-                Item i = new Item();
-                i = r.removeItem(userInput);
-                player.grab(i);
-            } catch(RuntimeException e){
-                System.out.println(e.getMessage());
+            userInput = scanner.nextLine().toUpperCase();
+            if(userInput.contains("INVENTORY")){
+                    player.printInventory();
+            }
+            else{
+                try{
+                    r.checkItemInput(userInput);
+                    Item i = new Item();
+                    i = r.removeItem(userInput);
+                    player.grab(i);
+                } catch(RuntimeException e){
+                    System.out.println(e.getMessage());
+                }
             }
         }
     }
@@ -95,12 +100,17 @@ public class Oldman {
         System.out.println("Please type in the name of the room you want to explore next!\n(*Please type in the correct word.)");
         Scanner scanner = new Scanner(System.in);
         String userInput;
-        userInput = scanner.nextLine();
-        if (f.checkRoomInput(userInput)){
-            this.guideRoom(f.goToRoom(f,userInput), newPlayer);
+        userInput = scanner.nextLine().toUpperCase();
+        if(userInput.contains("INVENTORY")){
+            newPlayer.printInventory();
         }
         else{
-            throw new RuntimeException("Please enter the required word.");
+            if (f.checkRoomInput(userInput)){
+                this.guideRoom(f.goToRoom(f,userInput), newPlayer);
+            }
+            else{
+                throw new RuntimeException("Please enter the required word.");
+            }
         }
     }
 
@@ -113,34 +123,42 @@ public class Oldman {
         System.out.println("You can go up and down the rooms to explore the Main House. (*You can only go to adjacent floors. Please type in GO UP or GO DOWN.)");
         Scanner scanner = new Scanner(System.in);
         String userInput;
-        userInput = scanner.nextLine().toLowerCase();
-        if (this.checkInput(userInput, "up")){
-            mainHouse.goUpFloor();
-            this.guideFloor(mainHouse.goToFloor(mainHouse.activeFloor), newPlayer);
-            System.out.println("You've now explored all the rooms on the third floor!\nTry explore other floors you haven't been to!\n");
-            System.out.println(mainHouse);
-            System.out.println("Type in the floor number you want to go to.\n(*Please only type in a number.)");
-            int floorNum;
-            floorNum = scanner.nextInt();
-            mainHouse.activeFloor = floorNum;
-            System.out.println(mainHouse.goToFloor(floorNum - 1));
-            this.guideFloor(mainHouse.goToFloor(floorNum - 1), newPlayer);
-            System.out.println("You've now explored the entire Main House!");
-            // check inventory and start new story
+        userInput = scanner.nextLine().toUpperCase();
+        if(userInput.contains("INVENTORY")){
+            newPlayer.printInventory();
         }
-        else if (this.checkInput(userInput, "down")){
-            mainHouse.goDownFloor();
-            this.guideFloor(mainHouse.goToFloor(mainHouse.activeFloor), newPlayer);
-            System.out.println("You've now explored all the rooms on the first floor!\nTry explore other floors you haven't been to!\n");
-            System.out.println(mainHouse);
-            System.out.println("Type in the floor number you want to go to.\n(*Please only type in a number.)");
-            int floorNum;
-            floorNum = scanner.nextInt();
-            mainHouse.activeFloor = floorNum;
-            System.out.println(mainHouse.goToFloor(floorNum - 1));
-            this.guideFloor(mainHouse.goToFloor(floorNum - 1), newPlayer);
-            System.out.println();
-            System.out.println("You've now explored the entire Main House!\n");
+        else{
+            try{
+                if (this.checkInput(userInput, "UP")){
+                    mainHouse.goUpFloor();
+                    this.guideFloor(mainHouse.goToFloor(mainHouse.activeFloor), newPlayer);
+                    System.out.println("You've now explored all the rooms on the third floor!\nTry explore other floors you haven't been to!\n");
+                    System.out.println(mainHouse);
+                    System.out.println("Type in the floor number you want to go to.\n(*Please only type in a number.)");
+                    int floorNum;
+                    floorNum = scanner.nextInt();
+                    mainHouse.activeFloor = floorNum;
+                    System.out.println(mainHouse.goToFloor(floorNum - 1));
+                    this.guideFloor(mainHouse.goToFloor(floorNum - 1), newPlayer);
+                    System.out.println("You've now explored the entire Main House!");
+                }
+                else if (this.checkInput(userInput, "DOWN")){
+                    mainHouse.goDownFloor();
+                    this.guideFloor(mainHouse.goToFloor(mainHouse.activeFloor), newPlayer);
+                    System.out.println("You've now explored all the rooms on the first floor!\nTry explore other floors you haven't been to!\n");
+                    System.out.println(mainHouse);
+                    System.out.println("Type in the floor number you want to go to.\n(*Please only type in a number.)");
+                    int floorNum;
+                    floorNum = scanner.nextInt();
+                    mainHouse.activeFloor = floorNum;
+                    System.out.println(mainHouse.goToFloor(floorNum - 1));
+                    this.guideFloor(mainHouse.goToFloor(floorNum - 1), newPlayer);
+                    System.out.println();
+                    System.out.println("You've now explored the entire Main House!\n");
+                }
+            } catch (RuntimeException e){
+                System.out.println(e.getMessage());
+            }
         }
     }
 
@@ -149,8 +167,8 @@ public class Oldman {
      * @param g the game where Corner Houses are added
      * @param p the player
      */
-    public void guideCornerHouse(Game g, Player p){
-        //boolean continueGame = true;
+    public boolean guideCornerHouse(Game g, Player p){
+        boolean continueGame = true;
         try {
             File newFile = new File("Transition.txt");
             Scanner fileReader = new Scanner(newFile);
@@ -169,6 +187,37 @@ public class Oldman {
         System.out.println("Welcome to the Corner House!");
         newCornerHouse.play(p);
         String userInput;
-        userInput = scanner.nextLine();
+        if(p.toPlay()){
+            System.out.println("Do you want to see want you have discovered so far?\n(*Please enter YES or NO)");
+            userInput = scanner.nextLine().toUpperCase();
+            if (userInput.contains("YES")){
+                p.printInventory();
+            }
+            else if (userInput.contains("NO")){
+                System.out.println("Alright!\n");
+            }
+            try {
+                File newFile = new File("End.txt");
+                Scanner fileReader = new Scanner(newFile);
+                while (fileReader.hasNextLine()) {
+                    String data = fileReader.nextLine();
+                    System.out.println(data);
+                }
+                System.out.println("\n");
+                fileReader.close(); 
+            } catch (FileNotFoundException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+            continueGame = false;
+        }
+        else{
+            System.out.println("Sorry, " + p.getName() + ". Do you want to play another round?\n(*Please enter YES or No)");
+            userInput = scanner.nextLine().toUpperCase();
+            if(userInput.contains("NO")){
+                continueGame = false;
+            }
+        }
+        return continueGame;
     }
 }
