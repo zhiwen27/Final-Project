@@ -56,13 +56,27 @@ public class Game {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hi! Welcome to THE NEW WORLD! \n Do you want to start the game? \n (*Please enter YES or No)");
+        System.out.println("Welcome to THE NEW WORLD!\n");
+        try {
+            File newFile = new File("Cheatsheet.md");
+            Scanner fileReader = new Scanner(newFile);
+            while (fileReader.hasNextLine()) {
+                String data = fileReader.nextLine();
+                System.out.println(data);
+            }
+            System.out.println("\n");
+            fileReader.close(); 
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        System.out.println("Do you want to start the game?\n(*Please enter YES or No.)");
         Scanner sc = new Scanner(System.in);
         boolean startGame;
         String userInput = sc.nextLine().toUpperCase();
         if (userInput.contains("YES")){
             startGame = true;
-            System.out.println("Great! Please create your account: \n (*Please only type the name you want)");
+            System.out.println("Great! Please create your account: \n (*Please only type the name you want.)");
             userInput = sc.nextLine();
             Player newPlayer = new Player(userInput);
             String name = userInput;
