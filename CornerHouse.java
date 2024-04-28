@@ -76,7 +76,7 @@ public class CornerHouse extends House{
             play = this.checkAnswer(guess);
         }
         if (!play){
-            System.out.println("GAME OVER!");
+            System.out.println("\nGAME OVER!\n");
             p.setToPlay(false);
         }
         else{

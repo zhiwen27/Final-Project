@@ -89,7 +89,7 @@ public class Game {
                     if (modeChoice == false){
                         System.out.println("*****************************************************************");
                         Game newGame = new Game().createNewAdv();
-                        newPlayer.setHouse(newGame.mapTour(0));
+                        /*newPlayer.setHouse(newGame.mapTour(0));
                         System.out.println("You're now in the Bedroom.");
                         newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
                         System.out.println("Feel free to explore!");
@@ -104,18 +104,10 @@ public class Game {
                             } catch (RuntimeException e){
                                 System.out.println(e.getMessage());
                             }
-                        }
-                        System.out.println("Do you want to see want you have discovered so far?\n(*Please enter YES or NO)");
-                        userInput = sc.nextLine().toUpperCase();
-                        if (userInput.contains("YES")){
-                           newPlayer.printInventory();
-                        }
-                        else if (userInput.contains("NO")){
-                            System.out.println("Alright, save it for the next time!\n");
-                        }
+                        }*/
                         System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");
                         oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
-                        boolean continueGame;
+                        /*boolean continueGame;
                         continueGame = oldman.guideCornerHouse(newGame,newPlayer);
                         if ((!continueGame) && (newPlayer.toPlay())){
                             startGame = false;
@@ -124,7 +116,7 @@ public class Game {
                             startGame = false;
                             System.out.println("Alright! You can come back any time you want!");
                         }
-                        newPlayer = new Player(name);
+                        newPlayer = new Player(name);*/
                     }
                     else if (modeChoice == true){
                         newPlayer.farm.add(appletree);
