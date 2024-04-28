@@ -41,7 +41,7 @@ public class CornerHouse extends House{
 
     /**
      * Check the guess with the answer
-     * @param i the number the user type in
+     * @param i the number the user enter
      * @return if the guess is bigger or smaller than the answer
      */
     public boolean checkAnswer(int i){
@@ -71,7 +71,7 @@ public class CornerHouse extends House{
         Item key = new Item("Key",500);
         boolean play = false;
         while((this.checkChances()) && (!play)){
-            System.out.println("Please type in a guess between 1 and 100:");
+            System.out.println("Please enter a guess between 1 and 100:");
             int guess = sc.nextInt();
             play = this.checkAnswer(guess);
         }

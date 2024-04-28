@@ -89,7 +89,7 @@ public class Game {
                     if (modeChoice == false){
                         System.out.println("*****************************************************************");
                         Game newGame = new Game().createNewAdv();
-                        /*newPlayer.setHouse(newGame.mapTour(0));
+                        newPlayer.setHouse(newGame.mapTour(0));
                         System.out.println("You're now in the Bedroom.");
                         newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
                         System.out.println("Feel free to explore!");
@@ -105,14 +105,14 @@ public class Game {
                                 System.out.println(e.getMessage());
                             }
                         }
-                        System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");*/
+                        System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");
                         try{
                             oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
                         } catch(RuntimeException e){
                             System.out.println(e.getMessage());
                             oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
                         }
-                        /*boolean continueGame;
+                        boolean continueGame;
                         continueGame = oldman.guideCornerHouse(newGame,newPlayer);
                         if ((!continueGame) && (newPlayer.toPlay())){
                             startGame = false;
@@ -121,7 +121,7 @@ public class Game {
                             startGame = false;
                             System.out.println("Alright! You can come back any time you want!");
                         }
-                        newPlayer = new Player(name);*/
+                        newPlayer = new Player(name);
                     }
                     else if (modeChoice == true){
                         newPlayer.farm.add(appletree);
