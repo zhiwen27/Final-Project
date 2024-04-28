@@ -104,9 +104,14 @@ public class Game {
                             } catch (RuntimeException e){
                                 System.out.println(e.getMessage());
                             }
-                        }*/
-                        System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");
-                        oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
+                        }
+                        System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");*/
+                        try{
+                            oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
+                        } catch(RuntimeException e){
+                            System.out.println(e.getMessage());
+                            oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
+                        }
                         /*boolean continueGame;
                         continueGame = oldman.guideCornerHouse(newGame,newPlayer);
                         if ((!continueGame) && (newPlayer.toPlay())){
