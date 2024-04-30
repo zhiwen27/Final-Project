@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
-<<<<<<< HEAD
-import java.util.Hashtable;
-import java.util.NoSuchElementException;
-=======
->>>>>>> 3eb0b79b9eef7788d0525d86f10d91ed700ba906
 
 public class Game {
 
@@ -160,54 +155,7 @@ public class Game {
                         if (c.equals("plant")){
                             newPlayer.plant(appletree);
                         }
-<<<<<<< HEAD
-                    }
-                    if (c.equals("plant")){
-                        newPlayer.plant(appletree);
-                    }
-                    if (c.equals("water")){
-                        Scanner a = new Scanner(System.in);
-                        System.out.println("Please enter the tree you want to water:");
-                        String r = a.nextLine();
-                        for (Tree tree:newPlayer.farm){
-                            if (tree.name.equals(a)){
-                                tree.water();
-                            }
-                            else{
-                                System.out.println("Can you plant that first?");
-                            }
-                        }
-                    }
-                    if (c.equals("harvest")){
-                        appletree.harvest();
-                    }
-                    System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you.\nYou have received 50 dollars. MONEY WILL MAKE YOUR WAY OUT.\nYou can also sell your fruit to him. ");
-                    oldman.money -= 50;
-
-                    while (oldman.money > 0){
-                        Scanner Move = new Scanner(System.in);
-                        String move= Move.nextLine();   
-                        System.out.println("which move do you want to do next? \n Enter 'options' for more information");
-                        if (move.equals("options")){
-                            System.out.println("Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!");
-                        }
-                        if (move.equals("plant")){
-                            System.out.println("What kind of tree do you want to plant?");
-                            Scanner tree = new Scanner(System.in);
-                            String foliage = tree.nextLine();
-                            for (Tree i: newPlayer.farm){
-                                if (i.name.equals(foliage)){
-                                    newPlayer.plant(i);
-                                }
-                                else{
-                                    System.out.print("You do not have that tree. You can get different kinds of plants from the old man.");
-                                }
-                            }
-                        }
-                        if (move.equals("water")){
-=======
                         if (c.equals("water")){
->>>>>>> 3eb0b79b9eef7788d0525d86f10d91ed700ba906
                             Scanner a = new Scanner(System.in);
                             System.out.println("Please enter the tree you want to water:");
                             String r = a.nextLine();
@@ -225,29 +173,6 @@ public class Game {
                         }
                         System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you.\nYou have received 50 dollars. MONEY WILL MAKE YOUR WAY OUT.\nYou can also sell your fruit to him. ");
                         oldman.money -= 50;
-<<<<<<< HEAD
-                        Scanner Mov = new Scanner(System.in);
-                        //Starter finished
-                        while (oldman.money > 0){
-                            try {
-                                String mov = Mov.nextLine(); 
-                            
-                                switch(mov){
-                                case "options":{
-                                    System.out.println("Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!");
-                                    break;
-                                }
-                                case "plant":{
-                                    System.out.println("What kind of tree do you want to plant?");
-                                    Scanner tree = new Scanner(System.in);
-                                    String foliage = tree.nextLine();
-                                    for (Tree i: newPlayer.farm){
-                                        if (i.name.equals(foliage)){
-                                            newPlayer.plant(i);
-                                        }
-                                        else{
-                                            System.out.print("You do not have that tree. You can get different kinds of plants from the old man.");
-=======
                         Scanner Move = new Scanner(System.in);
                         while (oldman.money > 0){
                             String move = Move.nextLine();
@@ -294,23 +219,12 @@ public class Game {
                                             Integer e = a * d;
                                             Integer f = newPlayer.inventory.get(leaf);
                                             newPlayer.inventory.put(leaf.fruit, f + e);
->>>>>>> 3eb0b79b9eef7788d0525d86f10d91ed700ba906
                                         }
                                     }
-                                    break;
+                                    else{                  
+                                        System.out.println("Can you plant that first?");
+                                    }
                                 }
-<<<<<<< HEAD
-                                case "water":{
-                                    Scanner a = new Scanner(System.in);
-                                    System.out.println("Please enter the tree you want to water:");
-                                    String r = a.nextLine();
-                                    for (Tree tree:newPlayer.farm){
-                                        if (tree.name.equals(r)){
-                                            tree.water();
-                                        }
-                                        else{
-                                            System.out.println("Can you plant that first?");
-=======
                             }
                             System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you.\nYou have received 50 dollars. MONEY WILL MAKE YOUR WAY OUT.\nYou can also sell your fruit to him.\n click 'Enter' on your keyboard to start");
                             oldman.money -= 50;
@@ -331,13 +245,9 @@ public class Game {
                                         }
                                         else{
                                             System.out.print("You do not have that tree. You can get different kinds of plants from the old man.");
->>>>>>> 3eb0b79b9eef7788d0525d86f10d91ed700ba906
                                         }
                                     }
-                                    break;
                                 }
-<<<<<<< HEAD
-=======
                                 case "water":{
                                     Scanner a = new Scanner(System.in);
                                     System.out.println("Please enter the tree you want to water:");
@@ -351,7 +261,6 @@ public class Game {
                                         }
                                     }
                                 }
->>>>>>> 3eb0b79b9eef7788d0525d86f10d91ed700ba906
                                 case "harvest":{
                                     System.out.println("which tree do you want to harvest?");
                                     Scanner tree = new Scanner(System.in);
@@ -372,10 +281,6 @@ public class Game {
                                             System.out.println("Can you plant that first?");
                                         }
                                     }
-<<<<<<< HEAD
-                                    break;
-=======
->>>>>>> 3eb0b79b9eef7788d0525d86f10d91ed700ba906
                                 }
                                 case "sell":{
                                     System.out.println("What do you want to sell?");
@@ -386,24 +291,6 @@ public class Game {
                                             Integer a = newPlayer.sell(sold);
                                             oldman.buy(sold);
                                             System.out.println("Old man: I still have " + oldman.money + " dollars left. I am still rich");
-<<<<<<< HEAD
-                                        }break;
-                                    }
-                                    
-                            }}}catch (NoSuchElementException e) {
-                                System.out.println("No input found. Please provide input and try again.");}}}}
-                            if (oldman.money == 120 ){
-                                System.out.println("Old man: Actually, youngster, compared to apple, I prefer pears.");
-                                newPlayer.farm.add(peartree);
-                                peartree.number_of_trees = 0;
-                            } 
-                        
-                    }catch(Exception e){
-                System.out.println(e.getMessage());}
-                    
-            sc.close();}
-        
-=======
                                         }
                                     }
                                 }
@@ -426,9 +313,8 @@ public class Game {
             }
             sc.close();
         }
->>>>>>> 3eb0b79b9eef7788d0525d86f10d91ed700ba906
         else{
             System.out.println("Alright! You can come back any time you want!");
         }
-    
-}}
+    }
+}
