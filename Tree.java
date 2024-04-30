@@ -20,7 +20,7 @@ public class Tree extends Item{
      * increase the number of fruit.
      */
     public void water(){
-        System.out.println("GROWING.........");
+        System.out.println("GROWING......");
         numFruit += 5;
     }
 
@@ -28,11 +28,11 @@ public class Tree extends Item{
      * control when the tree dies
      */
     public void sick(){
-        System.out.println("NO!MAGGOT IS FOUND ON YOUR TREEEEEEEEEE");
+        System.out.println("NO! MAGGOT IS FOUND ON YOUR TREEEEEEEEEE!");
         numFruit -= 5;
         if (numFruit <= 0){
             live = false;
-            System.out.println("In memory of all these trees, you lose one of the " + this.fruit.name + "tree.");
+            System.out.println("In memory of all these trees, you lose one of the " + this.fruit.name.toLowerCase() + " tree.");
         }
     }
 
@@ -40,9 +40,10 @@ public class Tree extends Item{
      * @retrun whether the action is applicable
      */
     public boolean harvest(){
+        System.out.println("Good job! You have " + numFruit + " " + this.fruit.name + " before you harvest!");
         if (numFruit >= 15){
             numFruit -= 10;
-            System.out.println("There are " + fruit + " " + this.fruit.name + "s left ");
+            System.out.println("Now you have " + numFruit + " " + this.fruit.name + " left on the tree!");
             return true;
         }
         else{

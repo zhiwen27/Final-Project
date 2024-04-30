@@ -51,7 +51,7 @@ public class Player {
      */
     public Integer sell(Item sold){
         if (inventory.containsKey(sold)){
-            System.out.println("Are you going to sell this? How many " + sold + " do you want to sell?");
+            System.out.println("Are you going to sell this? How many " + sold.name.toLowerCase() + " do you want to sell?");
             Scanner scanner = new Scanner(System.in);
             Integer num = scanner.nextInt();
             if (num <= inventory.get(sold)){
@@ -127,11 +127,10 @@ public class Player {
      * Print out the inventory
      */
     public void printInventory(){
-        System.out.println("You have now discovered:\n");
+        System.out.println("You have now discovered:");
         Enumeration<Item> keys = this.inventory.keys();
         while(keys.hasMoreElements()){
           System.out.println(keys.nextElement());
-          System.out.println();
         }
     }
 

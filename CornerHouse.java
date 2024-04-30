@@ -68,7 +68,7 @@ public class CornerHouse extends House{
     public Player play(Player p){
         this.createRandomNum();
         Scanner sc = new Scanner(System.in);
-        Item key = new Item("Key",500);
+        Item key = new Item("KEY",500);
         boolean play = false;
         while((this.checkChances()) && (!play)){
             System.out.println("Please enter a guess between 1 and 100:");

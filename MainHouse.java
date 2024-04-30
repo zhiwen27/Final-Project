@@ -75,8 +75,8 @@ public class MainHouse extends House{
      * Printing for floors
      */
     public String toString(){
-        String printer = "NOTE: You're now on Floor " + (this.activeFloor + 1) + ".\n";
-        printer += "The Main House has 3 floors:\n\n";
+        String printer = "NOTE: You're now on Floor " + (this.activeFloor + 1) + ".\n\n";
+        printer += "The Main House has 3 floors:\n";
         int cnt = 1;
         for (Floor floor: this.floors){
             printer += "Floor " + cnt + ":\n";

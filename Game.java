@@ -75,13 +75,13 @@ public class Game {
         String userInput = sc.nextLine().toUpperCase();
         if (userInput.contains("YES")){
             startGame = true;
-            System.out.println("Great! Please create your account: \n (*Please only enter the name you want.)");
+            System.out.println("Great! Please create your account:\n(*Please only enter the name you want.)");
             userInput = sc.nextLine();
             Player newPlayer = new Player(userInput);
             String name = userInput;
-            System.out.println("Account created! \nHi, " + userInput + "!\n");
+            System.out.println("Account created! \nHi, " + userInput + "!");
             while(startGame){
-                System.out.println("\n*****************************************************************");
+                System.out.println("\n**********************************************************************************************************************************");
                 try {
                     File newFile = new File("Start.txt");
                     Scanner fileReader = new Scanner(newFile);
@@ -89,7 +89,7 @@ public class Game {
                         String data = fileReader.nextLine();
                         System.out.println(data);
                     }
-                    System.out.println("\n");
+                    System.out.println();
                     fileReader.close(); 
                 } catch (FileNotFoundException e) {
                     System.out.println("An error occurred.");
@@ -98,15 +98,14 @@ public class Game {
                 Oldman oldman = new Oldman(200);
                 try{
                     boolean modeChoice = oldman.choice();
-                    System.out.println("\n");
                     // Adventure Mode
                     if (modeChoice == false){
-                        System.out.println("*****************************************************************");
                         Game newGame = new Game().createNewAdv();
                         newPlayer.setHouse(newGame.mapTour(0));
+                        System.out.println("\n**********************************************************************************************************************************");        
                         System.out.println("You're now in the Bedroom.");
                         newPlayer.setRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom);
-                        System.out.println("Feel free to explore!");
+                        System.out.println("Feel free to explore!\n");
                         oldman.guideRoom(((MainHouse)newGame.mapTour(0)).goToFloor(1).activeRoom, newPlayer);
                         System.out.println("Now you have a feeling of what to do!\n\nHere are the list of rooms on the floor:");
                         System.out.println(((MainHouse)newGame.mapTour(0)).goToFloor(1));
@@ -119,7 +118,7 @@ public class Game {
                                 System.out.println(e.getMessage());
                             }
                         }
-                        System.out.println("You've now explored all the rooms on the second floor.\nTry explore other floors!\n");
+                        System.out.println("\nYou've now explored all the rooms on the second floor.\nTry explore other floors!\n");
                         try{
                             oldman.guideMainHouse(((MainHouse)newGame.mapTour(0)),newPlayer);
                         } catch(RuntimeException e){
@@ -139,9 +138,11 @@ public class Game {
                     }
                     // Farming Mode 
                     else if (modeChoice == true){
+                        startGame = false;
+                        System.out.println("\n**********************************************************************************************************************************");
                         newPlayer.farm.add(appletree);
                         appletree.numTrees += 1;
-                        System.out.println("An APPLE TREE has been added your inventory, try plant it!\n(*Enter 'options' for more informaiton.)");
+                        System.out.println("An APPLE TREE has been added your inventory, try plant it!\n(*Enter 'OPTIONS' for more informaiton.)");
                         Scanner choice = new Scanner (System.in);
                         String c = choice.nextLine().toLowerCase();
                         if (c.equals("options")){
@@ -153,6 +154,7 @@ public class Game {
                             }
                         }
                         else{
+                            startGame = true;
                             throw new RuntimeException("Please enter the required word.\n");
                         }
                         /*if (c.equals("plant")){
@@ -174,7 +176,7 @@ public class Game {
                         if (c.equals("harvest")){
                             appletree.harvest();
                         }*/
-                        System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you: You have received $50.\nMeanwhile, you can also sell your fruit to Old Man.\nRemember: MONEY WILL MAKE YOUR WAY OUT.\nPress 'Enter' on your keyboard to start!\n(*Enter 'options' if you still need help!)\n");
+                        System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you: You have received $50.\nMeanwhile, you can also sell your fruit to Old Man.\nRemember: MONEY WILL MAKE YOUR WAY OUT.\n(*Enter 'OPTIONS' if you still need help!)\n");
                         oldman.money -= 50;
                         while (oldman.money > 0){
                             if (oldman.money <= 120){
@@ -218,7 +220,7 @@ public class Game {
                                         }
                                     }
                                     if (haveTree == false){
-                                        System.out.println("Can you plant that first?");
+                                        System.out.println("You cannot water it yet. Plant the tree first!");
                                     }
                                     break; 
                                 }
@@ -226,22 +228,24 @@ public class Game {
                                     System.out.println("Which tree do you want to harvest?");
                                     String foliage = choice.nextLine().toUpperCase();
                                     boolean haveTree = false;
+                                    boolean canHarvest;
                                     for (Tree leaf:newPlayer.farm){
                                         if (leaf.name.equals(foliage)){
-                                            Boolean b = leaf.harvest();
-                                            if (b){
-                                                Item t = leaf.fruit;
-                                                Integer a = leaf.numFruit;
-                                                Integer d = leaf.numTrees;
-                                                Integer e = a * d;
-                                                Integer f = newPlayer.inventory.get(t);
-                                                newPlayer.inventory.put(leaf.fruit, f + e);
+                                            haveTree = true;
+                                            canHarvest = leaf.harvest();
+                                            if (canHarvest){
+                                                Item fruit = leaf.fruit;
+                                                Integer numFruit = leaf.numFruit;
+                                                Integer numTrees = leaf.numTrees;
+                                                Integer numFruitTotal = numFruit * numTrees;
+                                                Integer numFruitOld = newPlayer.inventory.get(fruit);
+                                                newPlayer.inventory.put(leaf.fruit, numFruitOld + numFruitTotal);
                                                 break;
                                             }
                                         }
                                     }
                                     if (haveTree == false){       
-                                        System.out.println("Can you plant that first?");
+                                        System.out.println("You cannot harvest it yet. Try plant it first!");
                                     }
                                     break;
                                 }
@@ -262,9 +266,12 @@ public class Game {
                                     }
                                     break;
                                 }
+                                case "inventory":{
+                                    startGame = true;
+                                    newPlayer.printInventory();
+                                }
                             }
                         }
-                        startGame = false;
                     }
                 } catch(Exception e){
                     System.out.println(e.getMessage());

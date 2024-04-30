@@ -18,16 +18,14 @@ public class Room {
     public Room addLivingRoom(){
         this.name = "LIVING ROOM";
         Item diamond = new Item("DIAMOND", 100);
-        Item chair = new Item("A WOODEN CHAIR",false);
         Item sofa = new Item("A WHITE FLUFFY SOFT SOFA",false);
-        Item cushion1 = new Item("A PINK LOVELY CUSHION",5);
-        Item cushion2 = new Item("JELLY RABBIT",100);
+        Item cushion = new Item("A PINK LOVELY CUSHION",5);
+        Item doll = new Item("JELLY RABBIT",100);
         Item key = new Item("KEY",500);
-        this.itemCollection.add(diamond);
-        this.itemCollection.add(chair);
         this.itemCollection.add(sofa);
-        this.itemCollection.add(cushion1);
-        this.itemCollection.add(cushion2);
+        this.itemCollection.add(cushion);
+        this.itemCollection.add(diamond);
+        this.itemCollection.add(doll);
         this.itemCollection.add(key);
         this.addMoveableItem();
         // create some new items
@@ -39,9 +37,11 @@ public class Room {
         Item table = new Item("A BIG LONG TABLE",false);
         Item candle = new Item("CANDLE", 5);
         Item knife = new Item("KNIFE",5);
+        Item chair = new Item("A WOODEN CHAIR",false);
         this.itemCollection.add(table);
         this.itemCollection.add(candle);
         this.itemCollection.add(knife);
+        this.itemCollection.add(chair);
         this.addMoveableItem();
         // create some new items
         return this;
@@ -62,8 +62,10 @@ public class Room {
 
     public Room addBasement(){
         this.name = "BASEMENT";
-        Item box = new Item("BOX", 0);
+        Item chandelier = new Item("A BROKEN GORGEOUS CHANDELIER",false);
+        Item box = new Item("EMPTY BOX", 0);
         Item key = new Item("KEY",500);
+        this.itemCollection.add(chandelier);
         this.itemCollection.add(box);
         this.itemCollection.add(key);
         this.addMoveableItem();
@@ -73,8 +75,10 @@ public class Room {
 
     public Room addAttic(){
         this.name = "ATTIC";
+        Item bed = new Item("A FOLDING BED",false);
         Item lantern = new Item("LANTERN",50);
         Item key = new Item("KEY",500);
+        this.itemCollection.add(bed);
         this.itemCollection.add(lantern);
         this.itemCollection.add(key);
         this.addMoveableItem();
