@@ -141,7 +141,6 @@ public class Game {
                         startGame = false;
                         System.out.println("\n**********************************************************************************************************************************");
                         newPlayer.farm.add(appletree);
-                        appletree.numTrees += 1;
                         System.out.println("An APPLE TREE has been added your inventory, try plant it!\n(*Enter 'OPTIONS' for more informaiton.)");
                         Scanner choice = new Scanner (System.in);
                         String c = choice.nextLine().toLowerCase();
@@ -214,6 +213,7 @@ public class Game {
                                     break; 
                                 }
                                 case "harvest":{
+                                    System.out.println(newPlayer.farm);
                                     System.out.println("Which tree do you want to harvest?");
                                     String foliage = choice.nextLine().toUpperCase();
                                     boolean haveTree = false;
