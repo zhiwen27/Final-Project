@@ -96,6 +96,7 @@ public class Game {
                     e.printStackTrace();
                 }
                 Oldman oldman = new Oldman(200);
+                //Oldman oldman = new Oldman(600);
                 try{
                     boolean modeChoice = oldman.choice();
                     // Adventure Mode
@@ -138,7 +139,6 @@ public class Game {
                     }
                     // Farming Mode 
                     else if (modeChoice == true){
-                        startGame = false;
                         System.out.println("\n**********************************************************************************************************************************");
                         newPlayer.farm.add(appletree);
                         appletree.numTrees += 1;
@@ -154,32 +154,14 @@ public class Game {
                             }
                         }
                         else{
-                            startGame = true;
                             throw new RuntimeException("Please enter the required word.\n");
                         }
-                        /*if (c.equals("plant")){
-                            newPlayer.plant(appletree);
-                        }
-                        if (c.equals("water")){
-                            Scanner a = new Scanner(System.in);
-                            System.out.println("Please enter the tree you want to water:");
-                            String r = a.nextLine();
-                            for (Tree tree:newPlayer.farm){
-                                if (tree.name.equals(r)){
-                                    tree.water();
-                                }
-                                else{
-                                    System.out.println("Can you plant that first?");
-                                }
-                            }
-                        }
-                        if (c.equals("harvest")){
-                            appletree.harvest();
-                        }*/
                         System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you: You have received $50.\nMeanwhile, you can also sell your fruit to Old Man.\nRemember: MONEY WILL MAKE YOUR WAY OUT.\n(*Enter 'OPTIONS' if you still need help!)\n");
                         oldman.money -= 50;
+                        int round = 0;
                         while (oldman.money > 0){
-                            if (oldman.money <= 120){
+                            round++;
+                            if (round == 3){
                                 System.out.println("Old man: Actually, youngster, compared to APPLEs, I prefer PEARs.");
                                 newPlayer.farm.add(peartree);
                                 peartree.numTrees = 0;
@@ -250,6 +232,7 @@ public class Game {
                                     break;
                                 }
                                 case "sell":{
+                                    newPlayer.printFruit();
                                     System.out.println("Which fruit do you want to sell?");
                                     String item = choice.nextLine().toUpperCase();
                                     boolean haveFruit = false;
@@ -267,8 +250,7 @@ public class Game {
                                     break;
                                 }
                                 case "inventory":{
-                                    startGame = true;
-                                    newPlayer.printInventory();
+                                    newPlayer.printFruit();
                                 }
                             }
                         }

@@ -124,13 +124,24 @@ public class Player {
     }
 
     /**
-     * Print out the inventory
+     * Print out the inventory for Adventure Mode
      */
     public void printInventory(){
         System.out.println("You have now discovered:");
         Enumeration<Item> keys = this.inventory.keys();
         while(keys.hasMoreElements()){
           System.out.println(keys.nextElement());
+        }
+    }
+
+    /**
+     * Print out the inventory for Farming Mode
+     */
+
+    public void printFruit(){
+        System.out.println("You now have:");
+        for(Item i: this.inventory.keySet()){
+            System.out.println(this.inventory.get(i) + " " + i.name);
         }
     }
 

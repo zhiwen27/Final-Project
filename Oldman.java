@@ -33,14 +33,34 @@ public class Oldman {
     
     /**buy items from the player
      * @param item item that the old man bus from the player
+     * @return if the player win the game
      */
-    public void buy(Integer a){
+    public boolean buy(Integer a){
+        Scanner scanner = new Scanner(System.in);
         if (money > a){
             money -= a;
             System.out.println("I have enough fortune to buy this");
         }else{
-            System.out.println("Old man: I really, really, really like it. But I can't afford it.\nWait! I still have the keys! 4 keys for this! Is that a deal for you?");
-        }        
+            System.out.println("Old man: I really, really, really like it. But I can't afford it.\nWait! I still have the keys! 4 keys for this! Here you are!");
+            System.out.println("\n**********************************************************************************************************************************");
+            try {
+                File newFile = new File("End2.txt");
+                Scanner fileReader = new Scanner(newFile);
+                while (fileReader.hasNextLine()) {
+                    String data = fileReader.nextLine();
+                    System.out.println(data);
+                }
+                System.out.println();
+                fileReader.close(); 
+            } catch (FileNotFoundException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+            System.out.println("Do you want to play another round?");
+            String userInput = scanner.nextLine();
+            System.out.println("\n**********************************************************************************************************************************");
+        } 
+        return true;       
     }
 
     /**
