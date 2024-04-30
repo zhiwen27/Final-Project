@@ -96,7 +96,6 @@ public class Game {
                     e.printStackTrace();
                 }
                 Oldman oldman = new Oldman(200);
-                //Oldman oldman = new Oldman(600);
                 try{
                     boolean modeChoice = oldman.choice();
                     // Adventure Mode
@@ -139,6 +138,7 @@ public class Game {
                     }
                     // Farming Mode 
                     else if (modeChoice == true){
+                        startGame = false;
                         System.out.println("\n**********************************************************************************************************************************");
                         newPlayer.farm.add(appletree);
                         appletree.numTrees += 1;
@@ -152,18 +152,25 @@ public class Game {
                             if (o.equals("plant")){
                                 newPlayer.plant(appletree);
                             }
+                            else{
+                                startGame = true;
+                                throw new RuntimeException("Please enter the required word.\n");
+                            }
                         }
                         else{
+                            startGame = true;
                             throw new RuntimeException("Please enter the required word.\n");
                         }
                         System.out.println("\n\nOK, I guess you have learned how to take care of a tree now. Here is the last gift I can give you: You have received $50.\nMeanwhile, you can also sell your fruit to Old Man.\nRemember: MONEY WILL MAKE YOUR WAY OUT.\n(*Enter 'OPTIONS' if you still need help!)\n");
                         oldman.money -= 50;
                         int round = 0;
-                        while (oldman.money > 0){
+                        boolean continueGame = true;
+                        while ((oldman.money > 0) && (continueGame)){
                             round++;
-                            if (round == 3){
+                            if (round == 4){
                                 System.out.println("Old man: Actually, youngster, compared to APPLEs, I prefer PEARs.");
                                 newPlayer.farm.add(peartree);
+                                System.out.println("Now, a PEAR TREE has been added your inventory, try plant it!");
                                 peartree.numTrees = 0;
                             }
                             System.out.println("Enter what you want to do next!");
@@ -239,9 +246,12 @@ public class Game {
                                     for (Item sold:newPlayer.inventory.keySet()){
                                         if (sold.name.equals(item)){
                                             Integer a = newPlayer.sell(sold);
-                                            oldman.buy(a);
+                                            continueGame = oldman.buy(a);
                                             haveFruit = true;
-                                            System.out.println("Old man: I have " + oldman.money + " dollars left. I am still rich!");
+                                            if (continueGame == true){
+                                                System.out.println("Old man: I have " + oldman.money + " dollars left. I am still rich!");
+                                            }
+                                            break;
                                         }
                                     }
                                     if (haveFruit == false){
@@ -252,6 +262,18 @@ public class Game {
                                 case "inventory":{
                                     newPlayer.printFruit();
                                 }
+                            }
+                        }
+                        if (continueGame == false){
+                            System.out.println("Do you want to play another round?\n(*Please enter YES or NO.)");
+                            userInput = sc.nextLine().toUpperCase();
+                            if (userInput.contains("YES")){
+                                startGame = true;
+                                newPlayer = new Player(name);
+                            }
+                            else{
+                                System.out.println("The END of the STORY!🥳");
+                                System.out.println("**********************************************************************************************************************************");
                             }
                         }
                     }

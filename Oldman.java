@@ -40,6 +40,7 @@ public class Oldman {
         if (money > a){
             money -= a;
             System.out.println("I have enough fortune to buy this");
+            return true;
         }else{
             System.out.println("Old man: I really, really, really like it. But I can't afford it.\nWait! I still have the keys! 4 keys for this! Here you are!");
             System.out.println("\n**********************************************************************************************************************************");
@@ -56,11 +57,8 @@ public class Oldman {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
             }
-            System.out.println("Do you want to play another round?");
-            String userInput = scanner.nextLine();
-            System.out.println("\n**********************************************************************************************************************************");
-        } 
-        return true;       
+            return false;
+        }  
     }
 
     /**
