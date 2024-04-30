@@ -47,6 +47,7 @@ public class Player {
             System.out.println("Are you going to sell this? how many of " + sold + " do you want to sell?");
             Scanner scanner = new Scanner(System.in);
             Integer Num = scanner.nextInt();
+            scanner.nextLine();
             scanner.close();
             if (Num <= inventory.get(sold)){
                 inventory.put(sold, inventory.get(sold)-Num);

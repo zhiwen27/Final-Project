@@ -6,6 +6,7 @@ public class Oldman {
 
     public Oldman(Integer money){
         this.money = money;
+        
     }  
 
     /**
@@ -32,16 +33,13 @@ public class Oldman {
     /**buy items from the player
      * @param item item that the old man bus from the player
      */
-    public void buy(Item item){
-        money -= item.getValue();
-        if (money > 0){
-            if (item.getValue() >= 100){
-                System.out.println("Old man: Wow, that would be quite expansive. \nCould it be ... whatever. ");
-            } else{
-                System.out.println("Old man: " + item.getValue() + "dollars ! That is the highest price I can offer.");
-            }}else{
-                System.out.println("Old man: I really, really, really like it. But I can't afford it.\nWait! I still have the keys! 4 keys for this! Is that a deal for you?");
-            }        
+    public void buy(Integer a){
+        if (money > a){
+            money -= a;
+            System.out.println("I have enough fortune to buy this");
+        }else{
+            System.out.println("Old man: I really, really, really like it. But I can't afford it.\nWait! I still have the keys! 4 keys for this! Is that a deal for you?");
+        }        
     }
 
     /**
