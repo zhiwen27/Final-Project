@@ -137,6 +137,7 @@ public class Game {
                         newPlayer = new Player(name);
                     }
                     // Farming Mode 
+                    //starter for a beginner
                     else if (modeChoice == true){
                         startGame = false;
                         System.out.println("\n**********************************************************************************************************************************");
@@ -164,6 +165,7 @@ public class Game {
                         oldman.money -= 50;
                         int round = 0;
                         boolean continueGame = true;
+                        
                         while ((oldman.money > 0) && (continueGame)){
                             round++;
                             if (round == 4){
@@ -176,7 +178,7 @@ public class Game {
                             String mov = choice.nextLine().toLowerCase();
                             switch(mov){
                                 case "options":{
-                                    System.out.println("Things you can do with a tree:\nPLANT\nWATER\nHARVEST\nSELL\n");
+                                    System.out.println("Things you can do with a tree:\nPLANT: plant a tree with 5 fruits on it\nWATER: increase the number of fruits on this tree\nHARVEST: harvest the fruits\nSELL: sell the fruits to old man\n");
                                     System.out.println("Types of trees on the farm:\nAPPLE TREE; Fruit: APPLE\nPEAR TREE; Fruit: PEAR\n");
                                     break;
                                 }

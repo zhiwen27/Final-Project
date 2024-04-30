@@ -10,11 +10,15 @@ public class Room {
         this.itemCollection = new ArrayList<Item>();
         this.moveableItemCollection = new ArrayList<Item>();
     }
-
+/*
+ * Getter for the attribute Name
+ */
     public String getName(){
         return this.name;
     }
-
+/**add a Living room to the map of the Game
+ * @return the new Living room
+ */
     public Room addLivingRoom(){
         this.name = "LIVING ROOM";
         Item diamond = new Item("DIAMOND", 100);
@@ -31,7 +35,10 @@ public class Room {
         // create some new items
         return this;
     }
-
+/**
+ * add a kitchen to the map of the Game
+ * @return the new Kitchen
+ */
     public Room addKitchen(){
         this.name = "KITCHEN";
         Item table = new Item("A BIG LONG TABLE",false);
@@ -46,7 +53,10 @@ public class Room {
         // create some new items
         return this;
     }
-
+/**
+ * add a new bedroom to the map of the game
+ * @return the new Bedroom
+ */
     public Room addBedroom(){
         this.name = "BEDROOM";
         Item bed = new Item("A BIG COMFORTABLE BED",false);
@@ -59,7 +69,10 @@ public class Room {
         // create some new items
         return this;
     }
-
+/**
+ * add a new basement to the map of the game
+ * @return the new basement
+ */
     public Room addBasement(){
         this.name = "BASEMENT";
         Item chandelier = new Item("A BROKEN GORGEOUS CHANDELIER",false);
@@ -72,7 +85,10 @@ public class Room {
         // create some new items
         return this;
     }
-
+/**
+ * add an attic to the map of the game
+ * @return a new attic
+ */
     public Room addAttic(){
         this.name = "ATTIC";
         Item bed = new Item("A FOLDING BED",false);
@@ -88,7 +104,11 @@ public class Room {
     public void addItem(Item i){
         this.itemCollection.add(i);
     }
-
+/**
+ * remove an item from a room
+ * @param name the nam of the item user wants to remove
+ * @return the item that has been removed
+ */
     public Item removeItem(String name){
         Item item = new Item();
         for(int i = 0; i < this.itemCollection.size(); i++){
