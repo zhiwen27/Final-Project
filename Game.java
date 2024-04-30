@@ -206,7 +206,7 @@ public class Game {
                                 break; 
                             }
                             case "harvest":{
-                                System.out.println("which tree do you want to harvest?");
+                                System.out.println("Which tree do you want to harvest?");
                                 String foliage = choice.nextLine();
                                 for (Tree leaf:newPlayer.farm){
                                     if (leaf.name.equals(foliage)){
