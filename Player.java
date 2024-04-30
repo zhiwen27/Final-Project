@@ -24,6 +24,10 @@ public class Player {
         this.toPlay = true;
     }
     
+    /**
+     * Pick up an item and put into the inventory
+     * @param i
+     */
     public void grab(Item i){
         if (i.canTake()){
             if ((this.inventory.containsKey(i))){
@@ -40,29 +44,38 @@ public class Player {
         }
     }
 
+    /**
+     * Sell the tree to Old Man
+     * @param sold the item sold
+     * @return selling price
+     */
     public Integer sell(Item sold){
         if (inventory.containsKey(sold)){
-            System.out.println("Are you going to sell this? how many of " + sold + " do you want to sell?");
+            System.out.println("Are you going to sell this? How many " + sold + " do you want to sell?");
             Scanner scanner = new Scanner(System.in);
-            Integer Num = scanner.nextInt();
-            if (Num <= inventory.get(sold)){
-                inventory.put(sold, inventory.get(sold)-Num);
-                return Num * sold.value;
+            Integer num = scanner.nextInt();
+            if (num <= inventory.get(sold)){
+                inventory.put(sold, inventory.get(sold) - num);
+                return num * sold.value;
             }
             else{
-                System.out.println("What? you do not even have that many!");
+                System.out.println("What? You don't even have that many!");
                 return 0;
             }
         }
         else{
-            System.out.println("You can not sell it before you have it.");
+            System.out.println("You cannot sell it before you have it.");
             return 0;
         }
     }
 
+    /**
+     * Plant a tree
+     * @param tree the tree the player want to plant
+     */
     public void plant(Tree tree){
         if (!farm.contains(tree)){
-            System.out.println("Emmmm we haven't heard of that before, may be you want to try it another time");
+            System.out.println("Emmm we haven't heard of that before, maybe you want to try it another time");
         }else{
             System.out.println("You have had a " + tree + "!");
             tree.numTrees += 1;

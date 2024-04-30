@@ -46,14 +46,14 @@ public class Tree extends Item{
             return true;
         }
         else{
-            System.out.println("emmmmmmm, It is not the time for harvest. Try water it again.");
+            System.out.println("Emmm, it is not the time for harvest. Try water it again.");
             Scanner r = new Scanner(System.in);
-            String i = r.nextLine();
+            String i = r.nextLine().toLowerCase();
             if (i.equals("water")){
                 this.water();
             }else{
                 this.sick();
-                System.out.println("now you have to water it.");
+                System.out.println("Now you have to water it.");
             }
             return false;
         }
@@ -63,6 +63,6 @@ public class Tree extends Item{
      * print out the methods contained in the 'tree' the class
      */
     public void options(){
-         System.out.println("Things you can do with a tree:\n water it \n harvest it \n its fruits can be sold to the oldman. See what we would get!");
+         System.out.println("Things you can do with a tree:\nPLANT\nWATER\nHARVEST\nSELL\n\nSee what you could get!");
     }
 }
