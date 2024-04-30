@@ -64,6 +64,6 @@ public class Tree extends Item{
      * print out the methods contained in the 'tree' the class
      */
     public void options(){
-         System.out.println("Things you can do with a tree:\nPLANT\nWATER\nHARVEST\nSELL\n\nSee what you could get!");
+         System.out.println("Things you can do with a tree:\nPLANT: plant a tree with 5 fruits on it\nWATER: increase the number of fruits on this tree\nHARVEST: harvest the fruits\nSELL: sell the fruits to old man\\n" );
     }
 }
