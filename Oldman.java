@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class Oldman {
+    
     int money;
 
     public Oldman(Integer money){
