@@ -16,13 +16,13 @@ public class Room {
     }
 
     public Room addLivingRoom(){
-        this.name = "Living Room";
-        Item diamond = new Item("Diamond", 100);
-        Item chair = new Item("A Wooden Chair",false);
-        Item sofa = new Item("A White Fluffy Soft Sofa",false);
-        Item cushion1 = new Item("A Pink Lovely Cushion",5);
-        Item cushion2 = new Item("Jelly Rabbit",100);
-        Item key = new Item("Key",500);
+        this.name = "LIVING ROOM";
+        Item diamond = new Item("DIAMOND", 100);
+        Item chair = new Item("A WOODEN CHAIR",false);
+        Item sofa = new Item("A WHITE FLUFFY SOFT SOFA",false);
+        Item cushion1 = new Item("A PINK LOVELY CUSHION",5);
+        Item cushion2 = new Item("JELLY RABBIT",100);
+        Item key = new Item("KEY",500);
         this.itemCollection.add(diamond);
         this.itemCollection.add(chair);
         this.itemCollection.add(sofa);
@@ -30,52 +30,52 @@ public class Room {
         this.itemCollection.add(cushion2);
         this.itemCollection.add(key);
         this.addMoveableItem();
-        // create some new items and add into the kitchen
-        //System.out.println(this);
+        // create some new items
         return this;
     }
 
     public Room addKitchen(){
-        this.name = "Kitchen";
-        Item table = new Item("A Big Long Table",false);
-        Item candle = new Item("Candle", 5);
-        Item knife = new Item("Knife",5);
+        this.name = "KITCHEN";
+        Item table = new Item("A BIG LONG TABLE",false);
+        Item candle = new Item("CANDLE", 5);
+        Item knife = new Item("KNIFE",5);
         this.itemCollection.add(table);
         this.itemCollection.add(candle);
         this.itemCollection.add(knife);
         this.addMoveableItem();
-        // create some new items and add into the kitchen
-        //System.out.println(this);
+        // create some new items
         return this;
     }
 
     public Room addBedroom(){
-        this.name = "Bedroom";
-        Item bed = new Item("A big comfortable bed",false);
-        Item key = new Item("Key",500);
+        this.name = "BEDROOM";
+        Item bed = new Item("A BIG COMFORTABLE BED",false);
+        Item necklace = new Item("A CRYSTAL NECKLACE",100);
+        Item key = new Item("KEY",500);
         this.itemCollection.add(bed);
+        this.itemCollection.add(necklace);
         this.itemCollection.add(key);
         this.addMoveableItem();
-        // create some new items and add into the kitchen
-        //System.out.println(this);
+        // create some new items
         return this;
     }
 
     public Room addBasement(){
-        this.name = "Basement";
-        Item box = new Item("Box", 0);
-        Item key = new Item("Key",500);
+        this.name = "BASEMENT";
+        Item box = new Item("BOX", 0);
+        Item key = new Item("KEY",500);
         this.itemCollection.add(box);
         this.itemCollection.add(key);
         this.addMoveableItem();
-        // create some new items and add into the kitchen
-        //System.out.println(this);
+        // create some new items
         return this;
     }
 
     public Room addAttic(){
-        this.name = "Attic";
-        Item key = new Item("Key",500);
+        this.name = "ATTIC";
+        Item lantern = new Item("LANTERN",50);
+        Item key = new Item("KEY",500);
+        this.itemCollection.add(lantern);
         this.itemCollection.add(key);
         this.addMoveableItem();
         return this;

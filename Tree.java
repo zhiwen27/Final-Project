@@ -1,9 +1,12 @@
 import java.util.Scanner;
+
 public class Tree extends Item{
+
     Item fruit;
     boolean live;
     Integer number_of_fruit = 5;
     Integer number_of_trees = 0;
+
     public Tree(Item fruit,boolean live,Integer number_of_fruit, Integer number_of_trees, String name, Integer value){
         super(name, value);
         this.fruit = fruit;
@@ -12,13 +15,17 @@ public class Tree extends Item{
         this.number_of_fruit = number_of_fruit;
         this.number_of_trees = number_of_trees;
     }
-    /**method for watering the tree
+
+    /** method for watering the tree
      * increase the number of fruit.
      */
     public void water(){
         System.out.println("GROWING.........");
         number_of_fruit += 5;
-    }/** control when the tree dies
+    }
+
+    /**
+     * control when the tree dies
      */
     public void sick(){
         System.out.println("NO!MAGGOT IS FOUND ON YOUR TREEEEEEEEEE");
@@ -26,9 +33,12 @@ public class Tree extends Item{
         if (number_of_fruit <= 0){
             live = false;
             System.out.println("In memory of all these trees, you lose one of the " + this.fruit.name + "tree.");
-        }}/** harvest the fruits from the tree
-            *@retrun whether the action is applicable
-         */
+        }
+    }
+
+    /** harvest the fruits from the tree
+     * @retrun whether the action is applicable
+     */
     public boolean harvest(){
         if (number_of_fruit >= 15){
             number_of_fruit -= 10;
@@ -48,6 +58,7 @@ public class Tree extends Item{
             return false;
         }
     }
+
     /**
      * print out the methods contained in the 'tree' the class
      */

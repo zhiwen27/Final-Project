@@ -97,6 +97,6 @@ public class Item {
      * Printing of Item
      */
     public String toString(){
-        return "Great discovery! " + this.name + " is worth " + this.value + "!";
+        return this.name + ": Worth " + this.value;
     }
 }
