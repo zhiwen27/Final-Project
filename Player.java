@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 public class Player {
     private String name;
-    private int money;
     Hashtable<Item,Integer> inventory;
     private Room activeRoom;
     private House activeHouse;
@@ -19,7 +18,6 @@ public class Player {
      * @param name the name of the player
      */
     public Player(String name){
-        this.money = 0;
         this.name = name;
         this.inventory = new Hashtable<>();
         this.farm = new ArrayList<Tree>();
@@ -68,7 +66,7 @@ public class Player {
             System.out.println("Emmmm we haven't heard of that before, may be you want to try it another time");
         }else{
             System.out.println("You have had a " + tree + "!");
-            tree.number_of_trees += 1;
+            tree.numTrees += 1;
             this.inventory.put(tree.fruit,0);
         }
     }
