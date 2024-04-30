@@ -22,6 +22,7 @@ Since it was a group project, we first have a discussion about the general theme
  I think I may add more rooms to different floors and would add more places to the map with different gaming functions (I didn't add too many rooms on one floor in order to not mess myself up..). Also, I think I may use the mutable graph to store the rooms on the floor/ the floors in the main house.
 
  - What was the most helpful **piece of feedback** you received while working on your project? Who gave it to you?
+ Try to make the game not sensitive to the spelling, and make the player can access the inventory by Prof. Jordan.
 
  - If you could go back in time and give your past self some **advice** about this project, what hints would you give?
  Think more creatively (for the design about different houses).

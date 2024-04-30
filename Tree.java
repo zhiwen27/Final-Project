@@ -4,16 +4,16 @@ public class Tree extends Item{
 
     Item fruit;
     boolean live;
-    Integer number_of_fruit = 5;
-    Integer number_of_trees = 0;
+    Integer numFruit = 5;
+    Integer numTrees = 0;
 
-    public Tree(Item fruit,boolean live,Integer number_of_fruit, Integer number_of_trees, String name, Integer value){
+    public Tree(Item fruit,boolean live,Integer numFruit, Integer numTrees, String name, Integer value){
         super(name, value);
         this.fruit = fruit;
         this.live = live;
         this.fruit = fruit;
-        this.number_of_fruit = number_of_fruit;
-        this.number_of_trees = number_of_trees;
+        this.numFruit = numFruit;
+        this.numTrees = numTrees;
     }
 
     /** method for watering the tree
@@ -21,7 +21,7 @@ public class Tree extends Item{
      */
     public void water(){
         System.out.println("GROWING.........");
-        number_of_fruit += 5;
+        numFruit += 5;
     }
 
     /**
@@ -29,8 +29,8 @@ public class Tree extends Item{
      */
     public void sick(){
         System.out.println("NO!MAGGOT IS FOUND ON YOUR TREEEEEEEEEE");
-        number_of_fruit -= 5;
-        if (number_of_fruit <= 0){
+        numFruit -= 5;
+        if (numFruit <= 0){
             live = false;
             System.out.println("In memory of all these trees, you lose one of the " + this.fruit.name + "tree.");
         }
@@ -40,8 +40,8 @@ public class Tree extends Item{
      * @retrun whether the action is applicable
      */
     public boolean harvest(){
-        if (number_of_fruit >= 15){
-            number_of_fruit -= 10;
+        if (numFruit >= 15){
+            numFruit -= 10;
             System.out.println("There are " + fruit + " " + this.fruit.name + "s left ");
             return true;
         }
