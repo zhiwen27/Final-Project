@@ -7,7 +7,7 @@ public class Player {
     Hashtable<Item,Integer> inventory;
     private Room activeRoom;
     private House activeHouse;
-    public ArrayList<Tree> farm = new ArrayList<Tree>();
+    public ArrayList<Tree> farm;
     private boolean toPlay;
     public Player(){
         this("<Name Unknown>");
@@ -22,6 +22,7 @@ public class Player {
         this.inventory = new Hashtable<>();
         this.farm = new ArrayList<Tree>();
         this.toPlay = true;
+        this.farm = new ArrayList<Tree>();
     }
     
     /**
@@ -77,7 +78,7 @@ public class Player {
         if (!farm.contains(tree)){
             System.out.println("Emmm we haven't heard of that before, maybe you want to try it another time");
         }else{
-            System.out.println("You have had a " + tree + "!");
+            System.out.println("You have planted a " + tree.name + "!");
             tree.numTrees += 1;
             this.inventory.put(tree.fruit,0);
         }
@@ -137,7 +138,6 @@ public class Player {
     /**
      * Print out the inventory for Farming Mode
      */
-
     public void printFruit(){
         System.out.println("You now have:");
         for(Item i: this.inventory.keySet()){
@@ -145,11 +145,29 @@ public class Player {
         }
     }
 
+    /**
+     * Getter indicating if continue the game
+     * @return if continue the game
+     */
     public boolean toPlay(){
         return this.toPlay;
     }
 
+    /**
+     * Setter indicating if continue the game
+     * @param toPlay if continue the game
+     */
     public void setToPlay(boolean toPlay){
         this.toPlay = toPlay;
+    }
+
+    /**
+     * Print the farm
+     */
+    public void printFarm(){
+        System.out.println("You have a farm with " + this.farm.size() + " trees.\n");
+        for (Tree t: this.farm){
+            System.out.println(t);
+        }
     }
 }

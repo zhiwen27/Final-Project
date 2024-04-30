@@ -167,7 +167,7 @@ public class Game {
                         while ((oldman.money > 0) && (continueGame)){
                             round++;
                             if (round == 4){
-                                System.out.println("Old man: Actually, youngster, compared to APPLEs, I prefer PEARs.");
+                                System.out.println("Old man: Actually, youngster, compared to apples, I prefer pears.");
                                 newPlayer.farm.add(peartree);
                                 System.out.println("Now, a PEAR TREE has been added your inventory, try plant it!");
                                 peartree.numTrees = 0;
@@ -213,7 +213,7 @@ public class Game {
                                     break; 
                                 }
                                 case "harvest":{
-                                    System.out.println(newPlayer.farm);
+                                    newPlayer.printFarm();
                                     System.out.println("Which tree do you want to harvest?");
                                     String foliage = choice.nextLine().toUpperCase();
                                     boolean haveTree = false;

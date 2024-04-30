@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Tree extends Item{
-
     Item fruit;
     boolean live;
     Integer numFruit = 5;
@@ -65,5 +64,12 @@ public class Tree extends Item{
      */
     public void options(){
          System.out.println("Things you can do with a tree:\nPLANT\nWATER\nHARVEST\nSELL\n\nSee what you could get!");
+    }
+
+    /**
+     * Printing for Tree
+     */
+    public String toString(){
+        return this.name + ": " + this.numFruit + " fruit\n";
     }
 }
