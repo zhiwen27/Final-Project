@@ -178,7 +178,7 @@ public class Game {
                             String mov = choice.nextLine().toLowerCase();
                             switch(mov){
                                 case "options":{
-                                    System.out.println("Things you can do with a tree:\nPLANT: plant a tree with 5 fruits on it\nWATER: increase the number of fruits on this tree\nHARVEST: harvest the fruits\nSELL: sell the fruits to old man\n");
+                                    System.out.println("Things you can do with a tree:\nPLANT: plant a tree with 5 fruits on it in default\nWATER: increase the number of fruits on the tree\nHARVEST: harvest the fruits\nSELL: sell the fruits to Old Man\n");
                                     System.out.println("Types of trees on the farm:\nAPPLE TREE; Fruit: APPLE\nPEAR TREE; Fruit: PEAR\n");
                                     break;
                                 }
