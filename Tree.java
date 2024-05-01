@@ -67,7 +67,7 @@ public class Tree extends Item{
     }
 
     /**
-     * Printing for Tree
+     * Printing of Tree
      */
     public String toString(){
         return this.name + ": " + this.numFruit + " fruit\n";
