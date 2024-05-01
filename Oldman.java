@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class Oldman {
     int money;
 
+    /**
+     * Constructor for Oldman
+     * @param money
+     */
     public Oldman(Integer money){
         this.money = money;
         
@@ -38,7 +42,6 @@ public class Oldman {
      * @return if the player win the game
      */
     public boolean buy(Integer a){
-        Scanner scanner = new Scanner(System.in);
         if (money > a){
             money -= a;
             System.out.println("I have enough fortune to buy this");
