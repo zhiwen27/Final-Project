@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 public class Room {
     private String name;
     ArrayList<Item> itemCollection;
@@ -10,15 +11,19 @@ public class Room {
         this.itemCollection = new ArrayList<Item>();
         this.moveableItemCollection = new ArrayList<Item>();
     }
-/*
- * Getter for the attribute Name
- */
+
+    /**
+     * Getter for the name of the room
+     * @return the name of the room
+     */
     public String getName(){
         return this.name;
     }
-/**add a Living room to the map of the Game
- * @return the new Living room
- */
+
+    /**
+     * Add a living room with default items
+     * @return the new living room
+     */
     public Room addLivingRoom(){
         this.name = "LIVING ROOM";
         Item diamond = new Item("DIAMOND", 100);
@@ -32,13 +37,13 @@ public class Room {
         this.itemCollection.add(doll);
         this.itemCollection.add(key);
         this.addMoveableItem();
-        // create some new items
         return this;
     }
-/**
- * add a kitchen to the map of the Game
- * @return the new Kitchen
- */
+
+    /**
+     * Add a kitchen with default items
+     * @return the new kitchen
+     */
     public Room addKitchen(){
         this.name = "KITCHEN";
         Item table = new Item("A BIG LONG TABLE",false);
@@ -50,13 +55,13 @@ public class Room {
         this.itemCollection.add(knife);
         this.itemCollection.add(chair);
         this.addMoveableItem();
-        // create some new items
         return this;
     }
-/**
- * add a new bedroom to the map of the game
- * @return the new Bedroom
- */
+
+    /**
+     * Add a bedroom with default items
+     * @return the new bedroom
+     */
     public Room addBedroom(){
         this.name = "BEDROOM";
         Item bed = new Item("A BIG COMFORTABLE BED",false);
@@ -66,13 +71,13 @@ public class Room {
         this.itemCollection.add(necklace);
         this.itemCollection.add(key);
         this.addMoveableItem();
-        // create some new items
         return this;
     }
-/**
- * add a new basement to the map of the game
- * @return the new basement
- */
+
+    /**
+     * Add a basement with default items
+     * @return the new basement
+     */
     public Room addBasement(){
         this.name = "BASEMENT";
         Item chandelier = new Item("A BROKEN GORGEOUS CHANDELIER",false);
@@ -85,10 +90,11 @@ public class Room {
         // create some new items
         return this;
     }
-/**
- * add an attic to the map of the game
- * @return a new attic
- */
+
+    /**
+     * Add an attic with default items
+     * @return the new attic
+     */
     public Room addAttic(){
         this.name = "ATTIC";
         Item bed = new Item("A FOLDING BED",false);
@@ -101,14 +107,19 @@ public class Room {
         return this;
     }
 
+    /**
+     * Add an item to the room
+     * @param i the item you want to add
+     */
     public void addItem(Item i){
         this.itemCollection.add(i);
     }
-/**
- * remove an item from a room
- * @param name the nam of the item user wants to remove
- * @return the item that has been removed
- */
+
+    /**
+     * Remove an item from the room
+     * @param name the nam of the item user wants to remove
+     * @return the item that has been removed
+    */
     public Item removeItem(String name){
         Item item = new Item();
         for(int i = 0; i < this.itemCollection.size(); i++){
@@ -124,6 +135,10 @@ public class Room {
         return item;
     }
 
+    /**
+     * Print the items inside the room
+     * @return the printing
+     */
     public String printCollection(){
         String s = "The " + this.name + " now has:\n";
         for (Item i: this.itemCollection){
@@ -132,6 +147,10 @@ public class Room {
         return s;
     }
 
+    /**
+     * Add removeable items in another arraylist where the player pick up the items from
+     * @return the collection of removable items
+     */
     public ArrayList<Item> addMoveableItem(){
         for (Item i: this.itemCollection){
             if (i.canTake() == true){
@@ -141,6 +160,11 @@ public class Room {
         return this.moveableItemCollection;
     }
 
+    /**
+     * Check if the user input is contained in the item collection of the room
+     * @param userInput the user input
+     * @return if the user input is in the item collection
+     */
     public boolean checkItemInput(String userInput){
         this.itemNames = new String[this.itemCollection.size()];
         int cnt = 0;
@@ -162,6 +186,9 @@ public class Room {
         }
     }
 
+    /**
+     * Printing of Room
+     */
     public String toString(){
         return "Welcome! This is " + this.name + ".\n" + this.printCollection();
     }

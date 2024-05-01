@@ -1,5 +1,4 @@
 public class Item {
-
     public int value;
     public String name;
     private boolean canTake;

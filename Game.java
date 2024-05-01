@@ -6,7 +6,6 @@ import com.google.common.graph.GraphBuilder;
 import com.google.common.graph.MutableGraph;
 
 public class Game {
-
     ArrayList<House> mapAdv;
     MutableGraph<Tree> mapFarm;
 
@@ -137,7 +136,7 @@ public class Game {
                         newPlayer = new Player(name);
                     }
                     // Farming Mode 
-                    //starter for a beginner
+                    // starter for a beginner
                     else if (modeChoice == true){
                         startGame = false;
                         System.out.println("\n**********************************************************************************************************************************");
@@ -165,7 +164,6 @@ public class Game {
                         oldman.money -= 50;
                         int round = 0;
                         boolean continueGame = true;
-                        
                         while ((oldman.money > 0) && (continueGame)){
                             round++;
                             if (round == 4){

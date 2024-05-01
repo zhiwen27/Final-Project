@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
 public class Oldman {
     int money;
 
@@ -31,7 +32,8 @@ public class Oldman {
         }
     }
     
-    /**buy items from the player
+    /**
+     * Buy items from the player
      * @param item item that the old man bus from the player
      * @return if the player win the game
      */
@@ -244,7 +246,7 @@ public class Oldman {
     }
 
     /**
-     * Guide through the Corner Houses
+     * Guide through the Corner House
      * @param g the game where Corner Houses are added
      * @param p the player
      */

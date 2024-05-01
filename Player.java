@@ -2,6 +2,7 @@ import java.util.Hashtable;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Enumeration;
+
 public class Player {
     private String name;
     Hashtable<Item,Integer> inventory;

@@ -2,7 +2,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class CornerHouse extends House{
-
     int randomNum;
     int chances;
 
