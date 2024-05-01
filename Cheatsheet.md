@@ -17,3 +17,4 @@ Farming Mode:
 *You must discover all the items in one room to keep on moving in the Adventure Mode.
 *You must enter the correct guess in the Corner House to win the game. Otherwise, you would lose the game, but it will ask you if you would like to try another round: if so, the game would restart from the very beginning in the Adventure Mode.
 *You must earn enough money to win the game in the Farming Mode.
+*You would at least have 15 fruits to harvest, or terrible things would happen!
