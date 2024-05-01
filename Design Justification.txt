@@ -1,7 +1,7 @@
-Zhiwen Ji: I have considered to use mutable graph to store the rooms on the floors and floors in the Main House, so that the player can move
-through the edges to visit different nodes, but I cannot get the index of nodes from guava, so I finally switched back to array list
-for convenience.
-I have also considered to make the Corner House more interactive, for example, having different inserted games, where players need to
-answer the questions correctly to get the keys/ or make some Corner House have the same structure as the Main House for the player to
-explore.
-Yuyao Zhu:I have considered to use mutable graph to build the farm, and I found that it is not neccessary, so instead of a mutable graph, I make it an ArrayList. 
+Zhiwen Ji: I have considered to use mutable graph to store the rooms on the floors and floors in the Main House, so that the player
+can move through the edges to visit different nodes, but I cannot get the index of nodes from guava, so I finally switched back to
+array list for convenience. I have also considered to make the Corner House more interactive, for example, having different inserted
+games, where players need to answer the questions correctly to get the keys/ or make some Corner House have the same structure as the
+Main House for the player to explore.
+Yuyao Zhu: I have considered to use mutable graph to build the farm, and I found that it is not neccessary, so instead of a mutable
+graph, I make it an ArrayList.
