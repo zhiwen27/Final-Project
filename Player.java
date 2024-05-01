@@ -10,6 +10,10 @@ public class Player {
     private House activeHouse;
     public ArrayList<Tree> farm;
     private boolean toPlay;
+
+    /**
+     * Default constructor for Player
+     */
     public Player(){
         this("<Name Unknown>");
     }

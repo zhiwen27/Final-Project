@@ -6,6 +6,9 @@ public class Room {
     ArrayList<Item> moveableItemCollection;
     String[] itemNames;
 
+    /**
+     * Constructor for Room
+     */
     public Room(){
         this.name = "";
         this.itemCollection = new ArrayList<Item>();
