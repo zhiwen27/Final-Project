@@ -25,8 +25,9 @@ Since it was a group project, we first have a discussion about the general theme
  Yuyao Zhu: I would add more methods player could use to customize their own farm. 
 
  - What was the most helpful **piece of feedback** you received while working on your project? Who gave it to you?
- Zhiwen Ji: Try to make the game not sensitive to the spelling, and make the player can access the inventory by Prof. Jordan.
-Yuyao Zhu: connect the farming mode back to the adventure mode, make it more playful. 
+Zhiwen Ji: Try to make the game not sensitive to the spelling, and make the player can access the inventory by Prof. Jordan.
+Yuyao Zhu: connect the farming mode back to the adventure mode, make it more playful.
+
  - If you could go back in time and give your past self some **advice** about this project, what hints would you give?
  Think more creatively (for the design about different houses).
  Yuyao Zhu: find time to attend more office hour. 
